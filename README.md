@@ -2,6 +2,6 @@
 ## Project 2
 
 1. [ ] Process Points 1
-  - [x] Basic File Structure - Matt Church
-  - [ ] All Methods added -
-  - [ ] Correct and generated Javadoc -
+  - [x] Basic File Structure - @mbchurch
+  - [ ] All Methods added - @wsgoodwi
+  - [ ] Correct and generated Javadoc - @jmfirlet
