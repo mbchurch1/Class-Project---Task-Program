@@ -10,10 +10,22 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
  * Notebook class
  * 
  * @author Matthew Church
+ * @author Will Goodwin
+ * @author John Firlet
  *
  */
 
 public class Notebook {
+	
+	/** Name of this notebook */
+	private String notebookName;
+	
+	/** 
+	 * Boolean variable representing a Notebook's contents have been 
+	 * from their initial state 
+	 */
+	private boolean isChanged;
+	
 	/**
 	 * Notebook constructor
 	 * 
@@ -22,17 +34,7 @@ public class Notebook {
 	public Notebook(String notebookName) {
 		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * Checks if the notebook is edited
-	 * 
-	 * @return true if the notebook had been edited
-	 */
-	public boolean isChanged() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 	/**
 	 * Saves the Notebook to a file
 	 * 
@@ -52,6 +54,59 @@ public class Notebook {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	/**
+	 * Sets the name of this notebook
+	 * @param name the new name of this notebook
+	 */
+	private void setNotebookName(String name) {
+		
+	}
+
+	/**
+	 * Checks if the notebook is edited
+	 * 
+	 * @return true if the notebook had been edited
+	 */
+	public boolean isChanged() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	/**
+	 * Sets the status of whether this notebook has been changed
+	 * @param changedStatus whether a notebook has been changed
+	 */
+	public void setChanged(boolean changedStatus) {
+		
+	}
+	
+	/**
+	 * adds a tasklist to the notebook
+	 * 
+	 * @param taskList the tasklist to add
+	 */
+	public void addTaskList(TaskList taskList) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	/**
+	 * returns the tasklist names a String array
+	 * 
+	 * @return aString array of task list names
+	 */
+	public String[] getTaskListsNames() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/**
+	 * Gets the TaskList comprised of Active tasks
+	 */
+	private void getActiveTaskList() {
+		
+	}
 
 	/**
 	 * sets the current task list
@@ -59,16 +114,6 @@ public class Notebook {
 	 * @param taskListName the task list name chosen
 	 */
 	public void setCurrentTaskList(String taskListName) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * adds a tasklist to the notebook
-	 * 
-	 * @param taskList the tasklist to add
-	 */
-	public void addTaskList(TaskList taskList) {
 		// TODO Auto-generated method stub
 
 	}
@@ -99,16 +144,6 @@ public class Notebook {
 	public void removeTaskList() {
 		// TODO Auto-generated method stub
 
-	}
-
-	/**
-	 * returns the tasklist names a String array
-	 * 
-	 * @return aString array of task list names
-	 */
-	public String[] getTaskListsNames() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/**
