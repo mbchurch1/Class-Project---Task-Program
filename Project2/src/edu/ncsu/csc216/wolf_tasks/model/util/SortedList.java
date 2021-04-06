@@ -10,7 +10,7 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  *
  * @param <E> an object to store
  */
-public class SortedList<E> implements ISortedList {
+public class SortedList<E> {
 	
 	/** Number of elements in the SortedList */
 	private int size;
