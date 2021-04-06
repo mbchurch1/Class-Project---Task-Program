@@ -1,4 +1,6 @@
 package edu.ncsu.csc216.wolf_tasks.model.util;
+
+
 /**
  * SortedList constructor
  * 
@@ -8,7 +10,7 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  *
  * @param <E> an object to store
  */
-public class SortedList<E> {
+public class SortedList<E> implements ISortedList {
 	
 	/** Number of elements in the SortedList */
 	private int size;

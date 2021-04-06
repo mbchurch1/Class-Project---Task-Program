@@ -8,7 +8,7 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  * @author John Firlet
  *
  */
-public class SwapList {
+public class SwapList implements ISwapList {
 
 
 }

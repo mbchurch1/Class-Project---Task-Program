@@ -18,8 +18,8 @@ public class ActiveTaskList extends AbstractTaskList {
 	 * @param taskListName name of the taskList
 	 * @param completedCount number of tasks in a TaskList that have been completed 
 	 */
-	public ActiveTaskList(String taskListName, int completedCount) {
-		super(taskListName, completedCount);
+	public ActiveTaskList()  {     //String taskListName, int completedCount) {
+		//super(taskListName, completedCount);
 	}
 	
 	/**
