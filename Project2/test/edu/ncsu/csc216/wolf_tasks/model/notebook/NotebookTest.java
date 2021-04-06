@@ -6,7 +6,10 @@ import org.junit.Test;
 
 /**
  * tests the Notebook class
+ * 
  * @author Matthew Church
+ * @author Will Goodwin
+ * @author John Firlet
  *
  */
 public class NotebookTest {

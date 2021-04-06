@@ -14,7 +14,6 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
  * @author John Firlet
  *
  */
-
 public class Notebook {
 	
 	/** Name of this notebook */
@@ -29,7 +28,7 @@ public class Notebook {
 	/**
 	 * Notebook constructor
 	 * 
-	 * @param notebookName the notebook name
+	 * @param notebookName  The notebook name
 	 */
 	public Notebook(String notebookName) {
 		// TODO Auto-generated constructor stub
@@ -38,7 +37,7 @@ public class Notebook {
 	/**
 	 * Saves the Notebook to a file
 	 * 
-	 * @param file the file to save to
+	 * @param file  The file to save to
 	 */
 	public void saveNotebook(File file) {
 		// TODO Auto-generated method stub
@@ -48,7 +47,7 @@ public class Notebook {
 	/**
 	 * returns the notebook name
 	 * 
-	 * @return a string of the notebook name
+	 * @return notebookName  A string of the notebook name
 	 */
 	public String getNotebookName() {
 		// TODO Auto-generated method stub
@@ -57,7 +56,7 @@ public class Notebook {
 	
 	/**
 	 * Sets the name of this notebook
-	 * @param name the new name of this notebook
+	 * @param name  The new name of this notebook
 	 */
 	private void setNotebookName(String name) {
 		
@@ -84,7 +83,7 @@ public class Notebook {
 	/**
 	 * adds a tasklist to the notebook
 	 * 
-	 * @param taskList the tasklist to add
+	 * @param taskList  The tasklist to add
 	 */
 	public void addTaskList(TaskList taskList) {
 		// TODO Auto-generated method stub
@@ -94,7 +93,7 @@ public class Notebook {
 	/**
 	 * returns the tasklist names a String array
 	 * 
-	 * @return aString array of task list names
+	 * @return aString  Array of task list names
 	 */
 	public String[] getTaskListsNames() {
 		// TODO Auto-generated method stub
@@ -121,7 +120,7 @@ public class Notebook {
 	/**
 	 * returns the current task list
 	 * 
-	 * @return the current task list
+	 * @return taskList  The current task list
 	 */
 	public AbstractTaskList getCurrentTaskList() {
 		// TODO Auto-generated method stub

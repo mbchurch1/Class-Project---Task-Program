@@ -10,6 +10,7 @@ package edu.ncsu.csc216.wolf_tasks.model.tasks;
  */
 public class ActiveTaskList extends AbstractTaskList {
 
+	/** Active Tasks Name */
 	public static final String ACTIVE_TASKS_NAME = "Active Tasks";
 	
 	/**
@@ -40,7 +41,7 @@ public class ActiveTaskList extends AbstractTaskList {
 	/**
 	 * returns the tasks in the active list as a String array
 	 * 
-	 * @return a String array of active tasks
+	 * @return tasksArray  A String array of active tasks
 	 */
 	@Override
 	public String[][] getTasksAsArray() {

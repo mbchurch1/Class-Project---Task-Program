@@ -3,11 +3,14 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-	/**
-	 * tests ISortedList class
-	 * @author Matthew Church
-	 *
-	 */
+	
+ /**
+ * tests ISortedList class
+ * @author Matthew Church
+ * @author Will Goodwin
+ * @author John Firlet
+ *
+ */
 public class ISortedListTest {
 	/**
 	 * tests add

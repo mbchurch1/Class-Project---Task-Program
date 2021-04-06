@@ -6,7 +6,10 @@ import org.junit.Test;
 
 /**
  * tests ActiveTaskList class
+ * 
  * @author Matthew Church
+ * @author Will Goodwin
+ * @author John Firlet
  *
  */
 public class ActiveTaskListTest {

@@ -56,10 +56,10 @@ public class SortedList<E> {
 	
 	/**
 	 * Gets the object at the parameterized index from the SortedList
-	 * @param indedx the index of the object being returned
-	 * @return an object at the given index in the SortedList
+	 * @param index the index of the object being returned
+	 * @return e  An object at the given index in the SortedList
 	 */
-	public E get(int indedx) {
+	public E get(int index) {
 		return null;
 	}
 }

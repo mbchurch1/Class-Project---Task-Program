@@ -5,7 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 /**
  * tests TaskList class
+ * 
  * @author Matthew Church
+ * @author Will Goodwin
+ * @author John Firlet
  *
  */
 public class TaskListTest {

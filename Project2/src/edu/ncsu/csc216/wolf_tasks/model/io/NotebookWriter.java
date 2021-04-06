@@ -6,22 +6,21 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 import edu.ncsu.csc216.wolf_tasks.model.util.ISortedList;
 
 /**
- * Writes Notebooks to file
+ * Writes Notebooks to a file
  * 
  * @author Matthew Church
  * @author Will Goodwin
  * @author John Firlet
  *
  */
-
 public class NotebookWriter {
 	
 	/**
 	 * Constructs a NotebookWriter object
 	 */
-	public NotebookWriter() {
-		
-	}
+	//public NotebookWriter() {
+//		
+//	}
 	
 	/**
 	 * Writes a notebook of TaskLists and Tasks to file 

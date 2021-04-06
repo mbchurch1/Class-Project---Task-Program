@@ -8,6 +8,8 @@ import org.junit.Test;
  * tests ListNode class
  * 
  * @author Matthew Church
+ * @author Will Goodwin
+ * @author John Firlet
  *
  */
 public class ListNodeTest {

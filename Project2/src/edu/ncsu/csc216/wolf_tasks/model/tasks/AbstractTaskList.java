@@ -54,7 +54,7 @@ public abstract class AbstractTaskList {
 	
 	/**
 	 * returns the completed tasks count
-	 * @return the String of completed tasks
+	 * @return completedCount  The String of completed tasks
 	 */
 	public String getCompletedCount() {
 		// TODO Auto-generated method stub
@@ -72,7 +72,7 @@ public abstract class AbstractTaskList {
 	/**
 	 * removes the selected task
 	 * @param idx the index in the list of the task
-	 * @return the selected task
+	 * @return task  The selected task
 	 */
 	public Task removeTask(int idx) {
 		return null;
@@ -81,7 +81,7 @@ public abstract class AbstractTaskList {
 	/**
 	 * returns the selected task
 	 * @param idx the index of the task in the list
-	 * @return the selected task
+	 * @return task  The selected task
 	 */
 	public Task getTask(int idx) {
 		return null;
@@ -97,7 +97,7 @@ public abstract class AbstractTaskList {
 
 	/**
 	 * returns  the tasks in a list as String array
-	 * @return the tasks in a list as and string array
+	 * @return tasksArray  The tasks in a list as and string array
 	 */
 	public abstract String[][] getTasksAsArray();
 

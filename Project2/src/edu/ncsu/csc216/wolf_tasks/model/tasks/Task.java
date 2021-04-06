@@ -33,7 +33,7 @@ public class Task {
 	
 	/**
 	 * returns the task name
-	 * @return String task name
+	 * @return taskName  String task name
 	 */
 	public String getTaskName() {
 		// TODO Auto-generated method stub
@@ -50,7 +50,7 @@ public class Task {
 	
 	/**
 	 * returns the task description
-	 * @return String task description
+	 * @return taskDescription  String task description
 	 */
 	public String getTaskDescription() {
 		// TODO Auto-generated method stub
@@ -101,6 +101,7 @@ public class Task {
 	
 	/**
 	 * Gets the name of the first AbstractTaskList 
+	 * @return taskListName  Name of the task list
 	 */
 	public String getTaskListName() {
 		return null;
@@ -124,6 +125,7 @@ public class Task {
 	
 	/**
 	 * Gets a copy of the task
+	 * @return clone  Clone of the object
 	 */
 	public Object clone() {
 		return null;
@@ -131,6 +133,7 @@ public class Task {
 
 	/**
 	 * Produces a string representation of the task
+	 * @return  string  String of the task
 	 */
 	public String toString() {
 		return null;

@@ -9,9 +9,15 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  */
 public class ListNode {
 	
+	/**Private data field for the current ListNode  */
 	public E data;
 	
-	public ListNode(E object, ListNode node) {
+	/**
+	 * Constructor for the ListNode
+	 * @param data  Element data
+	 * @param node  ListNode
+	 */
+	public ListNode(E data, ListNode node) {
 		
 	}
 }

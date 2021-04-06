@@ -9,13 +9,13 @@ package edu.ncsu.csc216.wolf_tasks.model.tasks;
  *
  */
 public class TaskList extends AbstractTaskList {
+	
 	/**
 	 * Task List constructor
 	 * 
 	 * @param taskListName task list name
 	 * @param i the index of the tasklist
 	 */
-
 	public TaskList(String taskListName, int i) {
 		super(taskListName, i);
 		// TODO Auto-generated constructor stub
@@ -23,7 +23,7 @@ public class TaskList extends AbstractTaskList {
 
 	/**
 	 * Overides the abstract parent method. Returns an array of regular tasks.
-	 * @return an object array of unactive tasks
+	 * @return taskArray  An object array of unactive tasks
 	 */
 	@Override
 	public String[][] getTasksAsArray() {
