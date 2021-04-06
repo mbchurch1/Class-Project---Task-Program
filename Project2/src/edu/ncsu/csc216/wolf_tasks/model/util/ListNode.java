@@ -7,7 +7,7 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  * @author John Firlet
  *
  */
-public class ListNode {
+public class ListNode<E> {
 	
 	/**Private data field for the current ListNode  */
 	public E data;
