@@ -31,7 +31,8 @@ public class Notebook {
 	 * @param notebookName  The notebook name
 	 */
 	public Notebook(String notebookName) {
-		// TODO Auto-generated constructor stub
+		setNotebookName(notebookName);
+		getActiveTaskList();
 	}
 	
 	/**
@@ -40,7 +41,7 @@ public class Notebook {
 	 * @param file  The file to save to
 	 */
 	public void saveNotebook(File file) {
-		// TODO Auto-generated method stub
+		// Code and stuff
 
 	}
 
@@ -50,8 +51,8 @@ public class Notebook {
 	 * @return notebookName  A string of the notebook name
 	 */
 	public String getNotebookName() {
-		// TODO Auto-generated method stub
-		return null;
+		// Code and Stuff
+		return notebookName;
 	}
 	
 	/**
@@ -68,8 +69,8 @@ public class Notebook {
 	 * @return true if the notebook had been edited
 	 */
 	public boolean isChanged() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return isChanged;
 	}
 	
 	/**
@@ -86,7 +87,7 @@ public class Notebook {
 	 * @param taskList  The tasklist to add
 	 */
 	public void addTaskList(TaskList taskList) {
-		// TODO Auto-generated method stub
+		// Code and Stuff
 
 	}
 	
@@ -96,7 +97,7 @@ public class Notebook {
 	 * @return aString  Array of task list names
 	 */
 	public String[] getTaskListsNames() {
-		// TODO Auto-generated method stub
+		// Code and Stuff
 		return null;
 	}
 	
@@ -113,7 +114,7 @@ public class Notebook {
 	 * @param taskListName the task list name chosen
 	 */
 	public void setCurrentTaskList(String taskListName) {
-		// TODO Auto-generated method stub
+		// Code
 
 	}
 
@@ -123,7 +124,7 @@ public class Notebook {
 	 * @return taskList  The current task list
 	 */
 	public AbstractTaskList getCurrentTaskList() {
-		// TODO Auto-generated method stub
+		// Code
 		return null;
 	}
 
@@ -133,7 +134,7 @@ public class Notebook {
 	 * @param taskListName a String of the new task list name
 	 */
 	public void editTaskList(String taskListName) {
-		// TODO Auto-generated method stub
+		// Code
 
 	}
 
@@ -141,7 +142,7 @@ public class Notebook {
 	 * removes a task list from the notebook
 	 */
 	public void removeTaskList() {
-		// TODO Auto-generated method stub
+		// Code
 
 	}
 
@@ -151,7 +152,7 @@ public class Notebook {
 	 * @param t the task to add
 	 */
 	public void addTask(Task t) {
-		// TODO Auto-generated method stub
+		// Code
 
 	}
 
@@ -164,7 +165,7 @@ public class Notebook {
 	 * @param isActive true if the task is active
 	 */
 	public void editTask(int idx, String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
-		// TODO Auto-generated method stub
+		// Code
 
 	}
 

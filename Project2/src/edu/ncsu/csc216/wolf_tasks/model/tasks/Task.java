@@ -1,6 +1,6 @@
 package edu.ncsu.csc216.wolf_tasks.model.tasks;
 
-import edu.ncsu.csc216.wolf_tasks.model.util.SwapList;
+
 
 /**
  * Task class
@@ -35,7 +35,7 @@ public class Task {
 	 * @param isActive        true if active
 	 */
 	public Task(String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
-		// TODO Auto-generated constructor stub
+		// Code
 	}
 
 	/**
@@ -44,8 +44,8 @@ public class Task {
 	 * @return taskName String task name
 	 */
 	public String getTaskName() {
-		// TODO Auto-generated method stub
-		return null;
+		// Code
+		return taskName;
 	}
 
 	/**
@@ -63,8 +63,8 @@ public class Task {
 	 * @return taskDescription String task description
 	 */
 	public String getTaskDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		// Code
+		return taskDescription;
 	}
 
 	/**
@@ -82,8 +82,8 @@ public class Task {
 	 * @return true if the task is recurring
 	 */
 	public boolean isRecurring() {
-		// TODO Auto-generated method stub
-		return false;
+		// Code
+		return recurring;
 	}
 
 	/**
@@ -101,8 +101,8 @@ public class Task {
 	 * @return true if the task is active
 	 */
 	public boolean isActive() {
-		// TODO Auto-generated method stub
-		return false;
+		// Code
+		return active;
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class Task {
 	 * completes the task
 	 */
 	public void completeTask() {
-		// TODO Auto-generated method stub
+		// Code
 
 	}
 

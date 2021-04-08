@@ -5,7 +5,8 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  * @author Matthew Church
  * @author Will Goodwin
  * @author John Firlet
- *
+ * 
+ *@param <E> the element to store
  */
 public class ListNode<E> {
 	
@@ -17,7 +18,7 @@ public class ListNode<E> {
 	 * @param data  Element data
 	 * @param node  ListNode
 	 */
-	public ListNode(E data, ListNode node) {
+	public ListNode(E data, ListNode<E> node) {
 		
 	}
 }

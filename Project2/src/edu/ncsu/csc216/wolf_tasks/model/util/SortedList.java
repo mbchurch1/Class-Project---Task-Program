@@ -41,7 +41,7 @@ public class SortedList<E> {
 	
 	/**
 	 * Checks if there is an element at the provided index
-	 * @param index
+	 * @param index the index to check
 	 */
 	private void checkIndex(int index) {
 		
