@@ -105,7 +105,7 @@ public class SwapList<E> {
 	 * @return the size of the list
 	 */
 	public int size() {
-		return 0;
+		return list.size();
 	}
 	
 }
