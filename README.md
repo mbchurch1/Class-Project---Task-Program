@@ -1,7 +1,7 @@
 # csc216-P2-T-52
 ## Project 2
 
-1. [x] Process Points 1 **Due April 8th** 
+1. [x] Process Points 1 **Due April 8th** **Completed**
     - [x] Basic File Structure - Matt Church Due 4/6
     - [x] All Methods added - Will Goodwin Due 4/6
     - [x] Correct and generated Javadoc - John Firlet Due 4/8
