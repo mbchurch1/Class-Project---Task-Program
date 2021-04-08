@@ -12,13 +12,7 @@ import org.junit.Test;
  *
  */
 public class TaskListTest {
-	/**
-	 * tests getTasksAsArray
-	 */
-	@Test
-	public void testGetTasksAsArray() {
-		fail("Not yet implemented"); // TODO
-	}
+	
 	/**
 	 * tests TaskList constructor
 	 */
@@ -26,5 +20,22 @@ public class TaskListTest {
 	public void testTaskList() {
 		fail("Not yet implemented"); // TODO
 	}
+	
+	/**
+	 * tests getTasksAsArray
+	 */
+	@Test
+	public void testGetTasksAsArray() {
+		fail("Not yet implemented"); // TODO
+	}
+	
+	/**
+	 * tests compareTo
+	 */
+	@Test
+	public void testCompareTo() {
+		fail("Not yet implemented"); // TODO
+	}
+
 
 }

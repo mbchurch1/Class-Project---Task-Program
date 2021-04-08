@@ -17,7 +17,7 @@ public class NotebookWriterTest {
 	 * tests NotebookWriter
 	 */
 	@Test
-	public void test() {
+	public void testWriteNotebookFile() {
 		fail("Not yet implemented"); // TODO
 	}
 

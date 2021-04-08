@@ -12,6 +12,15 @@ import org.junit.Test;
  *
  */
 public class AbstractTaskListTest {
+	
+	/**
+	 * tests the AbstractTaskList constructor
+	 */
+	@Test
+	public void testAbstractTaskList() {
+		fail("Not yet implemented"); // TODO
+	}
+	
 	/**
 	 * tests getTaskLisName
 	 */
@@ -19,34 +28,15 @@ public class AbstractTaskListTest {
 	public void testGetTaskListName() {
 		fail("Not yet implemented"); // TODO
 	}
+	
 	/**
-	 * tests getCompletedCount
+	 * tests setTaskLisName
 	 */
 	@Test
-	public void testGetCompletedCount() {
+	public void testSetTaskListName() {
 		fail("Not yet implemented"); // TODO
 	}
-	/**
-	 * tests getTask
-	 */
-	@Test
-	public void testGetTask() {
-		fail("Not yet implemented"); // TODO
-	}
-	/**
-	 * tests completeTask
-	 */
-	@Test
-	public void testCompleteTask() {
-		fail("Not yet implemented"); // TODO
-	}
-	/**
-	 * tests removeTask
-	 */
-	@Test
-	public void testRemoveTask() {
-		fail("Not yet implemented"); // TODO
-	}
+	
 	/**
 	 * tests getTasks
 	 */
@@ -54,6 +44,48 @@ public class AbstractTaskListTest {
 	public void testGetTasks() {
 		fail("Not yet implemented"); // TODO
 	}
+	
+	/**
+	 * tests getCompletedCount
+	 */
+	@Test
+	public void testGetCompletedCount() {
+		fail("Not yet implemented"); // TODO
+	}
+	
+	/**
+	 * tests addTask
+	 */
+	@Test
+	public void testAddTask() {
+		fail("Not yet implemented"); // TODO
+	}
+	
+	/**
+	 * tests removeTask
+	 */
+	@Test
+	public void testRemoveTask() {
+		fail("Not yet implemented"); // TODO
+	}
+	
+	/**
+	 * tests getTask
+	 */
+	@Test
+	public void testGetTask() {
+		fail("Not yet implemented"); // TODO
+	}
+	
+	/**
+	 * tests completeTask
+	 */
+	@Test
+	public void testCompleteTask() {
+		fail("Not yet implemented"); // TODO
+	}
+
+
 	/**
 	 * tests getTasksAsArray
 	 */
