@@ -1,10 +1,10 @@
 # csc216-P2-T-52
 ## Project 2
 
-1. [ ] Process Points 1 **Due April 8th** 
-    - [x] Basic File Structure - Matt Church
-    - [ ] All Methods added - Will Goodwin
-    - [ ] Correct and generated Javadoc - John Firlet
+1. [x] Process Points 1 **Due April 8th** 
+    - [x] Basic File Structure - Matt Church Due 4/6
+    - [x] All Methods added - Will Goodwin Due 4/6
+    - [x] Correct and generated Javadoc - John Firlet Due 4/8
 2. [ ] Process Points 2 **Due April 14th**
    - [ ] Implement all Methods -
    - [ ] Implement all test methods -
