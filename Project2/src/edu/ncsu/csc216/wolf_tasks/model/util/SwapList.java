@@ -22,7 +22,7 @@ public class SwapList<E> {
 	 * Constructor for SwapList
 	 */
 	public SwapList() {
-		
+		//empty constructor
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class SwapList<E> {
 	 * @param element the element to be added to the SwapList
 	 */
 	public void add(E element) {
-		
+		//empty method
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class SwapList<E> {
 	 * @param cap the capacity of the list
 	 */
 	private void checkCapacity(int cap) {
-
+		//empty method
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class SwapList<E> {
 	 * @param index the index of an element in the SwapList
 	 */
 	private void checkIndex(int index) {
-
+		//empty method
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class SwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveUp(int index) {
-
+		//empty method
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class SwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveDown(int index) {
-
+		//empty method
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class SwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveToFront(int index) {
-
+		//empty method
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class SwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveToBack(int index) {
-
+		//empty method
 	}
 
 	/**
