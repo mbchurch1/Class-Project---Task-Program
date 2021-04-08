@@ -22,7 +22,7 @@ public class SwapList<E> {
 	 * Constructor for SwapList
 	 */
 	public SwapList() {
-		;
+		
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class SwapList<E> {
 	 * @param element the element to be added to the SwapList
 	 */
 	public void add(E element) {
-		this.list = list;
+		
 	}
 
 	/**
@@ -114,7 +114,6 @@ public class SwapList<E> {
 	 * @return the size of the list
 	 */
 	public int size() {
-		this.size = size;
 		return 0;
 	}
 
