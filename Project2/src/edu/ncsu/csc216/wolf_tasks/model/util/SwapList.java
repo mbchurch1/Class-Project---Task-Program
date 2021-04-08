@@ -94,9 +94,10 @@ public class SwapList<E> {
 	/**
 	 * Gets an element in the list
 	 * @param index the index of the element to get
+	 * @return Element at the given index
 	 */
-	public void get(int index) {
-		
+	public E get(int index) {
+		return list.get(index);
 	}
 	
 	/**
