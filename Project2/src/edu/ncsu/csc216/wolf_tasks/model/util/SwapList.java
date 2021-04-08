@@ -22,7 +22,7 @@ public class SwapList<E> {
 	 * Constructor for SwapList
 	 */
 	public SwapList() {
-
+		int placeHolder1 = INITIAL_CAPACITY;
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class SwapList<E> {
 	 * @param element the element to be added to the SwapList
 	 */
 	public void add(E element) {
-
+		E[] placeHolder2 = list;
 	}
 
 	/**
@@ -114,6 +114,7 @@ public class SwapList<E> {
 	 * @return the size of the list
 	 */
 	public int size() {
+		int placeholder3 = size;
 		return 0;
 	}
 
