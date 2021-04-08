@@ -20,11 +20,12 @@ public abstract class AbstractTaskList {
 	
 	/**
 	 * Constructor for an AbstractTaskList
-	 * @param taskListName
-	 * @param completedCount
+	 * @param taskListName the task list name
+	 * @param completedCount the count of completed tasks
 	 */
 	public AbstractTaskList(String taskListName, int completedCount) {
-		
+		this.taskListName = taskListName;
+		this.completedCount = completedCount;
 	}
 	
 	/**
@@ -33,7 +34,7 @@ public abstract class AbstractTaskList {
 	 */
 	public String getTaskListName() {
 		// TODO Auto-generated method stub
-		return null;
+		return taskListName;
 	}
 	
 	/**
@@ -57,8 +58,8 @@ public abstract class AbstractTaskList {
 	 * @return completedCount  The String of completed tasks
 	 */
 	public String getCompletedCount() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return Integer.toString(completedCount);
 	}
 	
 	/**
