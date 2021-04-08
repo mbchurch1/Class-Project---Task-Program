@@ -25,7 +25,7 @@ public class ActiveTaskList extends AbstractTaskList {
 	 * @param task being added to the TaskList
 	 */
 	public void addTask(Task task) {
-		
+		//Code
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class ActiveTaskList extends AbstractTaskList {
 	 * @param name the new name of the TaskList 
 	 */
 	public void setTaskListName(String name) {
-		
+		//Code
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class ActiveTaskList extends AbstractTaskList {
 	 */
 	@Override
 	public String[][] getTasksAsArray() {
-		// TODO Auto-generated method stub
+		// Code
 		return null;
 	}
 
@@ -51,6 +51,6 @@ public class ActiveTaskList extends AbstractTaskList {
 	 * Removes all tasks from the TaskList
 	 */
 	public void clearTasks() {
-		
+		//Code
 	}
 }

@@ -1,7 +1,5 @@
 package edu.ncsu.csc216.wolf_tasks.model.tasks;
 
-
-
 /**
  * Task class
  * 
@@ -54,7 +52,7 @@ public class Task {
 	 * @param name the new name of the task
 	 */
 	public void setTaskName(String name) {
-
+		this.taskName = name;
 	}
 
 	/**
@@ -73,7 +71,7 @@ public class Task {
 	 * @param description the description of the task
 	 */
 	public void setTaskDescription(String description) {
-
+		this.taskDescription = description;
 	}
 
 	/**
@@ -92,7 +90,7 @@ public class Task {
 	 * @param recurringBool represents whether the task is recurring
 	 */
 	public void setRecurring(boolean recurringBool) {
-
+		this.recurring = recurringBool;
 	}
 
 	/**
@@ -111,7 +109,7 @@ public class Task {
 	 * @param activeBool represents whether the task is active
 	 */
 	public void setActive(boolean activeBool) {
-
+		this.active = activeBool;
 	}
 
 	/**
@@ -129,7 +127,7 @@ public class Task {
 	 * @param list the AbstractTaskList being added
 	 */
 	public void addTaskList(AbstractTaskList list) {
-
+		//Code
 	}
 
 	/**
