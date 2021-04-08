@@ -64,4 +64,12 @@ public class SortedList<E> {
 	public E get(int index) {
 		return null;
 	}
+	
+	/**
+	 * Gets the size of the list
+	 * @return the size of the list
+	 */
+	public int size() {
+		return 0;
+	}
 }
