@@ -26,7 +26,7 @@ public class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SortedList#add(java.lang.Object)}.
+	 * Test method for add()
 	 */
 	@Test
 	public void testAdd() {
@@ -34,7 +34,7 @@ public class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SortedList#remove(int)}.
+	 * Test method for remove()
 	 */
 	@Test
 	public void testRemove() {
@@ -42,7 +42,7 @@ public class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SortedList#contains(java.lang.Object)}.
+	 * Test method for contains()
 	 */
 	@Test
 	public void testContains() {
@@ -50,7 +50,7 @@ public class SortedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SortedList#get(int)}.
+	 * Test method for get()
 	 */
 	@Test
 	public void testGet() {

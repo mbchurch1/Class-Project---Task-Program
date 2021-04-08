@@ -26,7 +26,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#saveNotebook(java.io.File)}.
+	 * Test method for saveNotebook()
 	 */
 	@Test
 	public void testSaveNotebook() {
@@ -34,7 +34,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#getNotebookName()}.
+	 * Test method for getNotebookName()
 	 */
 	@Test
 	public void testGetNotebookName() {
@@ -42,7 +42,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#isChanged()}.
+	 * Test method for isChanged()
 	 */
 	@Test
 	public void testIsChanged() {
@@ -50,7 +50,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#setChanged(boolean)}.
+	 * Test method for setChanged()
 	 */
 	@Test
 	public void testSetChanged() {
@@ -58,7 +58,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#addTaskList(edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList)}.
+	 * Test method for addTaskList()
 	 */
 	@Test
 	public void testAddTaskList() {
@@ -66,7 +66,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#getTaskListsNames()}.
+	 * Test method for getTaskListsNames()
 	 */
 	@Test
 	public void testGetTaskListsNames() {
@@ -74,7 +74,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#setCurrentTaskList(java.lang.String)}.
+	 * Test method for setCurrentTaskList()
 	 */
 	@Test
 	public void testSetCurrentTaskList() {
@@ -82,7 +82,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#getCurrentTaskList()}.
+	 * Test method for getCurrentTaskList()
 	 */
 	@Test
 	public void testGetCurrentTaskList() {
@@ -90,7 +90,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#editTaskList(java.lang.String)}.
+	 * Test method for editTaskList()
 	 */
 	@Test
 	public void testEditTaskList() {
@@ -98,7 +98,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#removeTaskList()}.
+	 * Test method for removeTaskList()
 	 */
 	@Test
 	public void testRemoveTaskList() {
@@ -106,7 +106,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#addTask(edu.ncsu.csc216.wolf_tasks.model.tasks.Task)}.
+	 * Test method for addTask()
 	 */
 	@Test
 	public void testAddTask() {
@@ -114,7 +114,7 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook#editTask(int, java.lang.String, java.lang.String, boolean, boolean)}.
+	 * Test method for editTask()
 	 */
 	@Test
 	public void testEditTask() {

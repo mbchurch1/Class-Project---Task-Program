@@ -18,7 +18,7 @@ import org.junit.Test;
 public class SwapListTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#SwapList()}.
+	 * Test method for swapList()
 	 */
 	@Test
 	public void testSwapList() {
@@ -26,7 +26,7 @@ public class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#add(java.lang.Object)}.
+	 * Test method for add()
 	 */
 	@Test
 	public void testAdd() {
@@ -34,7 +34,7 @@ public class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#remove(int)}.
+	 * Test method for remove()
 	 */
 	@Test
 	public void testRemove() {
@@ -42,7 +42,7 @@ public class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#moveUp(int)}.
+	 * Test method for moveUp()
 	 */
 	@Test
 	public void testMoveUp() {
@@ -50,7 +50,7 @@ public class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#moveDown(int)}.
+	 * Test method for moveDown()
 	 */
 	@Test
 	public void testMoveDown() {
@@ -58,7 +58,7 @@ public class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#moveToFront(int)}.
+	 * Test method for moveToFront()
 	 */
 	@Test
 	public void testMoveToFront() {
@@ -66,7 +66,7 @@ public class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#moveToBack(int)}.
+	 * Test method for moveToBack()
 	 */
 	@Test
 	public void testMoveToBack() {
@@ -74,7 +74,7 @@ public class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#get(int)}.
+	 * Test method for get()
 	 */
 	@Test
 	public void testGet() {
@@ -82,7 +82,7 @@ public class SwapListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.util.SwapList#size()}.
+	 * Test method for size()
 	 */
 	@Test
 	public void testSize() {

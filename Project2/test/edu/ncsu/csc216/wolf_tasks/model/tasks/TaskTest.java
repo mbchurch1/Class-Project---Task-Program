@@ -34,7 +34,7 @@ public class TaskTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.Task#setTaskName(java.lang.String)}.
+	 * Test method for setTaskName()
 	 */
 	@Test
 	public void testSetTaskName() {
@@ -50,7 +50,7 @@ public class TaskTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.Task#setTaskDescription(java.lang.String)}.
+	 * Test method for setTaskDescription()
 	 */
 	@Test
 	public void testSetTaskDescription() {
@@ -66,7 +66,7 @@ public class TaskTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.Task#setRecurring(boolean)}.
+	 * Test method for setRecurring()
 	 */
 	@Test
 	public void testSetRecurring() {
@@ -82,7 +82,7 @@ public class TaskTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.Task#setActive(boolean)}.
+	 * Test method for setActive()
 	 */
 	@Test
 	public void testSetActive() {
@@ -90,7 +90,7 @@ public class TaskTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.Task#getTaskListName()}.
+	 * Test method for getTaskListName()
 	 */
 	@Test
 	public void testGetTaskListName() {
@@ -98,7 +98,7 @@ public class TaskTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.Task#addTaskList(edu.ncsu.csc216.wolf_tasks.model.tasks.AbstractTaskList)}.
+	 * Test method for addTaskList()
 	 */
 	@Test
 	public void testAddTaskList() {
@@ -114,7 +114,7 @@ public class TaskTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.Task#clone()}.
+	 * Test method for clone()
 	 */
 	@Test
 	public void testClone() {
@@ -122,7 +122,7 @@ public class TaskTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.Task#toString()}.
+	 * Test method for toString()
 	 */
 	@Test
 	public void testToString() {

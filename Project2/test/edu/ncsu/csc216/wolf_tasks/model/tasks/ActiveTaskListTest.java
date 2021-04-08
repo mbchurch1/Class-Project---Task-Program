@@ -18,7 +18,7 @@ import org.junit.Test;
 public class ActiveTaskListTest {
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList#setTaskListName(java.lang.String)}.
+	 * Test method for setTaskListName()
 	 */
 	@Test
 	public void testSetTaskListName() {
@@ -26,7 +26,7 @@ public class ActiveTaskListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList#addTask(edu.ncsu.csc216.wolf_tasks.model.tasks.Task)}.
+	 * Test method for addTask()
 	 */
 	@Test
 	public void testAddTask() {
@@ -34,7 +34,7 @@ public class ActiveTaskListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList#getTasksAsArray()}.
+	 * Test method for getTasksAsArray
 	 */
 	@Test
 	public void testGetTasksAsArray() {
@@ -42,7 +42,7 @@ public class ActiveTaskListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList#ActiveTaskList(java.lang.String, int)}.
+	 * Test method for activeTaskList()
 	 */
 	@Test
 	public void testActiveTaskList() {
@@ -50,7 +50,7 @@ public class ActiveTaskListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList#clearTasks()}.
+	 * Test method for clearTasks()
 	 */
 	@Test
 	public void testClearTasks() {

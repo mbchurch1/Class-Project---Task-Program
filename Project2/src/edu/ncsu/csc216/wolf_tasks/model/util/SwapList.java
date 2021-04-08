@@ -6,7 +6,7 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  * @author Matthew Church
  * @author Will Goodwin
  * @author John Firlet
- * @param <E>
+ * @param <E> element of the SwapList
  *
  */
 public class SwapList<E> {
