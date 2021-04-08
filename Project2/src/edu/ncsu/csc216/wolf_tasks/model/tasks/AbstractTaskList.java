@@ -33,7 +33,7 @@ public abstract class AbstractTaskList {
 	 * @return the task list name String
 	 */
 	public String getTaskListName() {
-		// TODO Auto-generated method stub
+		// Code
 		return taskListName;
 	}
 	
@@ -42,7 +42,7 @@ public abstract class AbstractTaskList {
 	 * @param name the new name of the TaskList
 	 */
 	public void setTaskListName(String name) {
-		
+		//Code
 	}
 	
 	/**
@@ -67,7 +67,7 @@ public abstract class AbstractTaskList {
 	 * @param task the task being added to the TaskList
 	 */
 	public void addTask(Task task) {
-		
+		//Code
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public abstract class AbstractTaskList {
 	 * @param task the task to complete
 	 */
 	public void completeTask(Task task) {
-
+		//Code
 	}
 
 	/**

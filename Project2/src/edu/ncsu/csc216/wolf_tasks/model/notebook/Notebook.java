@@ -60,7 +60,7 @@ public class Notebook {
 	 * @param name  The new name of this notebook
 	 */
 	private void setNotebookName(String name) {
-		
+		//Code
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class Notebook {
 	 * @param changedStatus whether a notebook has been changed
 	 */
 	public void setChanged(boolean changedStatus) {
-		
+		//Code
 	}
 	
 	/**
@@ -105,7 +105,7 @@ public class Notebook {
 	 * Gets the TaskList comprised of Active tasks
 	 */
 	private void getActiveTaskList() {
-		
+		//Code
 	}
 
 	/**
