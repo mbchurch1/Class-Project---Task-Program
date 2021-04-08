@@ -102,10 +102,11 @@ public class SwapList<E> {
 	
 	/**
 	 * Gets the size of the list
+	 * @param index the index of an element in the list
 	 * @return the size of the list
 	 */
-	public int size() {
-		return list.size();
+	public E[] size(int index) {
+		return null;
 	}
 	
 }
