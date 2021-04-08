@@ -97,7 +97,7 @@ public class SwapList<E> {
 	 * @return Element at the given index
 	 */
 	public E get(int index) {
-		return list.get(index);
+		return list(index);
 	}
 	
 	/**
