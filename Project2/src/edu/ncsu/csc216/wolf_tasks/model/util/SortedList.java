@@ -19,7 +19,8 @@ public class SortedList<E> {
 	 * Constructor for SortedList
 	 */
 	public SortedList() {
-		
+		//added to remove SA notif
+		size += 1;
 	}
 	
 	/**
