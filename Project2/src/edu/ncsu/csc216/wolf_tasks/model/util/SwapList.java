@@ -46,8 +46,8 @@ public class SwapList<E> {
 	 * Removes the element at the parameter index
 	 * @param index the index of the element to be removed
 	 */
-	public void remove(int index) {
-		
+	public E remove(int index) {
+		return null;
 	}
 	
 	
