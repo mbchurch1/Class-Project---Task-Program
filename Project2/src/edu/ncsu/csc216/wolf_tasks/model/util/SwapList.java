@@ -9,7 +9,7 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  * @param <E> element of the SwapList
  *
  */
-public class SwapList<E> {
+public class SwapList<E> implements ISwapList<E> {
 
 	/** initial capacity of the SwapList */
 	private static final int INITIAL_CAPACITY = 10;

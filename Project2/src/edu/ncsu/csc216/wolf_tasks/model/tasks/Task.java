@@ -1,5 +1,8 @@
 package edu.ncsu.csc216.wolf_tasks.model.tasks;
 
+import edu.ncsu.csc216.wolf_tasks.model.util.ISwapList;
+import edu.ncsu.csc216.wolf_tasks.model.util.SwapList;
+
 /**
  * Task class
  * 
@@ -8,7 +11,7 @@ package edu.ncsu.csc216.wolf_tasks.model.tasks;
  * @author John Firlet
  *
  */
-public class Task {
+public class Task implements Cloneable {
 
 	/** name of the task */
 	private String taskName;
@@ -22,7 +25,7 @@ public class Task {
 	/** boolean variable representing whether a task is active */
 	private boolean active;
 	/** taskLists associated with the task */
-	private AbstractTaskList tasklists;
+	private ISwapList<AbstractTaskList> tasklists;
 
 	/**
 	 * Task constructor
@@ -33,7 +36,11 @@ public class Task {
 	 * @param isActive        true if active
 	 */
 	public Task(String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
-		// Code
+		setTaskName(taskName);
+		setTaskDescription(taskDescription);
+		setActive(isActive);
+		setRecurring(isRecurring);
+		tasklists = new SwapList<AbstractTaskList>();
 	}
 
 	/**
@@ -42,7 +49,6 @@ public class Task {
 	 * @return taskName String task name
 	 */
 	public String getTaskName() {
-		// Code
 		return taskName;
 	}
 
@@ -50,8 +56,12 @@ public class Task {
 	 * Sets the name of the task
 	 * 
 	 * @param name the new name of the task
+	 * @throws IllegalArgumentException if the name is blank or null
 	 */
 	public void setTaskName(String name) {
+		if (name == null || "".equals(name)) {
+			throw new IllegalArgumentException("Incomplete task information.");
+		}
 		this.taskName = name;
 	}
 
@@ -61,7 +71,6 @@ public class Task {
 	 * @return taskDescription String task description
 	 */
 	public String getTaskDescription() {
-		// Code
 		return taskDescription;
 	}
 
@@ -69,8 +78,12 @@ public class Task {
 	 * Sets the description of the task
 	 * 
 	 * @param description the description of the task
+	 * @throws IllegalArgumentException if the description is blank or null
 	 */
 	public void setTaskDescription(String description) {
+		if (description == null || "".equals(description)) {
+			throw new IllegalArgumentException("Incomplete task information.");
+		}
 		this.taskDescription = description;
 	}
 
@@ -80,7 +93,6 @@ public class Task {
 	 * @return true if the task is recurring
 	 */
 	public boolean isRecurring() {
-		// Code
 		return recurring;
 	}
 
@@ -99,7 +111,6 @@ public class Task {
 	 * @return true if the task is active
 	 */
 	public boolean isActive() {
-		// Code
 		return active;
 	}
 
@@ -118,7 +129,7 @@ public class Task {
 	 * @return taskListName Name of the task list
 	 */
 	public String getTaskListName() {
-		return null;
+		return taskName;
 	}
 
 	/**
@@ -127,14 +138,26 @@ public class Task {
 	 * @param list the AbstractTaskList being added
 	 */
 	public void addTaskList(AbstractTaskList list) {
-		//Code
+		if (tasklists == null) {
+			throw new IllegalArgumentException("Incomplete task information.");
+		}
+
 	}
 
 	/**
 	 * completes the task
 	 */
 	public void completeTask() {
-		// Code
+		try {
+			for (int i = 0; i < tasklists.size(); i++) {
+				tasklists.get(i).completeTask(this);
+				if (isRecurring()) {
+					tasklists.get(i).addTask(this.clone());
+				}
+			}
+		} catch (CloneNotSupportedException e) {
+			throw new IllegalArgumentException("Could not clone this recurring task.");
+		}
 
 	}
 
@@ -144,12 +167,15 @@ public class Task {
 	 * @return clone Clone of the object
 	 * @throws CloneNotSupportedException if the clone cannot be cloned
 	 */
-	public Object clone() throws CloneNotSupportedException {
-		if (tasklists == null) {
+	public Task clone() throws CloneNotSupportedException {
+		if (tasklists.size() == 0) {
 			throw new CloneNotSupportedException("Cannot Clone.");
-		} else {
-			return null;
 		}
+		Task copiedTask = (Task) this.clone();
+
+		// need to add copying the tasklists
+		return copiedTask;
+
 	}
 
 	/**
@@ -158,6 +184,16 @@ public class Task {
 	 * @return string String of the task
 	 */
 	public String toString() {
-		return null;
+		String taskToken = "* ";
+		taskToken += getTaskName() + ",";
+		if (recurring) {
+			taskToken += "recurring,";
+		}
+		if (active) {
+			taskToken += "active,";
+		}
+		taskToken += "\\n";
+		taskToken += getTaskDescription() + "\\n";
+		return taskToken;
 	}
 }
