@@ -119,6 +119,8 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveUp(int index) {
+		checkIndex(index);
+		
 		//!!! Probably could've simplified this to be more list moveDown()
 		
 		E temp = list[index];
@@ -144,6 +146,8 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveDown(int index) {
+		checkIndex(index);
+		
 		E tempOriginal = list[index];
 		E tempOther = list[index + 1];
 		
@@ -157,7 +161,18 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveToFront(int index) {
-		//empty method
+		checkIndex(index);
+		
+		E temp = list[index];
+		
+		remove(index);
+		int addIndex = 0;
+		for (int i = size - 1; i >= addIndex; i--) {
+			list[i + 1] = list[i];
+		}
+		
+		list[addIndex] = temp;
+		size++;
 	}
 
 	/**
@@ -166,7 +181,11 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveToBack(int index) {
-		//empty method
+		checkIndex(index);
+		
+		E temp = remove(index);
+		list[size] = temp;
+		size++;
 	}
 
 	/**
