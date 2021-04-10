@@ -1,6 +1,6 @@
 package edu.ncsu.csc216.wolf_tasks.model.util;
 
-
+import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 
 /**
  * SortedList constructor
@@ -11,7 +11,7 @@ package edu.ncsu.csc216.wolf_tasks.model.util;
  *
  * @param <E> an object to store
  */
-public class SortedList<E> {
+public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
 	
 	/** Number of elements in the SortedList */
 	private int size;
@@ -26,27 +26,62 @@ public class SortedList<E> {
 		size = 0;
 	}
 	
-	/**
-	 * Adds an element to the SortedList
-	 * @param object the object being added to the SortedList
-	 * @throws NullPointerException if element is null
-	 * @throws IllegalArgumentException if element cannot be added 
-	 */
-	public void add(E object) {
-		ListNode current = front; 
-		if(object == null) {
-			throw new NullPointerException("Cannot add null element.");
+	private class ListNode<E> {
+		
+		/**Private data field for the current ListNode  */
+		public E data;
+		/** Next node on the list   */
+		public ListNode next;
+		
+		public ListNode(E data) {
+			this(data, null);
 		}
-		if(size == 0) {
-			front = new ListNode(object, front);
-		} else {
-			for(int i = 0; i < size; i++) {
-				if(current.data.equals(object)) {
-					throw new IllegalArgumentException("Cannot add duplicate element");
-				}
-				current = current.next;
-			}
+		
+		/**
+		 * Constructor for the ListNode
+		 * @param data  Element data
+		 * @param node  ListNode 
+		 */
+		public ListNode(E data, ListNode next) {
+			this.data = data;
+			this.next = next;
 		}
+	}
+	
+//	/**
+//	 * Adds an element to the SortedList
+//	 * @param object the object being added to the SortedList
+//	 * @throws NullPointerException if element is null
+//	 * @throws IllegalArgumentException if element cannot be added 
+//	 */
+//	public void add(E object) {
+//		ListNode current = front; 
+//		if(object == null) {
+//			throw new NullPointerException("Cannot add null element.");
+//		}
+//		
+//		//!!! Preliminary basic implementation of add
+//		//!!! Still need to factor in sorting
+//		//How to Sort:
+//		//ActiveTaskList always needs to be at top of SortedList (I think this still applies if the ActiveTasks is empty, but not sure yet)
+//		//All remaining TaskLists are added in alphabetical order following ActiveTaskList
+//		
+//		if(size == 0) {
+//			// !!!!! Need to figure out how to always add ActiveTaskList to the front  of SortedList
+//			front = new ListNode(object);
+//		} else {
+//			//Check for duplicate TaskList objects in SortedList
+//			for(int i = 0; i < size; i++) {
+//				if(current.data.equals(object)) {
+//					throw new IllegalArgumentException("Cannot add duplicate element");
+//				}
+//			}
+//			while (current.next != null) {
+//				current = current.next;
+//			}
+//			current.next = new ListNode(object);
+//		}
+//		size++;
 		
 //		current = front;
 //		for(int i = 0; i < size; i++) {
@@ -61,7 +96,7 @@ public class SortedList<E> {
 //			throw new IllegalArgumentException("")
 //		}
 		
-	}
+//	}
 	
 	/**
 	 * Returns the element from the given index.  The element is
@@ -101,20 +136,20 @@ public class SortedList<E> {
 		}
 	}
 	
-	/**
-	 * Determines whether the SortedList contains the parameterized object
-	 * @param object an object that may be contained within the SortedList
-	 * @return true or false based on whether the SortedList contains the given object
-	 */
-	public boolean contains(E object) {
-		ListNode current = front;
-		for(int i = 0; i < size; i++) {
-			if(current.data.equals(object)) {
-				return true;
-			}
-		}
-		return false;
-	}
+//	/**
+//	 * Determines whether the SortedList contains the parameterized object
+//	 * @param object an object that may be contained within the SortedList
+//	 * @return true or false based on whether the SortedList contains the given object
+//	 */
+//	public boolean contains(E object) {
+//		ListNode current = front;
+//		for(int i = 0; i < size; i++) {
+//			if(current.data.equals(object)) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 	
 	/**
 	 * Gets the object at the parameterized index from the SortedList
@@ -140,23 +175,70 @@ public class SortedList<E> {
 	public int size() {
 		return size;
 	}
-	
-	
-	public class ListNode<E> {
+
+	/**
+	 * Adds an element to the SortedList
+	 * @param element the generic TaskList element being added to SortedList
+	 * @throws NullPointerException if element is null
+	 * @throws IllegalArgumentException if element cannot be added 
+	 */
+	@Override
+	public void add(Comparable element) {
+		TaskList taskListElement = (TaskList) element;
 		
-		/**Private data field for the current ListNode  */
-		public E data;
-		/** Next node on the list   */
-		private ListNode next;
-		
-		/**
-		 * Constructor for the ListNode
-		 * @param data  Element data
-		 * @param node  ListNode 
-		 */
-		public ListNode(E data, ListNode next) {
-			this.data = data;
-			this.next = next;
+		ListNode current = front; 
+		if(taskListElement == null) {
+			throw new NullPointerException("Cannot add null element.");
 		}
+		
+		//!!! Preliminary basic implementation of add
+		//!!! Still need to factor in sorting
+		//How to Sort:
+		//ActiveTaskList always needs to be at top of SortedList (I think this still applies if the ActiveTasks is empty, but not sure yet)
+		//All remaining TaskLists are added in alphabetical order following ActiveTaskList
+		
+		if(size == 0) {
+			// !!!!! Need to figure out how to always add ActiveTaskList to the front  of SortedList
+			front = new ListNode(taskListElement);
+		} else {
+			//Check for duplicate TaskList objects in SortedList
+			while(current.next != null) {
+				if(current.data.equals(taskListElement)) {
+					throw new IllegalArgumentException("Cannot add duplicate element");
+				}
+			}
+			current = front;
+			while (current.next != null) {
+				//TODO:Need to ensure that compareTo in TaskList is implemented as 
+				//compareToIgnoreCase
+				if (taskListElement.compareTo((TaskList) current.data) < 0) {
+					current.next = new ListNode(taskListElement, current.next);
+				} else if (taskListElement.compareTo((TaskList) current.data) > 0) {
+					//TODO: if reached end of list, i.e. taskListElement is a larger letter
+					// than anything else in SortedList, then add taskListElement to the end of SortedList
+					//This may need to be executed outside the while loop 
+				}
+				current = current.next;
+			}
+		}
+		size++;
+		
 	}
+
+	/**
+	 * Determines whether the SortedList contains the parameterized object
+	 * @param element the generic TaskList element being added to SortedList
+	 * @return true or false based on whether the SortedList contains the given object
+	 */
+	@Override
+	public boolean contains(Comparable element) {
+		ListNode current = front;
+		for(int i = 0; i < size; i++) {
+			if(current.data.equals(element)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
