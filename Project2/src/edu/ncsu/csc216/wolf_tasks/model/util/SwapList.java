@@ -21,8 +21,11 @@ public class SwapList<E> implements ISwapList<E> {
 	/**
 	 * Constructor for SwapList
 	 */
+	@SuppressWarnings("unchecked")
 	public SwapList() {
-		//empty constructor
+		//E element = (E) new Object();
+		list = (E[]) new Object[INITIAL_CAPACITY];
+		size = 0;
 	}
 
 	/**
@@ -31,16 +34,51 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param element the element to be added to the SwapList
 	 */
 	public void add(E element) {
-		//empty method
+		if (element == null) {
+			throw new NullPointerException("Cannot add null element."); 
+		}
+		//allows duplicate elements --> no check for duplicates
+		
+		// Grow the array size if array is full
+		if (size == list.length) {
+			growArray();
+		}
+		
+		//Add element to end of list (per AbstractTaskList implementation and per 
+		//lack of index parameter
+		list[size] = element;
+		size++;
+	}
+
+	private void growArray() {
+		E[] temp = (E[]) new Object[size *2];
+		for (int i = 0; i < size; i++) {
+			temp[i] = list[i];
+		}
+		list = (E[]) new Object[size * 2];
+		for (int i = 0; i < size; i++) {
+			list[i] = temp[i];
+		}
+		
 	}
 
 	/**
 	 * Checks the capacity of the SwapList
 	 * 
-	 * @param cap the capacity of the list
+	 * @return the capacity of the list
 	 */
-	private void checkCapacity(int cap) {
-		//empty method
+	private int checkCapacity() {
+		//size - occupied elements of the swapList array
+		int occupiedElements = 0;
+		int capacity = 0;
+		for (int i = 0; i < list.length; i++) {
+			if (list[i] != null) {
+				occupiedElements++;
+			}
+		}
+		
+		capacity = size - occupiedElements;
+		return capacity;
 	}
 
 	/**
@@ -50,7 +88,17 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @return the element at the index that was removed
 	 */
 	public E remove(int index) {
-		return null;
+		if (index < 0 || index >= size || size ==0) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		
+		E rtn = list[index];
+		for (int i = index; i < size - 1; i++) {
+			list[i] = list[i + 1];
+		}
+		list[size - 1] = null;
+		size--;
+		return rtn;
 	}
 
 	/**
@@ -114,6 +162,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @return the size of the list
 	 */
 	public int size() {
+		
 		return 0;
 	}
 
