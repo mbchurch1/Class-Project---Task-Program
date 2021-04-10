@@ -88,7 +88,8 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @return the element at the index that was removed
 	 */
 	public E remove(int index) {
-		if (index < 0 || index >= size || size ==0) {
+		checkIndex(index);
+		if (size == 0) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
 		
@@ -107,7 +108,9 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param index the index of an element in the SwapList
 	 */
 	private void checkIndex(int index) {
-		//empty method
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
 	}
 
 	/**
@@ -116,7 +119,23 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveUp(int index) {
-		//empty method
+		//!!! Probably could've simplified this to be more list moveDown()
+		
+		E temp = list[index];
+		
+		//place index element in temp
+		//remove index element from list 
+		//shift list to right starting at (index - 1)
+		//place index element at (index - 1)
+		
+		remove(index);
+		int addIndex = index - 1;
+		for (int i = size - 1; i >= addIndex; i--) {
+			list[i + 1] = list[i];
+		}
+		
+		list[addIndex] = temp;
+		size++;
 	}
 
 	/**
@@ -125,7 +144,11 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param index the index of the element to move
 	 */
 	public void moveDown(int index) {
-		//empty method
+		E tempOriginal = list[index];
+		E tempOther = list[index + 1];
+		
+		list[index] = tempOther;
+		list[index + 1] = tempOriginal;
 	}
 
 	/**
@@ -153,7 +176,8 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @return Element at the given index
 	 */
 	public E get(int index) {
-		return null;
+		checkIndex(index);
+		return list[index];
 	}
 
 	/**
@@ -162,8 +186,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @return the size of the list
 	 */
 	public int size() {
-		
-		return 0;
+		return size;
 	}
 
 }
