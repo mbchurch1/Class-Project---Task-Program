@@ -11,7 +11,7 @@ import edu.ncsu.csc216.wolf_tasks.model.util.SwapList;
  * @author John Firlet
  *
  */
-public abstract class AbstractTaskList{
+public abstract class AbstractTaskList {
 
 	/** Name of a TaskList */
 	private String taskListName;

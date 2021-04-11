@@ -22,7 +22,11 @@ public class TaskTest {
 	 */
 	@Test
 	public void testTask() {
-		fail("Not yet implemented");
+		Task t1 = new Task("Eat Food", "Eat healthy food at lunch and dinner", true, false);
+		assertEquals("Eat Food", t1.getTaskName());
+		assertEquals("Eat healthy food at lunch and dinner", t1.getTaskDescription());
+		assertTrue(t1.isRecurring());
+		assertFalse(t1.isActive());
 	}
 
 	/**
@@ -30,7 +34,8 @@ public class TaskTest {
 	 */
 	@Test
 	public void testGetTaskName() {
-		fail("Not yet implemented");
+		Task t2 = new Task("Do homework", "Get homework done", true, false);
+		assertEquals("Do homework", t2.getTaskName());
 	}
 
 	/**
@@ -38,7 +43,22 @@ public class TaskTest {
 	 */
 	@Test
 	public void testSetTaskName() {
-		fail("Not yet implemented");
+		Task t3 = new Task("Take Prescription", "Take allergy meds", true, true);
+		assertEquals("Take Prescription", t3.getTaskName());
+		t3.setTaskName("Take allergy meds");
+		assertEquals("Take allergy meds", t3.getTaskName());
+		try {
+			t3.setTaskName("");
+			fail("This task name should throw an exception.");
+		} catch (IllegalArgumentException e) {
+			assertEquals("Incomplete task information.", e.getMessage());
+		}
+		try {
+			t3.setTaskName(null);
+			fail("This name should throw an exception.");
+		} catch (IllegalArgumentException e) {
+			assertEquals("Incomplete task information.", e.getMessage());
+		}
 	}
 
 	/**
@@ -46,7 +66,8 @@ public class TaskTest {
 	 */
 	@Test
 	public void testGetTaskDescription() {
-		fail("Not yet implemented");
+		Task t4 = new Task("Take Prescription", "Take allergy meds", true, true);
+		assertEquals("Take allergy meds", t4.getTaskDescription());
 	}
 
 	/**
@@ -54,7 +75,22 @@ public class TaskTest {
 	 */
 	@Test
 	public void testSetTaskDescription() {
-		fail("Not yet implemented");
+		Task t5 = new Task("Take Prescription", "I'm sneezing", true, true);
+		assertEquals("Take Prescription", t5.getTaskName());
+		t5.setTaskDescription("Take allergy meds");
+		assertEquals("Take allergy meds", t5.getTaskDescription());
+		try {
+			t5.setTaskDescription("");
+			fail("This task description should throw an exception.");
+		} catch (IllegalArgumentException e) {
+			assertEquals("Incomplete task information.", e.getMessage());
+		}
+		try {
+			t5.setTaskName(null);
+			fail("This description should throw an exception.");
+		} catch (IllegalArgumentException e) {
+			assertEquals("Incomplete task information.", e.getMessage());
+		}
 	}
 
 	/**
@@ -62,7 +98,10 @@ public class TaskTest {
 	 */
 	@Test
 	public void testIsRecurring() {
-		fail("Not yet implemented");
+		Task t6 = new Task("Call mom", "Talk to your mom for an hour or so", true, false);
+		assertTrue(t6.isRecurring());
+		Task t7 = new Task("Call Dad", "Call dad when I need a cash supplement", false, false);
+		assertFalse(t7.isRecurring());
 	}
 
 	/**
@@ -70,7 +109,10 @@ public class TaskTest {
 	 */
 	@Test
 	public void testSetRecurring() {
-		fail("Not yet implemented");
+		Task t8 = new Task("Call Dad", "Call dad when I need a cash supplement", false, false);
+		assertFalse(t8.isRecurring());
+		t8.setRecurring(true);
+		assertTrue(t8.isRecurring());
 	}
 
 	/**
@@ -78,7 +120,10 @@ public class TaskTest {
 	 */
 	@Test
 	public void testIsActive() {
-		fail("Not yet implemented");
+		Task t9 = new Task("active task", "this task is active", false, true);
+		assertTrue(t9.isActive());
+		Task t10 = new Task("Not active", "This task is not active", false, false);
+		assertFalse(t10.isActive());
 	}
 
 	/**
@@ -86,7 +131,10 @@ public class TaskTest {
 	 */
 	@Test
 	public void testSetActive() {
-		fail("Not yet implemented");
+		Task t11 = new Task("active task", "this task is active", false, true);
+		assertTrue(t11.isActive());
+		t11.setActive(false);
+		assertFalse(t11.isActive());
 	}
 
 	/**
@@ -94,7 +142,7 @@ public class TaskTest {
 	 */
 	@Test
 	public void testGetTaskListName() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -102,7 +150,7 @@ public class TaskTest {
 	 */
 	@Test
 	public void testAddTaskList() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -110,7 +158,7 @@ public class TaskTest {
 	 */
 	@Test
 	public void testCompleteTask() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -118,7 +166,7 @@ public class TaskTest {
 	 */
 	@Test
 	public void testClone() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -126,7 +174,7 @@ public class TaskTest {
 	 */
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 }

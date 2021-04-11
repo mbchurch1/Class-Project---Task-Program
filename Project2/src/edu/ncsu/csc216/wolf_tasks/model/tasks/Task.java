@@ -129,7 +129,10 @@ public class Task implements Cloneable {
 	 * @return taskListName Name of the task list
 	 */
 	public String getTaskListName() {
-		return taskName;
+		if (tasklists == null || tasklists.size() == 0) {
+			return "";
+		}
+		return tasklists.get(0).getTaskListName();
 	}
 
 	/**
@@ -141,6 +144,7 @@ public class Task implements Cloneable {
 		if (tasklists == null) {
 			throw new IllegalArgumentException("Incomplete task information.");
 		}
+		tasklists.add(list);
 
 	}
 
@@ -179,10 +183,12 @@ public class Task implements Cloneable {
 	}
 
 	/**
-	 * Produces a string representation of the task
+	 * Produces a string representation of the task. Overrides the basic Java
+	 * toString.
 	 * 
 	 * @return string String of the task
 	 */
+	@Override
 	public String toString() {
 		String taskToken = "* ";
 		taskToken += getTaskName() + ",";
