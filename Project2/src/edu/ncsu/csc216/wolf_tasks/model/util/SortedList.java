@@ -158,14 +158,18 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
 	 * @throws IndexOutOfBoundsException if the index is out of bounds
 	 * 		for the list
 	 */
+	@SuppressWarnings("unchecked")
 	public E get(int index) {
 		checkIndex(index);
 		ListNode current = front;
 		for(int i = 0; i < size; i++) {
+			if(i == index) {
+				return (E) current.data;
+			}
 			current = current.next;
 		}
 		
-		return (E) current.data;
+		return null;
 	}
 	
 	/**

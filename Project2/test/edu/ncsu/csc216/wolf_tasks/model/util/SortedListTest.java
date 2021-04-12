@@ -82,7 +82,30 @@ public class SortedListTest {
 	 */
 	@Test
 	public void testRemove() {
-		fail("Not yet implemented");
+		SortedList list = new SortedList();
+		
+		//Test adding three elements and removing one
+		TaskList firstElement = new TaskList("First List", 1);
+		list.add(firstElement);
+		assertEquals(1, list.size());
+		assertTrue(list.contains(firstElement));
+		TaskList secondElement = new TaskList("Second List", 2);
+		list.add(secondElement);
+		assertEquals(2, list.size());
+		assertTrue(list.contains(secondElement));
+		TaskList thirdElement = new TaskList("Middle List", 3);
+		list.add(thirdElement);
+		assertEquals(3, list.size());
+		assertTrue(list.contains(thirdElement));
+		
+		list.remove(1);
+		assertEquals(2, list.size());
+		assertTrue(list.contains(firstElement));
+		assertTrue(list.contains(thirdElement));
+		
+		list.remove(0);
+		assertEquals(1, list.size());
+		assertTrue(list.contains(thirdElement));
 	}
 
 	/**
@@ -90,7 +113,21 @@ public class SortedListTest {
 	 */
 	@Test
 	public void testContains() {
-		fail("Not yet implemented");
+		SortedList list = new SortedList();
+		
+		//Test adding a couple elements and determining if the list contains one of them
+		TaskList firstElement = new TaskList("First List", 1);
+		list.add(firstElement);
+		assertEquals(1, list.size());
+		assertTrue(list.contains(firstElement));
+		TaskList secondElement = new TaskList("Second List", 2);
+		list.add(secondElement);
+		assertEquals(2, list.size());
+		assertTrue(list.contains(secondElement));
+		
+		//Test determining that an element not in the list returns false
+		TaskList thirdElement = new TaskList("Third List", 3);
+		assertFalse(list.contains(thirdElement));
 	}
 
 	/**
@@ -98,7 +135,20 @@ public class SortedListTest {
 	 */
 	@Test
 	public void testGet() {
-		fail("Not yet implemented");
+		SortedList list = new SortedList();
+		
+		//Test adding a couple elements and determining if this method can get one of them
+		TaskList firstElement = new TaskList("First List", 1);
+		list.add(firstElement);
+		assertEquals(1, list.size());
+		assertTrue(list.contains(firstElement));
+		TaskList secondElement = new TaskList("Second List", 2);
+		list.add(secondElement);
+		assertEquals(2, list.size());
+		assertTrue(list.contains(secondElement));
+		
+		TaskList gottenElement = (TaskList) list.get(1);
+		assertEquals(0, gottenElement.compareTo(secondElement));
 	}
 
 }
