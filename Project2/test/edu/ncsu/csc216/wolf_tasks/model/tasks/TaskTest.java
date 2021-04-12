@@ -173,6 +173,7 @@ public class TaskTest {
 		assertEquals("1", tL4.getCompletedCount());
 		tL4.completeTask(t14a);
 		assertEquals("2", tL4.getCompletedCount());
+		//TODO bug when adding task back to lists
 		//assertEquals("Do math homework", tL4.getTask(0).getTaskName());
 		
 	}

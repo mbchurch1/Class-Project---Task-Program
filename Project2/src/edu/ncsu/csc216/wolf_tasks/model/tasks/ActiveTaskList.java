@@ -28,7 +28,7 @@ public class ActiveTaskList extends AbstractTaskList {
 	 */
 	public void addTask(Task task) {
 		if (task.isActive()) {
-			this.addTask(task);
+			super.addTask(task);
 		} else {
 			throw new IllegalArgumentException("Cannot add task to Active Tasks.");
 		}
@@ -43,7 +43,7 @@ public class ActiveTaskList extends AbstractTaskList {
 	 */
 	public void setTaskListName(String name) {
 		if (ACTIVE_TASKS_NAME.equals(name)) {
-			this.setTaskListName(name);
+			super.setTaskListName(name);
 		} else {
 			throw new IllegalArgumentException("The Active Tasks list may not be edited.");
 		}
@@ -68,6 +68,10 @@ public class ActiveTaskList extends AbstractTaskList {
 	 * Removes all tasks from the TaskList
 	 */
 	public void clearTasks() {
-
+		int idx = this.getTasks().size() - 1;
+		while (idx != -1) {
+			this.removeTask(idx);
+			idx--;
+		}
 	}
 }
