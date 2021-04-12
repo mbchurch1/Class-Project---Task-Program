@@ -25,6 +25,9 @@ public class Notebook {
 	 */
 	private boolean isChanged;
 	
+	/** Active Tasks Name */
+	private static final String ACTIVE_TASKS_NAME = "Active Tasks";
+	
 	/**
 	 * Notebook constructor
 	 * 
@@ -33,6 +36,7 @@ public class Notebook {
 	public Notebook(String notebookName) {
 		setNotebookName(notebookName);
 		getActiveTaskList();
+		isChanged = true;
 	}
 	
 	/**
@@ -60,7 +64,11 @@ public class Notebook {
 	 * @param name  The new name of this notebook
 	 */
 	private void setNotebookName(String name) {
-		//Code
+		if (name == null || name == "" || name.equals(ACTIVE_TASKS_NAME)) {
+			throw new IllegalArgumentException("Invalid name.");
+		} else {
+			notebookName = name;
+		}
 	}
 
 	/**

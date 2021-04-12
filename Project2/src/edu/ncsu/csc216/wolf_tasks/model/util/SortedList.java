@@ -184,10 +184,10 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
 	 */
 	@Override
 	public void add(Comparable element) {
-		TaskList taskListElement = (TaskList) element;
+		TaskList taskListObject = (TaskList) element;
 		
 		ListNode current = front; 
-		if(taskListElement == null) {
+		if(taskListObject == null) {
 			throw new NullPointerException("Cannot add null element.");
 		}
 		
@@ -199,24 +199,38 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
 		
 		if(size == 0) {
 			// !!!!! Need to figure out how to always add ActiveTaskList to the front  of SortedList
-			front = new ListNode(taskListElement);
+			front = new ListNode(taskListObject);
 		} else {
-			//Check for duplicate TaskList objects in SortedList
-			while(current.next != null) {
-				if(current.data.equals(taskListElement)) {
-					throw new IllegalArgumentException("Cannot add duplicate element");
-				}
-			}
-			current = front;
-			while (current.next != null) {
+			
+			//This implementation of checking for duplicates may work, but the below mimics 
+			//ServiceWolfManager.addServiceGroup implementation in P1 and seems to all be coherent/cohesive
+//			//Check for duplicate TaskList objects in SortedList
+//			while(current.next != null) {
+//				if(current.data.equals(taskListObject)) {
+//					throw new IllegalArgumentException("Cannot add duplicate element");
+//				}
+//			}
+//			current = front;
+			
+			//while (current.next != null) {
+			//since we're keeping track of size in this class, it makes sense that I can 
+			//just use a for loop here as long as I'm pushing along 'current' during the 
+			//list traversal - similar to my (WG) implementation of ServiceWolfManager.addServiceGroup implementation in P1
+			for (int i = 0; i < size; i++) {
 				//TODO:Need to ensure that compareTo in TaskList is implemented as 
 				//compareToIgnoreCase
-				if (taskListElement.compareTo((TaskList) current.data) < 0) {
-					current.next = new ListNode(taskListElement, current.next);
-				} else if (taskListElement.compareTo((TaskList) current.data) > 0) {
+				if (((TaskList) current.data).compareTo(taskListObject) == 0) {
+					throw new IllegalArgumentException("Cannot add duplicate element.");
+				}
+				else if (((TaskList) current.data).compareTo(taskListObject) < 0) {
+					current.next = new ListNode(taskListObject, current.next);
+				} else if (((TaskList) current.data).compareTo(taskListObject) > 0) {
 					//TODO: if reached end of list, i.e. taskListElement is a larger letter
 					// than anything else in SortedList, then add taskListElement to the end of SortedList
 					//This may need to be executed outside the while loop 
+					if (i == size - 1) {
+						current.next = new ListNode(taskListObject, current.next);
+					}
 				}
 				current = current.next;
 			}
@@ -237,6 +251,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
 			if(current.data.equals(element)) {
 				return true;
 			}
+			current = current.next;
 		}
 		return false;
 	}
