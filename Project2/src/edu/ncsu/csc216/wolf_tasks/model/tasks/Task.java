@@ -155,12 +155,12 @@ public class Task implements Cloneable {
 		try {
 			for (int i = 0; i < tasklists.size(); i++) {
 				tasklists.get(i).completeTask(this);
-				if (isRecurring()) {
+				if (this.isRecurring()) {
 					tasklists.get(i).addTask(this.clone());
 				}
 			}
 		} catch (CloneNotSupportedException e) {
-			throw new IllegalArgumentException("Could not clone this recurring task.");
+			throw new IllegalArgumentException("This recurring task cannot be cloned.");
 		}
 
 	}
@@ -175,9 +175,8 @@ public class Task implements Cloneable {
 		if (tasklists.size() == 0) {
 			throw new CloneNotSupportedException("Cannot Clone.");
 		}
-		Task copiedTask = (Task) this.clone();
+		Task copiedTask = (Task) super.clone();
 
-		// need to add copying the tasklists
 		return copiedTask;
 
 	}
@@ -191,12 +190,12 @@ public class Task implements Cloneable {
 	@Override
 	public String toString() {
 		String taskToken = "* ";
-		taskToken += getTaskName() + ",";
+		taskToken += getTaskName();
 		if (recurring) {
-			taskToken += "recurring,";
+			taskToken += ",recurring,";
 		}
 		if (active) {
-			taskToken += "active,";
+			taskToken += "active";
 		}
 		taskToken += "\\n";
 		taskToken += getTaskDescription() + "\\n";

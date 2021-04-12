@@ -142,7 +142,10 @@ public class TaskTest {
 	 */
 	@Test
 	public void testGetTaskListName() {
-		//fail("Not yet implemented");
+		Task t12 = new Task("Read Lord of the Flies", "Read chapter 8 of LOTF", false, false);
+		TaskList tL2 = new TaskList("English 236", 0);
+		tL2.addTask(t12);
+		assertEquals("English 236", t12.getTaskListName());
 	}
 
 	/**
@@ -150,7 +153,10 @@ public class TaskTest {
 	 */
 	@Test
 	public void testAddTaskList() {
-		//fail("Not yet implemented");
+		Task t13 = new Task("Read Dracula", "Read chapter 2 of Dracula", false, false);
+		TaskList tL1 = new TaskList("English 236", 0);
+		tL1.addTask(t13);
+		assertEquals("English 236", t13.getTaskListName());
 	}
 
 	/**
@@ -158,7 +164,17 @@ public class TaskTest {
 	 */
 	@Test
 	public void testCompleteTask() {
-		//fail("Not yet implemented");
+		Task t14 = new Task("Take test", "take math test", false, true);
+		Task t14a = new Task("Do math homework", "Do even number problems in current chapter", true, false);
+		TaskList tL4 = new TaskList("Math", 0);
+		tL4.addTask(t14);
+		tL4.addTask(t14a);
+		tL4.completeTask(t14);
+		assertEquals("1", tL4.getCompletedCount());
+		tL4.completeTask(t14a);
+		assertEquals("2", tL4.getCompletedCount());
+		//assertEquals("Do math homework", tL4.getTask(0).getTaskName());
+		
 	}
 
 	/**
@@ -166,7 +182,18 @@ public class TaskTest {
 	 */
 	@Test
 	public void testClone() {
-		//fail("Not yet implemented");
+		Task t15 = new Task("Pick up books", "Get books from store", false, false);
+		TaskList tL3 = new TaskList("Prep", 0);
+		tL3.addTask(t15);
+		Task t15a = null;
+		try {
+			t15a = t15.clone();
+		} catch (CloneNotSupportedException e) {
+			fail("Didn't clone" + e.getMessage());
+		}
+		assertEquals(t15.getTaskName(), t15a.getTaskName());
+		assertEquals(t15.getTaskDescription(), t15a.getTaskDescription());
+		assertEquals(t15.getTaskListName(), t15a.getTaskListName());
 	}
 
 	/**
@@ -174,7 +201,13 @@ public class TaskTest {
 	 */
 	@Test
 	public void testToString() {
-		//fail("Not yet implemented");
+		Task t16 = new Task("Make Brunch",
+				"Scientists say making brunch in late morning on Wednesdays helps overall mood.", true, true);
+		assertEquals(
+				"* Make Brunch,recurring,active\\nScientists say making brunch in late morning on Wednesdays helps overall mood.\\n",
+				t16.toString());
+		Task t17 = new Task("Read textbook", "Read chapter 17", false, false);
+		assertEquals("* Read textbook\\nRead chapter 17\\n", t17.toString());
 	}
 
 }

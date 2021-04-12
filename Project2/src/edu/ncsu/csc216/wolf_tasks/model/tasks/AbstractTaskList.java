@@ -122,13 +122,6 @@ public abstract class AbstractTaskList {
 				idx = i;
 			}
 		}
-		try {
-			if (task.isRecurring()) {
-				addTask(task.clone());
-			}
-		} catch (CloneNotSupportedException e) {
-			throw new IllegalArgumentException("Unable to reset recurring task.");
-		}
 		tasks.remove(idx);
 		completedCount++;
 	}
