@@ -130,15 +130,26 @@ public class Notebook<E> {
 	 * @return aString  Array of task list names
 	 */
 	public String[] getTaskListsNames() {
-		// Code and Stuff
-		return null;
+		String[] taskListNames = new String[taskLists.size()];
+		taskListNames[0] = ACTIVE_TASKS_NAME;
+		for (int i = 0; i < taskLists.size(); i++) {
+			taskListNames[i+1] = taskLists.get(i).getTaskListName();
+		}
+		return taskListNames;
 	}
 	
 	/**
 	 * Gets the TaskList comprised of Active tasks
 	 */
 	private ActiveTaskList getActiveTaskList() {
-		//Code
+		activeTaskList.clearTasks();
+		//building the ActiveTaskList each time there’s a change can be easier since you iterate through all the TaskLists and add each active Task
+		for (int i = 0; i < taskLists.size(); i++) {
+			String[][] currentList = taskLists.get(i).getTasksAsArray();
+			for (int j = 0; j < currentList.length; j++) {
+				Task currentTask = currentList[j][1];
+			}
+		}
 		return null;
 	}
 
