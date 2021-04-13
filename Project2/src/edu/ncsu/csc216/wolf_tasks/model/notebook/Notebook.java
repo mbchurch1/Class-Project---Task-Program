@@ -2,10 +2,12 @@ package edu.ncsu.csc216.wolf_tasks.model.notebook;
 
 import java.io.File;
 
+import edu.ncsu.csc216.wolf_tasks.model.io.NotebookWriter;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.AbstractTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
+import edu.ncsu.csc216.wolf_tasks.model.util.ListNode;
 import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
 
 /**
@@ -55,8 +57,8 @@ public class Notebook<E> {
 	 * @param file  The file to save to
 	 */
 	public void saveNotebook(File file) {
-		// Code and stuff
-
+		NotebookWriter.writeNotebookFile(file, notebookName, taskLists);
+		isChanged = false;
 	}
 
 	/**
@@ -105,8 +107,21 @@ public class Notebook<E> {
 	 * @param taskList  The tasklist to add
 	 */
 	public void addTaskList(TaskList taskList) {
-		// Code and Stuff
-
+		if (taskList.getTaskListName().equals(ACTIVE_TASKS_NAME)) {
+			throw new IllegalArgumentException("Invalid name.");
+		}
+		//Need to traverse the SortedList, comparing taskList to each TaskList name in SortedList while Ignoring case
+		//CompareToIgnoreCase is a part of TaskList, but not SortedList
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList current = taskLists.get(i);
+			if (current.compareTo(taskList) == 0) {
+				throw new IllegalArgumentException("Invalid name.");
+			}
+		}
+		
+		taskLists.add(taskList);
+		currentTaskList = taskList;
+		isChanged = true;
 	}
 	
 	/**

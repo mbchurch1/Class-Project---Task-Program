@@ -3,6 +3,7 @@ package edu.ncsu.csc216.wolf_tasks.model.io;
 import java.io.File;
 
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
+import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
 
 
 /**
@@ -22,7 +23,7 @@ public class NotebookWriter {
 	 * @param notebookName Name of the notebook being written to file
 	 * @param sortedList   a sorted list of TaskLists
 	 */
-	public static void writeNotebookFile(File outputFile, String notebookName, TaskList sortedList) {
+	public static void writeNotebookFile(File outputFile, String notebookName, SortedList<TaskList> sortedList) {
 		//Code
 		// NOTE: Changed sortedList to TaskList for now, to pass SA, Change back Later
 	}
