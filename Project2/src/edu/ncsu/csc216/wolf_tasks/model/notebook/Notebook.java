@@ -3,8 +3,10 @@ package edu.ncsu.csc216.wolf_tasks.model.notebook;
 import java.io.File;
 
 import edu.ncsu.csc216.wolf_tasks.model.tasks.AbstractTaskList;
+import edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
+import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
 
 /**
  * Notebook class
@@ -12,18 +14,24 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
  * @author Matthew Church
  * @author Will Goodwin
  * @author John Firlet
+ * @param <E>
  *
  */
-public class Notebook {
+public class Notebook<E> {
 	
 	/** Name of this notebook */
 	private String notebookName;
-	
 	/** 
 	 * Boolean variable representing a Notebook's contents have been 
 	 * from their initial state 
 	 */
 	private boolean isChanged;
+	
+	private SortedList<TaskList> taskLists;
+	
+	private ActiveTaskList activeTaskList;
+	
+	private AbstractTaskList currentTaskList;
 	
 	/** Active Tasks Name */
 	private static final String ACTIVE_TASKS_NAME = "Active Tasks";
@@ -35,7 +43,9 @@ public class Notebook {
 	 */
 	public Notebook(String notebookName) {
 		setNotebookName(notebookName);
-		getActiveTaskList();
+		taskLists = new SortedList<TaskList>();
+		activeTaskList = getActiveTaskList();
+		currentTaskList = activeTaskList;
 		isChanged = true;
 	}
 	
@@ -112,8 +122,9 @@ public class Notebook {
 	/**
 	 * Gets the TaskList comprised of Active tasks
 	 */
-	private void getActiveTaskList() {
+	private ActiveTaskList getActiveTaskList() {
 		//Code
+		return null;
 	}
 
 	/**
