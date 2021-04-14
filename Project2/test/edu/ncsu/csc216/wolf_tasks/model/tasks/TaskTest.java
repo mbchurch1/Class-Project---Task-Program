@@ -203,12 +203,12 @@ public class TaskTest {
 	@Test
 	public void testToString() {
 		Task t16 = new Task("Make Brunch",
-				"Scientists say making brunch in late morning on Wednesdays helps overall mood.", true, true);
+				"Scientists say cook food", true, true);
 		assertEquals(
-				"* Make Brunch,recurring,active\\nScientists say making brunch in late morning on Wednesdays helps overall mood.\\n",
+				"* Make Brunch,recurring,active\nScientists say cook food\n",
 				t16.toString());
 		Task t17 = new Task("Read textbook", "Read chapter 17", false, false);
-		assertEquals("* Read textbook\\nRead chapter 17\\n", t17.toString());
+		assertEquals("* Read textbook\nRead chapter 17\n", t17.toString());
 	}
 
 }
