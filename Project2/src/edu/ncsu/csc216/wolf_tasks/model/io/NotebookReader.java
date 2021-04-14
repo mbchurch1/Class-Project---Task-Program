@@ -19,7 +19,12 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
  *
  */
 public class NotebookReader {
-
+	
+	/** String representing a recurring task in the notebook file */
+	private static final String RECURRING = "recurring"; 
+	/** String representing an active task in the notebook file */
+	private static final String ACTIVE = "active"; 
+	
 	/**
 	 * reads a notebook from a file
 	 * 
@@ -75,9 +80,10 @@ public class NotebookReader {
 		Scanner lineScanner = new Scanner(list);
 		
 		String nameAndCompletions = lineScanner.nextLine();
-		String trimmedNameAndCompletions = nameAndCompletions.trim();
-		Scanner nameVsCompletionsScanner = new Scanner(trimmedNameAndCompletions).useDelimiter(",");
+		//String trimmedNameAndCompletions = nameAndCompletions.trim();
+		Scanner nameVsCompletionsScanner = new Scanner(nameAndCompletions).useDelimiter(",");
 		listName = nameVsCompletionsScanner.next();
+		String trimmedName = listName.trim();
 		if(nameVsCompletionsScanner.hasNextInt()) {
 			numCompletedTasks = nameVsCompletionsScanner.nextInt();
 		}
@@ -88,7 +94,7 @@ public class NotebookReader {
 			taskListString += lineScanner.nextLine() + "\n";
 		}
 		
-		TaskList taskList = new TaskList(listName, numCompletedTasks);
+		TaskList taskList = new TaskList(trimmedName, numCompletedTasks);
 		
 		Scanner taskTokenScanner = new Scanner(taskListString).useDelimiter("\\r?\\n?[*]");
 		while (taskTokenScanner.hasNext()) {
@@ -113,7 +119,49 @@ public class NotebookReader {
 	 *                   Notebook file
 	 * @return task A Task object
 	 */
-	private static Task processTask(AbstractTaskList list, String taskString) {
-		return null;
+	private static Task processTask(AbstractTaskList taskList, String taskToken) {
+		String taskName = "";
+		String taskDescription = ""; 
+		boolean isRecurring = false; 
+		boolean isActive = false;
+		
+		Scanner taskTokenScanner = new Scanner(taskToken);
+		
+		String taskNameAndModifiers = taskTokenScanner.nextLine();
+		while(taskTokenScanner.hasNextLine()) {
+			taskDescription += taskTokenScanner.nextLine() + "\n";
+		}
+		
+		Scanner taskNameAndModsScanner = new Scanner(taskNameAndModifiers);
+		
+		String recurringOrActive1 = "";
+		String recurringOrActive2 = "";
+		
+		if(taskNameAndModsScanner.hasNext()) {
+			taskName = taskNameAndModsScanner.next().trim();
+		}
+		if(taskNameAndModsScanner.hasNext()) {
+			recurringOrActive1 = taskNameAndModsScanner.next();
+			if (recurringOrActive1.equals(RECURRING)) {
+				isRecurring = true;
+			} else if (recurringOrActive1.equals(ACTIVE)) {
+				isActive = true;
+			} 
+		}
+		if(taskNameAndModsScanner.hasNext()) {
+			recurringOrActive2 = taskNameAndModsScanner.next();
+			if (recurringOrActive2.equals(RECURRING)) {
+				isRecurring = true;
+			} else if (recurringOrActive2.equals(ACTIVE)) {
+				isActive = true;
+			} 
+		}
+		
+		Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
+		
+		taskTokenScanner.close();
+		taskNameAndModsScanner.close();
+		
+		return newTask;
 	}
 }
