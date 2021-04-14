@@ -103,7 +103,6 @@ public class Notebook {
 	 * @return true if the notebook had been edited
 	 */
 	public boolean isChanged() {
-
 		return isChanged;
 	}
 
@@ -113,7 +112,7 @@ public class Notebook {
 	 * @param changedStatus whether a notebook has been changed
 	 */
 	public void setChanged(boolean changedStatus) {
-		// Code
+		isChanged = changedStatus;
 	}
 
 	/**
@@ -181,8 +180,18 @@ public class Notebook {
 	 * @param taskListName the task list name chosen
 	 */
 	public void setCurrentTaskList(String taskListName) {
-		// Code
-
+		TaskList listToBeCurrent = null;
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList currentTaskList = taskLists.get(i);
+			String currentListName = currentTaskList.getTaskListName();
+			if(currentListName.equals(taskListName)) {
+				listToBeCurrent = currentTaskList;
+			}
+		}
+		if (listToBeCurrent == null) {
+			currentTaskList = activeTaskList;
+		}
+		currentTaskList = listToBeCurrent;
 	}
 
 	/**
@@ -191,7 +200,6 @@ public class Notebook {
 	 * @return taskList The current task list
 	 */
 	public AbstractTaskList getCurrentTaskList() {
-		// Code
 		return currentTaskList;
 	}
 
@@ -201,15 +209,41 @@ public class Notebook {
 	 * @param taskListName a String of the new task list name
 	 */
 	public void editTaskList(String taskListName) {
-		// Code
-
+		if (currentTaskList == activeTaskList) {
+			throw new IllegalArgumentException("Cannot edit Active Task List.");
+		}
+		if (taskListName == ACTIVE_TASKS_NAME) {
+			throw new IllegalArgumentException("Cannot create new Active Task List.");
+		}
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList currentTaskList = taskLists.get(i);
+			String currentListName = currentTaskList.getTaskListName();
+			if(currentListName.equalsIgnoreCase(taskListName)) {
+				throw new IllegalArgumentException("Cannot create duplicate Task List name.");
+			}
+		}
+		
+		String currentName = currentTaskList.getTaskListName();
+		TaskList removedCurrentTask = null;
+		
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList currentTaskList = taskLists.get(i);
+			String currentListName = currentTaskList.getTaskListName();
+			if(currentListName.equalsIgnoreCase(currentName)) {
+				removedCurrentTask = taskLists.remove(i);
+			}
+		}
+		
+		removedCurrentTask.setTaskListName(taskListName);
+		
+		this.addTaskList(removedCurrentTask);
 	}
 
 	/**
 	 * removes a task list from the notebook
 	 */
 	public void removeTaskList() {
-		// Code
+		
 
 	}
 
