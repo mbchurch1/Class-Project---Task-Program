@@ -158,10 +158,16 @@ public class Notebook {
 		activeTaskList.clearTasks();
 		// building the ActiveTaskList each time there’s a change can be easier since
 		// you iterate through all the TaskLists and add each active Task
+		//Order of Active Tasks in the Task Table: Tasks are ordered alphabetically
+		//by TaskList name and then by priority order per the TaskList they're associated 
+		//with - i.e. Order by TaskList name --> just read down the list and pull the active tasks
+		//as you see them - no further ordering is needed
 		for (int i = 0; i < taskLists.size(); i++) {
 			String[][] currentList = taskLists.get(i).getTasksAsArray();
 			for (int j = 0; j < currentList.length; j++) {
-				//Task currentTask = currentList[j][1];
+				//Column 1 (rather than column 0) in this array is the TaskName
+				String currentTaskName = currentList[j][1];
+				//Now that I've got the individual task from
 			}
 		}
 		return null;
