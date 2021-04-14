@@ -18,11 +18,11 @@ import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
  * @author Matthew Church
  * @author Will Goodwin
  * @author John Firlet
- * @param <E>
+ * 
  *
  */
 
-public class Notebook<E> {
+public class Notebook {
 
 	/** Name of this notebook */
 	private String notebookName;
@@ -38,7 +38,7 @@ public class Notebook<E> {
 	private ISortedList<TaskList> taskLists;
 	/** the current tasklist */
 	private AbstractTaskList currentTaskList;
-
+	/** the active task list */
 	private ActiveTaskList activeTaskList;
 
 	/** Active Tasks Name */
@@ -91,7 +91,7 @@ public class Notebook<E> {
 	 */
 	private void setNotebookName(String name) {
 		this.notebookName = name;
-		if (name == null || name == "" || name.equals(ACTIVE_TASKS_NAME)) {
+		if (name == null || "".equals(name) || name.equals(ACTIVE_TASKS_NAME)) {
 			throw new IllegalArgumentException("Invalid name.");
 		} else {
 			notebookName = name;
