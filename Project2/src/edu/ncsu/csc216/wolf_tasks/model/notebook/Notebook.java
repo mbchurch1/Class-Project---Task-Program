@@ -274,8 +274,8 @@ public class Notebook {
 			if (task.isActive()) {
 				this.getActiveTaskList();
 			}
+			isChanged = true;
 		}
-		isChanged = true;
 	}
 
 	/**
@@ -288,7 +288,18 @@ public class Notebook {
 	 * @param isActive        true if the task is active
 	 */
 	public void editTask(int idx, String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
-		// Code
-
+		if(currentTaskList == activeTaskList || currentTaskList == null) {
+			//do nothing
+		} else {
+			Task taskBeingEdited = currentTaskList.getTask(idx);
+			taskBeingEdited.setTaskName(taskName);
+			taskBeingEdited.setTaskDescription(taskDescription);
+			taskBeingEdited.setRecurring(isRecurring);
+			taskBeingEdited.setActive(isActive);
+			if (taskBeingEdited.isActive()) {
+				this.getActiveTaskList();
+			}
+			isChanged = true;
+		}
 	}
 }
