@@ -35,7 +35,7 @@ public class Notebook {
 	private boolean isChanged;
 
 	/** the list of taskLists */
-	private ISortedList<TaskList> taskLists;
+	private SortedList<TaskList> taskLists;
 	/** the current tasklist */
 	private AbstractTaskList currentTaskList;
 	/** the active task list */
@@ -125,14 +125,14 @@ public class Notebook {
 		if (taskList.getTaskListName().equals(ACTIVE_TASKS_NAME)) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
+		
 		// Need to traverse the SortedList, comparing taskList to each TaskList name in
 		// SortedList while Ignoring case
-		// CompareToIgnoreCase is a part of TaskList, but not SortedList
 		for (int i = 0; i < taskLists.size(); i++) {
 			TaskList current = taskLists.get(i);
 			if (current.compareTo(taskList) == 0) {
 				throw new IllegalArgumentException("Invalid name.");
-			}
+			} 
 		}
 
 		taskLists.add(taskList);
@@ -156,22 +156,10 @@ public class Notebook {
 
 	private ActiveTaskList getActiveTaskList() {
 		activeTaskList.clearTasks();
-		// building the ActiveTaskList each time there’s a change can be easier since
-		// you iterate through all the TaskLists and add each active Task
 		//Order of Active Tasks in the Task Table: Tasks are ordered alphabetically
 		//by TaskList name and then by priority order per the TaskList they're associated 
 		//with - i.e. Order by TaskList name --> just read down the list and pull the active tasks
 		//as you see them - no further ordering is needed
-//		for (int i = 0; i < taskLists.size(); i++) {
-//			String[][] currentList = taskLists.get(i).getTasksAsArray();
-//			for (int j = 0; j < currentList.length; j++) {
-//				//Column 1 (rather than column 0) in this array is the TaskName
-//				String currentTaskName = currentList[j][1];
-//				//Now that I've got the individual task as a String, I need the Task object 
-//				// --> if (Task.isActive()) ...
-//				
-//			}
-//		}
 		for (int i = 0; i < taskLists.size(); i++) {
 			//Pull each TaskList --> for loop {Task currentTask = TaskList.getTask()
 			// if (currentTask.isActive ...
@@ -180,7 +168,7 @@ public class Notebook {
 			for (int j = 0; j < taskSwapList.size(); j++) {
 				Task currentTask = taskSwapList.get(j);
 				if (currentTask.isActive()) {
-					
+					activeTaskList.addTask(currentTask);
 				}
 			}
 		}
