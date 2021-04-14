@@ -243,8 +243,22 @@ public class Notebook {
 	 * removes a task list from the notebook
 	 */
 	public void removeTaskList() {
+		if (currentTaskList == activeTaskList) {
+			throw new IllegalArgumentException("The Active Task list may not be deleted.");
+		}
 		
-
+		String currentTaskListName = currentTaskList.getTaskListName();
+		
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList currentTaskList = taskLists.get(i);
+			String currentListName = currentTaskList.getTaskListName();
+			if(currentListName.equals(currentTaskListName)) {
+				taskLists.remove(i);
+			}
+		}
+		
+		currentTaskList = activeTaskList;
+		isChanged = true;
 	}
 
 	/**
