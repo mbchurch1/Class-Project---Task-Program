@@ -192,13 +192,13 @@ public class Task implements Cloneable {
 		String taskToken = "* ";
 		taskToken += getTaskName();
 		if (recurring) {
-			taskToken += ",recurring,";
+			taskToken += ",recurring";
 		}
 		if (active) {
-			taskToken += "active";
+			taskToken += ",active";
 		}
-		taskToken += "\\n";
-		taskToken += getTaskDescription() + "\\n";
+		taskToken += "\n";
+		taskToken += getTaskDescription() + "\n";
 		return taskToken;
 	}
 }

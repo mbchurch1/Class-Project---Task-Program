@@ -14,7 +14,7 @@ public class TaskList extends AbstractTaskList implements Comparable<TaskList> {
 	 * Task List constructor
 	 * 
 	 * @param taskListName task list name
-	 * @param i            the index of the tasklist
+	 * @param i            the amount of completed tasks
 	 */
 	public TaskList(String taskListName, int i) {
 		super(taskListName, i);

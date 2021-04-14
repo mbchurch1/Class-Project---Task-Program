@@ -1,10 +1,14 @@
 package edu.ncsu.csc216.wolf_tasks.model.notebook;
 
 import java.io.File;
+import java.io.IOException;
 
+import edu.ncsu.csc216.wolf_tasks.model.io.NotebookWriter;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.AbstractTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
+import edu.ncsu.csc216.wolf_tasks.model.util.ISortedList;
+import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
 
 /**
  * Notebook class
@@ -15,52 +19,64 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
  *
  */
 public class Notebook {
-	
+
 	/** Name of this notebook */
 	private String notebookName;
-	
-	/** 
-	 * Boolean variable representing a Notebook's contents have been 
-	 * from their initial state 
+
+	/**
+	 * Boolean variable representing a Notebook's contents have been from their
+	 * initial state
 	 */
 	private boolean isChanged;
-	
+
+	/** the list of taskLists */
+	private ISortedList<TaskList> taskLists;
+	/** the current tasklist */
+	private AbstractTaskList currentTaskList;
+
 	/**
 	 * Notebook constructor
 	 * 
-	 * @param notebookName  The notebook name
+	 * @param notebookName The notebook name
 	 */
 	public Notebook(String notebookName) {
 		setNotebookName(notebookName);
 		getActiveTaskList();
+		taskLists = new SortedList<TaskList>();
 	}
-	
+
 	/**
 	 * Saves the Notebook to a file
 	 * 
-	 * @param file  The file to save to
+	 * @param file The file to save to
 	 */
 	public void saveNotebook(File file) {
-		// Code and stuff
+		try {
+			NotebookWriter.writeNotebookFile(file, notebookName, taskLists);
+		} catch (IOException e) {
+			throw new IllegalArgumentException("File unable to be saved");
+		}
+		isChanged = false;
 
 	}
 
 	/**
 	 * returns the notebook name
 	 * 
-	 * @return notebookName  A string of the notebook name
+	 * @return notebookName A string of the notebook name
 	 */
 	public String getNotebookName() {
 		// Code and Stuff
 		return notebookName;
 	}
-	
+
 	/**
 	 * Sets the name of this notebook
-	 * @param name  The new name of this notebook
+	 * 
+	 * @param name The new name of this notebook
 	 */
 	private void setNotebookName(String name) {
-		//Code
+		this.notebookName = name;
 	}
 
 	/**
@@ -69,43 +85,45 @@ public class Notebook {
 	 * @return true if the notebook had been edited
 	 */
 	public boolean isChanged() {
-		
+
 		return isChanged;
 	}
-	
+
 	/**
 	 * Sets the status of whether this notebook has been changed
+	 * 
 	 * @param changedStatus whether a notebook has been changed
 	 */
 	public void setChanged(boolean changedStatus) {
-		//Code
+		// Code
 	}
-	
+
 	/**
 	 * adds a tasklist to the notebook
 	 * 
-	 * @param taskList  The tasklist to add
+	 * @param taskList The tasklist to add
 	 */
 	public void addTaskList(TaskList taskList) {
-		// Code and Stuff
+		taskLists.add(taskList);
+		currentTaskList = taskList;
 
 	}
-	
+
 	/**
 	 * returns the tasklist names a String array
 	 * 
-	 * @return aString  Array of task list names
+	 * @return aString Array of task list names
 	 */
 	public String[] getTaskListsNames() {
 		// Code and Stuff
 		return null;
 	}
-	
+
 	/**
 	 * Gets the TaskList comprised of Active tasks
 	 */
 	private void getActiveTaskList() {
-		//Code
+		// Code
 	}
 
 	/**
@@ -121,11 +139,11 @@ public class Notebook {
 	/**
 	 * returns the current task list
 	 * 
-	 * @return taskList  The current task list
+	 * @return taskList The current task list
 	 */
 	public AbstractTaskList getCurrentTaskList() {
 		// Code
-		return null;
+		return currentTaskList;
 	}
 
 	/**
@@ -152,17 +170,18 @@ public class Notebook {
 	 * @param t the task to add
 	 */
 	public void addTask(Task t) {
-		// Code
+		currentTaskList.addTask(t);
 
 	}
 
 	/**
 	 * edits the selected task
-	 * @param idx the task index in the list
-	 * @param taskName the task name
+	 * 
+	 * @param idx             the task index in the list
+	 * @param taskName        the task name
 	 * @param taskDescription the task description
-	 * @param isRecurring true if the task is recurring
-	 * @param isActive true if the task is active
+	 * @param isRecurring     true if the task is recurring
+	 * @param isActive        true if the task is active
 	 */
 	public void editTask(int idx, String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
 		// Code
