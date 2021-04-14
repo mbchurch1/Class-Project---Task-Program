@@ -72,8 +72,6 @@ public class Notebook<E> {
 		}
 		isChanged = false;
 
-		NotebookWriter.writeNotebookFile(file, notebookName, taskLists);
-		isChanged = false;
 	}
 
 	/**
