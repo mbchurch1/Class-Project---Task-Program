@@ -162,13 +162,19 @@ public class Notebook {
 		//by TaskList name and then by priority order per the TaskList they're associated 
 		//with - i.e. Order by TaskList name --> just read down the list and pull the active tasks
 		//as you see them - no further ordering is needed
+//		for (int i = 0; i < taskLists.size(); i++) {
+//			String[][] currentList = taskLists.get(i).getTasksAsArray();
+//			for (int j = 0; j < currentList.length; j++) {
+//				//Column 1 (rather than column 0) in this array is the TaskName
+//				String currentTaskName = currentList[j][1];
+//				//Now that I've got the individual task as a String, I need the Task object 
+//				// --> if (Task.isActive()) ...
+//				
+//			}
+//		}
 		for (int i = 0; i < taskLists.size(); i++) {
-			String[][] currentList = taskLists.get(i).getTasksAsArray();
-			for (int j = 0; j < currentList.length; j++) {
-				//Column 1 (rather than column 0) in this array is the TaskName
-				String currentTaskName = currentList[j][1];
-				//Now that I've got the individual task from
-			}
+			//Pull each TaskList --> for loop {Task currentTask = TaskList.getTask()
+			// if (currentTask.isActive ...
 		}
 		return null;
 	}
