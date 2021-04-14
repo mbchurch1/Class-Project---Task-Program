@@ -171,7 +171,7 @@ public class Notebook {
 				}
 			}
 		}
-		return null;
+		return activeTaskList;
 	}
 
 	/**
@@ -266,9 +266,16 @@ public class Notebook {
 	 * 
 	 * @param t the task to add
 	 */
-	public void addTask(Task t) {
-		currentTaskList.addTask(t);
-
+	public void addTask(Task task) {
+		if(currentTaskList == activeTaskList || currentTaskList == null) {
+			//do nothing
+		} else {
+			currentTaskList.addTask(task);
+			if (task.isActive()) {
+				this.getActiveTaskList();
+			}
+		}
+		isChanged = true;
 	}
 
 	/**
