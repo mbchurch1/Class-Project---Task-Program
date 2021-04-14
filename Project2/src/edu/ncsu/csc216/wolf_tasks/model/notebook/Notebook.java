@@ -51,10 +51,9 @@ public class Notebook {
 	 */
 	public Notebook(String notebookName) {
 		setNotebookName(notebookName);
-		getActiveTaskList();
+		//getActiveTaskList();
 		taskLists = new SortedList<TaskList>();
-		taskLists = new SortedList<TaskList>();
-		activeTaskList = getActiveTaskList();
+		//activeTaskList = getActiveTaskList();
 		currentTaskList = activeTaskList;
 		isChanged = true;
 	}
@@ -123,9 +122,6 @@ public class Notebook {
 	 * @param taskList The tasklist to add
 	 */
 	public void addTaskList(TaskList taskList) {
-		taskLists.add(taskList);
-		currentTaskList = taskList;
-
 		if (taskList.getTaskListName().equals(ACTIVE_TASKS_NAME)) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
@@ -165,7 +161,7 @@ public class Notebook {
 		for (int i = 0; i < taskLists.size(); i++) {
 			String[][] currentList = taskLists.get(i).getTasksAsArray();
 			for (int j = 0; j < currentList.length; j++) {
-				Task currentTask = currentList[j][1];
+				//Task currentTask = currentList[j][1];
 			}
 		}
 		return null;

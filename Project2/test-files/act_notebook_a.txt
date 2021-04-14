@@ -2,7 +2,8 @@
 # CSC 216, 0
 * Write Design writeup,active
 Write a convincing design writeup for my design for P1
-
 * Design UML diagram,recurring
 Design a UML based on P1 problem
-
+# Hygiene, 0
+* Brush teeth,recurring,active
+Brush those teeth, yo, you don't want cavities, man
