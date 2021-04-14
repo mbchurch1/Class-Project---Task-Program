@@ -24,12 +24,14 @@ public class NotebookWriter {
 	 * @param notebookName Name of the notebook being written to file
 	 * @param sortedList   a sorted list of TaskLists
 	 */
+
 	public static void writeNotebookFile(File outputFile, String notebookName, ISortedList<TaskList> sortedList)
 			throws IOException {
 		PrintStream fileWriter = new PrintStream(outputFile);
 		fileWriter.println("! " + notebookName);
 		for (int i = 0; i < sortedList.size(); i++) {
-			fileWriter.println("# " + sortedList.get(i).getTaskListName() + ", " + sortedList.get(i).getCompletedCount());
+			fileWriter
+					.println("# " + sortedList.get(i).getTaskListName() + ", " + sortedList.get(i).getCompletedCount());
 			for (int j = 0; j < sortedList.get(i).getTasks().size(); j++) {
 				fileWriter.println(sortedList.get(i).getTasks().get(j).toString());
 			}

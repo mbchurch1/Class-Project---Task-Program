@@ -5,9 +5,11 @@ import java.io.IOException;
 
 import edu.ncsu.csc216.wolf_tasks.model.io.NotebookWriter;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.AbstractTaskList;
+import edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 import edu.ncsu.csc216.wolf_tasks.model.util.ISortedList;
+import edu.ncsu.csc216.wolf_tasks.model.util.ListNode;
 import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
 
 /**
@@ -16,16 +18,19 @@ import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
  * @author Matthew Church
  * @author Will Goodwin
  * @author John Firlet
+ * @param <E>
  *
  */
-public class Notebook {
+
+public class Notebook<E> {
 
 	/** Name of this notebook */
 	private String notebookName;
 
 	/**
 	 * Boolean variable representing a Notebook's contents have been from their
-	 * initial state
+	 * initial state /** Boolean variable representing a Notebook's contents have
+	 * been from their initial state
 	 */
 	private boolean isChanged;
 
@@ -33,6 +38,11 @@ public class Notebook {
 	private ISortedList<TaskList> taskLists;
 	/** the current tasklist */
 	private AbstractTaskList currentTaskList;
+
+	private ActiveTaskList activeTaskList;
+
+	/** Active Tasks Name */
+	private static final String ACTIVE_TASKS_NAME = "Active Tasks";
 
 	/**
 	 * Notebook constructor
@@ -43,6 +53,10 @@ public class Notebook {
 		setNotebookName(notebookName);
 		getActiveTaskList();
 		taskLists = new SortedList<TaskList>();
+		taskLists = new SortedList<TaskList>();
+		activeTaskList = getActiveTaskList();
+		currentTaskList = activeTaskList;
+		isChanged = true;
 	}
 
 	/**
@@ -58,6 +72,8 @@ public class Notebook {
 		}
 		isChanged = false;
 
+		NotebookWriter.writeNotebookFile(file, notebookName, taskLists);
+		isChanged = false;
 	}
 
 	/**
@@ -77,6 +93,11 @@ public class Notebook {
 	 */
 	private void setNotebookName(String name) {
 		this.notebookName = name;
+		if (name == null || name == "" || name.equals(ACTIVE_TASKS_NAME)) {
+			throw new IllegalArgumentException("Invalid name.");
+		} else {
+			notebookName = name;
+		}
 	}
 
 	/**
@@ -107,6 +128,22 @@ public class Notebook {
 		taskLists.add(taskList);
 		currentTaskList = taskList;
 
+		if (taskList.getTaskListName().equals(ACTIVE_TASKS_NAME)) {
+			throw new IllegalArgumentException("Invalid name.");
+		}
+		// Need to traverse the SortedList, comparing taskList to each TaskList name in
+		// SortedList while Ignoring case
+		// CompareToIgnoreCase is a part of TaskList, but not SortedList
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList current = taskLists.get(i);
+			if (current.compareTo(taskList) == 0) {
+				throw new IllegalArgumentException("Invalid name.");
+			}
+		}
+
+		taskLists.add(taskList);
+		currentTaskList = taskList;
+		isChanged = true;
 	}
 
 	/**
@@ -115,15 +152,25 @@ public class Notebook {
 	 * @return aString Array of task list names
 	 */
 	public String[] getTaskListsNames() {
-		// Code and Stuff
-		return null;
+		String[] taskListNames = new String[taskLists.size()];
+		taskListNames[0] = ACTIVE_TASKS_NAME;
+		for (int i = 0; i < taskLists.size(); i++) {
+			taskListNames[i + 1] = taskLists.get(i).getTaskListName();
+		}
+		return taskListNames;
 	}
 
-	/**
-	 * Gets the TaskList comprised of Active tasks
-	 */
-	private void getActiveTaskList() {
-		// Code
+	private ActiveTaskList getActiveTaskList() {
+		activeTaskList.clearTasks();
+		// building the ActiveTaskList each time there’s a change can be easier since
+		// you iterate through all the TaskLists and add each active Task
+		for (int i = 0; i < taskLists.size(); i++) {
+			String[][] currentList = taskLists.get(i).getTasksAsArray();
+			for (int j = 0; j < currentList.length; j++) {
+				Task currentTask = currentList[j][1];
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -187,5 +234,4 @@ public class Notebook {
 		// Code
 
 	}
-
 }

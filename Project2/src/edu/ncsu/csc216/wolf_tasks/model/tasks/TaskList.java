@@ -14,7 +14,11 @@ public class TaskList extends AbstractTaskList implements Comparable<TaskList> {
 	 * Task List constructor
 	 * 
 	 * @param taskListName task list name
+<<<<<<< HEAD
 	 * @param i            the amount of completed tasks
+=======
+	 * @param i the index of the tasklist
+>>>>>>> branch 'main' of git@github.ncsu.edu:engr-csc216-spring2021/csc216-P2-T-52.git
 	 */
 	public TaskList(String taskListName, int i) {
 		super(taskListName, i);
@@ -43,6 +47,6 @@ public class TaskList extends AbstractTaskList implements Comparable<TaskList> {
 	 */
 	@Override
 	public int compareTo(TaskList list) {
-		return list.getTaskListName().compareTo(this.getTaskListName());
+		return list.getTaskListName().compareToIgnoreCase(this.getTaskListName());
 	}
 }
