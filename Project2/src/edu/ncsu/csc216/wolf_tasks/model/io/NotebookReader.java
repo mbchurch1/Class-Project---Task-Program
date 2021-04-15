@@ -23,12 +23,12 @@ public class NotebookReader {
 	/** String representing an active task in the notebook file */
 	private static final String ACTIVE = "active"; 
 
-	/**
-	 * Constructs the Notebookreader object
-	 */
-	public NotebookReader() {
-		
-	}
+//	/**
+//	 * Constructs the Notebookreader object
+//	 */
+//	public NotebookReader() {
+//		
+//	}
 	
 	/**
 	 * reads a notebook from a file
@@ -116,10 +116,10 @@ public class NotebookReader {
 	 * Process a Task read in from Notebook file that is part of a particular
 	 * TaskList, formatting the task before returning
 	 * 
-	 * @param list       an AbstractTaskList object
-	 * @param taskString a task that is part of the TaskList processed from a
+	 * @param taskList       an AbstractTaskList object
+	 * @param taskToken a task that is part of the TaskList processed from a
 	 *                   Notebook file
-	 * @return task A Task object
+	 * @return newTask A Task object
 	 */
 	private static Task processTask(AbstractTaskList taskList, String taskToken) {
 		String taskName = "";
