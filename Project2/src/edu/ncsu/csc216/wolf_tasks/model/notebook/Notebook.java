@@ -9,7 +9,6 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 import edu.ncsu.csc216.wolf_tasks.model.util.ISortedList;
-//import edu.ncsu.csc216.wolf_tasks.model.util.ListNode;
 import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
 
 /**
@@ -51,9 +50,9 @@ public class Notebook {
 	 */
 	public Notebook(String notebookName) {
 		setNotebookName(notebookName);
-		//getActiveTaskList();
+		// getActiveTaskList();
 		taskLists = new SortedList<TaskList>();
-		//activeTaskList = getActiveTaskList();
+		// activeTaskList = getActiveTaskList();
 		currentTaskList = activeTaskList;
 		isChanged = true;
 	}
@@ -161,7 +160,7 @@ public class Notebook {
 		for (int i = 0; i < taskLists.size(); i++) {
 			String[][] currentList = taskLists.get(i).getTasksAsArray();
 			for (int j = 0; j < currentList.length; j++) {
-				//Task currentTask = currentList[j][1];
+				// Task currentTask = currentList[j][1];
 			}
 		}
 		return null;
