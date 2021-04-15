@@ -229,14 +229,14 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 				}
 				else if (((TaskList) current.data).compareTo(taskListObject) < 0) {
 					current.next = new ListNode(taskListObject, current.next);
-				} else if (((TaskList) current.data).compareTo(taskListObject) > 0) {
+				} else if (((TaskList) current.data).compareTo(taskListObject) > 0 && i == size - 1) {
 					
 					//If reached end of list, i.e. taskListElement is a larger letter
 					// than anything else in SortedList, then add taskListElement to the end of SortedList
 					//This may need to be executed outside the while loop 
-					if (i == size - 1) {
+					
 						current.next = new ListNode(taskListObject, current.next);
-					}
+					
 				}
 				current = current.next;
 			}
