@@ -142,8 +142,10 @@ public class NotebookTest {
 	public void testEditTaskList() {
 		Notebook nB7 = new Notebook("Change the tasklist name");
 		TaskList tL3 = new TaskList("Change this name", 0);
-		nB7.editTaskList("Changed name");
-		assertEquals("Changed name", nB7.getCurrentTaskList().getTaskListName());
+		nB7.addTaskList(tL3);
+		nB7.setCurrentTaskList("Change this name");
+		nB7.editTaskList("New name!");
+		assertEquals("New name!", nB7.getCurrentTaskList().getTaskListName());
 	}
 
 	/**
