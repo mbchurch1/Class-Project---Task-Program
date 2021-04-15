@@ -92,6 +92,12 @@ public class NotebookTest {
 		assertEquals("What", nB4.getTaskListsNames()[1]);
 		nB4.removeTaskList();
 		assertTrue(nB4.isChanged());
+		
+		try {
+			Notebook nbNull = new Notebook(null);
+		} catch(IllegalArgumentException e) {
+			assertEquals("Invalid name.", e.getMessage());
+		}
 	}
 
 	/**
