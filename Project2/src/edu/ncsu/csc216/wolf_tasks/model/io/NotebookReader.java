@@ -2,6 +2,12 @@ package edu.ncsu.csc216.wolf_tasks.model.io;
 
 import java.io.File;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+
+
 import edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.AbstractTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
@@ -24,10 +30,33 @@ public class NotebookReader {
 	 * @return noteBook A Notebook object
 	 */
 	public static Notebook readNodebookFile(File file) {
-		// Code
-		processTaskList(null);
-		processTask(null, null);
-		return null;
+		Notebook notebook = null;
+		String nbReader = "";
+		try {
+			Scanner fileReader = new Scanner(new FileInputStream(file));
+			if(fileReader.next() != "!") {
+				throw new IllegalArgumentException("Unable to load file.");
+			}
+			
+			while(fileReader.hasNextLine()) {
+				nbReader += fileReader.nextLine() + "\n";
+			}
+			fileReader.close();
+		} catch(FileNotFoundException e) {
+			throw new IllegalArgumentException("Unable to load file.");
+		}
+	
+		Scanner notebookReader = new Scanner(nbReader);
+		notebookReader.useDelimiter("\\r?\\n?[#]");
+		String noteBook = null;
+		while(notebookReader.hasNext()) {
+			noteBook = notebookReader.next();
+			notebook = new Notebook(noteBook);
+			notebook.addTaskList(processTaskList(notebookReader.next()));
+		}
+		
+		notebookReader.close();
+		return notebook;
 	}
 
 	/**
@@ -38,7 +67,16 @@ public class NotebookReader {
 	 * @return taskList A TaskList object
 	 */
 	private static TaskList processTaskList(String list) {
-		return null;
+		Scanner taskListReader = new Scanner(list);
+		String taskListName = taskListReader.nextLine().trim();
+		
+		TaskList newTaskList = new TaskList(taskListName, 0);
+		taskListReader.useDelimiter("\\r?\\n?[*]");
+		while(taskListReader.hasNext()) {
+			newTaskList.addTask(processTask(newTaskList, taskListReader.next().trim()));
+		}
+		taskListReader.close();
+		return newTaskList;
 	}
 
 	/**
@@ -51,6 +89,28 @@ public class NotebookReader {
 	 * @return task A Task object
 	 */
 	private static Task processTask(AbstractTaskList list, String taskString) {
-		return null;
+		Scanner taskReader = new Scanner(taskString);
+		String task = taskReader.nextLine();
+		Scanner taskScanner = new Scanner(task);
+		taskScanner.useDelimiter(",");
+		Task newTask = null;
+		String taskName = null;
+		String taskDescription = null;
+		String isRecurring = null;
+		String isActive = null;
+		while(taskScanner.hasNext()) {
+			taskName = taskScanner.next();
+			isRecurring = taskScanner.next();
+			isActive = taskScanner.next();
+		}
+		while(taskReader.hasNext()) {
+			taskDescription += taskReader.next();
+		}
+		newTask = new Task(taskName, taskDescription, Boolean.parseBoolean(isRecurring), Boolean.parseBoolean(isActive));
+		
+		
+		taskReader.close();
+		taskScanner.close();
+		return newTask;
 	}
 }
