@@ -21,16 +21,18 @@ public class TaskListTest {
 	public void testTaskList() {
 		try {
 			TaskList tL1 = new TaskList("", 0);
+			Task t10 = new Task("Take test", "take math test", false, true);
 			// clears CS notif
-			tL1.addTask(null);
+			tL1.addTask(t10);
 			fail("This shouldn't work");
 		} catch (IllegalArgumentException e) {
 			assertEquals("Invalid name.", e.getMessage());
 		}
 		try {
 			TaskList tL2 = new TaskList("Name", -1);
+			Task t10 = new Task("Take test", "take math test", false, true);
 			// clears CS notif
-			tL2.addTask(null);
+			tL2.addTask(t10);
 			fail("This shouldn't work");
 		} catch (IllegalArgumentException e) {
 			assertEquals("Invalid completed count.", e.getMessage());

@@ -17,8 +17,8 @@ import org.junit.Test;
  */
 public class SwapListTest {
 
-	/** list of generic elements */
-	private SwapList testList;
+//	/** list of generic elements */
+//	private SwapList testList;
 	
 	
 	/**

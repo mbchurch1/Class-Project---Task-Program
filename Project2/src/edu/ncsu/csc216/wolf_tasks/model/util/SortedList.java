@@ -11,7 +11,7 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
  *
  * @param <E> an object to store
  */
-public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
+public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	
 	/** Number of elements in the SortedList */
 	private int size;
@@ -40,7 +40,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
 		/**
 		 * Constructor for the ListNode
 		 * @param data  Element data
-		 * @param node  ListNode 
+		 * @param next  ListNode
 		 */
 		public ListNode(E data, ListNode next) {
 			this.data = data;
@@ -221,7 +221,8 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
 			//just use a for loop here as long as I'm pushing along 'current' during the 
 			//list traversal - similar to my (WG) implementation of ServiceWolfManager.addServiceGroup implementation in P1
 			for (int i = 0; i < size; i++) {
-				//TODO:Need to ensure that compareTo in TaskList is implemented as 
+				
+				//Need to ensure that compareTo in TaskList is implemented as 
 				//compareToIgnoreCase
 				if (((TaskList) current.data).compareTo(taskListObject) == 0) {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
@@ -229,7 +230,8 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E>{
 				else if (((TaskList) current.data).compareTo(taskListObject) < 0) {
 					current.next = new ListNode(taskListObject, current.next);
 				} else if (((TaskList) current.data).compareTo(taskListObject) > 0) {
-					//TODO: if reached end of list, i.e. taskListElement is a larger letter
+					
+					//If reached end of list, i.e. taskListElement is a larger letter
 					// than anything else in SortedList, then add taskListElement to the end of SortedList
 					//This may need to be executed outside the while loop 
 					if (i == size - 1) {
