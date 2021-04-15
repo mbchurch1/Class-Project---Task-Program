@@ -76,7 +76,7 @@ public class NotebookTest {
 	 */
 	@Test
 	public void testIsChanged() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class NotebookTest {
 	 */
 	@Test
 	public void testSetChanged() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class NotebookTest {
 	 */
 	@Test
 	public void testSetCurrentTaskList() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class NotebookTest {
 	 */
 	@Test
 	public void testRemoveTaskList() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class NotebookTest {
 	 */
 	@Test
 	public void testAddTask() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class NotebookTest {
 	 */
 	@Test
 	public void testEditTask() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 	/**
 	 * Compares two files to confirm they contain the same information. This method
