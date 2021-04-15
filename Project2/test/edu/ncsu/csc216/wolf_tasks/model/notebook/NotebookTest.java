@@ -72,22 +72,6 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for isChanged()
-	 */
-	@Test
-	public void testIsChanged() {
-		//fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for setChanged()
-	 */
-	@Test
-	public void testSetChanged() {
-		//fail("Not yet implemented");
-	}
-
-	/**
 	 * Test method for addTaskList()
 	 */
 	@Test
@@ -117,14 +101,6 @@ public class NotebookTest {
 	}
 
 	/**
-	 * Test method for setCurrentTaskList()
-	 */
-	@Test
-	public void testSetCurrentTaskList() {
-		//fail("Not yet implemented");
-	}
-
-	/**
 	 * Test method for getCurrentTaskList()
 	 */
 	@Test
@@ -148,29 +124,7 @@ public class NotebookTest {
 		assertEquals("New name!", nB7.getCurrentTaskList().getTaskListName());
 	}
 
-	/**
-	 * Test method for removeTaskList()
-	 */
-	@Test
-	public void testRemoveTaskList() {
-		//fail("Not yet implemented");
-	}
 
-	/**
-	 * Test method for addTask()
-	 */
-	@Test
-	public void testAddTask() {
-		//fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for editTask()
-	 */
-	@Test
-	public void testEditTask() {
-		//fail("Not yet implemented");
-	}
 	/**
 	 * Compares two files to confirm they contain the same information. This method
 	 * is a companion method that helps ensure that writeStudentFiles is writing the
