@@ -24,6 +24,13 @@ public class NotebookReader {
 	private static final String ACTIVE = "active"; 
 
 	/**
+	 * Constructs the Notebookreader object
+	 */
+	public NotebookReader() {
+		
+	}
+	
+	/**
 	 * reads a notebook from a file
 	 * 
 	 * @param file the file to read
