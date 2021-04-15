@@ -147,7 +147,7 @@ public class Notebook {
 		String[] taskListNames = new String[taskLists.size()];
 		taskListNames[0] = ACTIVE_TASKS_NAME;
 		for (int i = 0; i < taskLists.size(); i++) {
-			taskListNames[i + 1] = taskLists.get(i).getTaskListName();
+			taskListNames[i] = taskLists.get(i).getTaskListName();
 		}
 		return taskListNames;
 	}
@@ -175,9 +175,9 @@ public class Notebook {
 	 * @param taskListName the task list name chosen
 	 */
 	public void setCurrentTaskList(String taskListName) {
-		TaskList listToBeCurrent = null;
+		AbstractTaskList listToBeCurrent = null;
 		for (int i = 0; i < taskLists.size(); i++) {
-			TaskList currentTaskList = taskLists.get(i);
+			currentTaskList = taskLists.get(i);
 			String currentListName = currentTaskList.getTaskListName();
 			if(currentListName.equals(taskListName)) {
 				listToBeCurrent = currentTaskList;
@@ -212,7 +212,7 @@ public class Notebook {
 			throw new IllegalArgumentException("Cannot create new Active Task List.");
 		}
 		for (int i = 0; i < taskLists.size(); i++) {
-			TaskList currentTaskList = taskLists.get(i);
+			currentTaskList = taskLists.get(i);
 			String currentListName = currentTaskList.getTaskListName();
 			if(currentListName.equalsIgnoreCase(taskListName)) {
 				throw new IllegalArgumentException("Cannot create duplicate Task List name.");
@@ -223,7 +223,7 @@ public class Notebook {
 		TaskList removedCurrentTask = null;
 		
 		for (int i = 0; i < taskLists.size(); i++) {
-			TaskList currentTaskList = taskLists.get(i);
+			currentTaskList = taskLists.get(i);
 			String currentListName = currentTaskList.getTaskListName();
 			if(currentListName.equalsIgnoreCase(currentName)) {
 				removedCurrentTask = taskLists.remove(i);
@@ -246,7 +246,7 @@ public class Notebook {
 		String currentTaskListName = currentTaskList.getTaskListName();
 		
 		for (int i = 0; i < taskLists.size(); i++) {
-			TaskList currentTaskList = taskLists.get(i);
+			currentTaskList = taskLists.get(i);
 			String currentListName = currentTaskList.getTaskListName();
 			if(currentListName.equals(currentTaskListName)) {
 				taskLists.remove(i);

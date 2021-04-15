@@ -37,12 +37,12 @@ public class NotebookWriterTest {
 		Notebook a = new Notebook("Daily Stuff");
 		TaskList tL1 = new TaskList("CSC 216", 0);
 		a.addTaskList(tL1);
-		a.addTask(new Task("Write Design writeup", "Write a convincing design writeup for my design for P1", false,
+		a.getCurrentTaskList().addTask(new Task("Write Design writeup", "Write a convincing design writeup for my design for P1", false,
 				true));
 		a.addTask(new Task("Design UML diagram", "Design a UML based on P1 problem", true, false));
 		TaskList tL2 = new TaskList("Hygiene", 0);
 		a.addTaskList(tL2);
-		a.addTask(new Task("Brush teeth", "Brush those teeth, yo, you don't want cavities, man", true, true));
+		a.getCurrentTaskList().addTask(new Task("Brush teeth", "Brush those teeth, yo, you don't want cavities, man", true, true));
 		try {
 			a.saveNotebook(actFile);
 		} catch (IllegalArgumentException e) {
