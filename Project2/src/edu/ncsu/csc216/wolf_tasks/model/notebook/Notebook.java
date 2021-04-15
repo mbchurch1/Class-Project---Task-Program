@@ -9,6 +9,7 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 import edu.ncsu.csc216.wolf_tasks.model.util.ISortedList;
+import edu.ncsu.csc216.wolf_tasks.model.util.ISwapList;
 import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
 
 /**
@@ -102,7 +103,6 @@ public class Notebook {
 	 * @return true if the notebook had been edited
 	 */
 	public boolean isChanged() {
-
 		return isChanged;
 	}
 
@@ -112,7 +112,7 @@ public class Notebook {
 	 * @param changedStatus whether a notebook has been changed
 	 */
 	public void setChanged(boolean changedStatus) {
-		// Code
+		isChanged = changedStatus;
 	}
 
 	/**
@@ -126,7 +126,6 @@ public class Notebook {
 		}
 		// Need to traverse the SortedList, comparing taskList to each TaskList name in
 		// SortedList while Ignoring case
-		// CompareToIgnoreCase is a part of TaskList, but not SortedList
 		for (int i = 0; i < taskLists.size(); i++) {
 			TaskList current = taskLists.get(i);
 			if (current.compareTo(taskList) == 0) {
@@ -158,12 +157,16 @@ public class Notebook {
 		// building the ActiveTaskList each time there’s a change can be easier since
 		// you iterate through all the TaskLists and add each active Task
 		for (int i = 0; i < taskLists.size(); i++) {
-			String[][] currentList = taskLists.get(i).getTasksAsArray();
-			for (int j = 0; j < currentList.length; j++) {
-				// Task currentTask = currentList[j][1];
+			TaskList currentList = taskLists.get(i);
+			ISwapList<Task> taskSwapList = currentList.getTasks();
+			for (int j = 0; j < taskSwapList.size(); j++) {
+				Task currentTask = taskSwapList.get(j);
+				if (currentTask.isActive()) {
+					activeTaskList.addTask(currentTask);
+				}
 			}
 		}
-		return null;
+		return activeTaskList;
 	}
 
 	/**
@@ -172,7 +175,18 @@ public class Notebook {
 	 * @param taskListName the task list name chosen
 	 */
 	public void setCurrentTaskList(String taskListName) {
-		// Code
+		TaskList listToBeCurrent = null;
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList currentTaskList = taskLists.get(i);
+			String currentListName = currentTaskList.getTaskListName();
+			if(currentListName.equals(taskListName)) {
+				listToBeCurrent = currentTaskList;
+			}
+		}
+		if (listToBeCurrent == null) {
+			currentTaskList = activeTaskList;
+		}
+		currentTaskList = listToBeCurrent;
 
 	}
 
@@ -182,7 +196,6 @@ public class Notebook {
 	 * @return taskList The current task list
 	 */
 	public AbstractTaskList getCurrentTaskList() {
-		// Code
 		return currentTaskList;
 	}
 
@@ -192,16 +205,56 @@ public class Notebook {
 	 * @param taskListName a String of the new task list name
 	 */
 	public void editTaskList(String taskListName) {
-		// Code
-
+		if (currentTaskList == activeTaskList) {
+			throw new IllegalArgumentException("Cannot edit Active Task List.");
+		}
+		if (taskListName == ACTIVE_TASKS_NAME) {
+			throw new IllegalArgumentException("Cannot create new Active Task List.");
+		}
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList currentTaskList = taskLists.get(i);
+			String currentListName = currentTaskList.getTaskListName();
+			if(currentListName.equalsIgnoreCase(taskListName)) {
+				throw new IllegalArgumentException("Cannot create duplicate Task List name.");
+			}
+		}
+		
+		String currentName = currentTaskList.getTaskListName();
+		TaskList removedCurrentTask = null;
+		
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList currentTaskList = taskLists.get(i);
+			String currentListName = currentTaskList.getTaskListName();
+			if(currentListName.equalsIgnoreCase(currentName)) {
+				removedCurrentTask = taskLists.remove(i);
+			}
+		}
+		
+		removedCurrentTask.setTaskListName(taskListName);
+		
+		this.addTaskList(removedCurrentTask);
 	}
 
 	/**
 	 * removes a task list from the notebook
 	 */
 	public void removeTaskList() {
-		// Code
-
+		if (currentTaskList == activeTaskList) {
+			throw new IllegalArgumentException("The Active Task list may not be deleted.");
+		}
+		
+		String currentTaskListName = currentTaskList.getTaskListName();
+		
+		for (int i = 0; i < taskLists.size(); i++) {
+			TaskList currentTaskList = taskLists.get(i);
+			String currentListName = currentTaskList.getTaskListName();
+			if(currentListName.equals(currentTaskListName)) {
+				taskLists.remove(i);
+			}
+		}
+		
+		currentTaskList = activeTaskList;
+		isChanged = true;
 	}
 
 	/**
@@ -209,9 +262,16 @@ public class Notebook {
 	 * 
 	 * @param t the task to add
 	 */
-	public void addTask(Task t) {
-		currentTaskList.addTask(t);
-
+	public void addTask(Task task) {
+		if(currentTaskList == activeTaskList || currentTaskList == null) {
+			//do nothing
+		} else {
+			currentTaskList.addTask(task);
+			if (task.isActive()) {
+				this.getActiveTaskList();
+			}
+			isChanged = true;
+		}
 	}
 
 	/**
@@ -224,7 +284,21 @@ public class Notebook {
 	 * @param isActive        true if the task is active
 	 */
 	public void editTask(int idx, String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
-		// Code
+		if(currentTaskList == activeTaskList || currentTaskList == null) {
+			//do nothing
+		} else {
+			Task taskBeingEdited = currentTaskList.getTask(idx);
+			taskBeingEdited.setTaskName(taskName);
+			taskBeingEdited.setTaskDescription(taskDescription);
+			taskBeingEdited.setRecurring(isRecurring);
+			taskBeingEdited.setActive(isActive);
+			if (taskBeingEdited.isActive()) {
+				this.getActiveTaskList();
+			}
+			isChanged = true;
+		}
 
 	}
 }
+
+
