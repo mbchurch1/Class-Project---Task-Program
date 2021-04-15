@@ -51,7 +51,7 @@ public class SwapList<E> implements ISwapList<E> {
 	}
 
 	private void growArray() {
-		E[] temp = (E[]) new Object[size *2];
+		E[] temp = (E[]) new Object[size * 2];
 		for (int i = 0; i < size; i++) {
 			temp[i] = list[i];
 		}
