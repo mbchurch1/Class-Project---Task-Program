@@ -86,6 +86,12 @@ public class NotebookTest {
 		} catch (IllegalArgumentException e) {
 			assertEquals("Invalid name.", e.getMessage());
 		}
+		
+		TaskList tl50 = new TaskList("What", 1);
+		nB4.addTaskList(tl50);
+		assertEquals("What", nB4.getTaskListsNames()[1]);
+		nB4.removeTaskList();
+		assertTrue(nB4.isChanged());
 	}
 
 	/**
