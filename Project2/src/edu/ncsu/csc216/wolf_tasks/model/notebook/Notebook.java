@@ -9,7 +9,7 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 import edu.ncsu.csc216.wolf_tasks.model.util.ISortedList;
-import edu.ncsu.csc216.wolf_tasks.model.util.ListNode;
+//import edu.ncsu.csc216.wolf_tasks.model.util.ListNode;
 import edu.ncsu.csc216.wolf_tasks.model.util.SortedList;
 
 /**
