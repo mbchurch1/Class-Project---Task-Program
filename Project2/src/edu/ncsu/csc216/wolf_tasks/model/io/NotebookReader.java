@@ -60,19 +60,22 @@ public class NotebookReader {
 			throw new IllegalArgumentException("Unable to load file.");
 		}
 		
-		Scanner notebookNameScanner = new Scanner(entireFile);
-		notebookNameScanner.next();
-		String notebookName = "";
-		notebookName = notebookNameScanner.nextLine();
-		
-		String trimmedName = notebookName.trim();
-		//System.out.println(trimmedName);
+		Scanner notebookScanner = new Scanner(entireFile);
+		String notebookName = notebookScanner.nextLine().substring(2);
+		//String trimmedName = notebookName.substring(2);
+//		Scanner notebookNameScanner = new Scanner(entireFile);
+//		notebookScanner.next();
+//		String notebookName = "";
+//		notebookName = notebookScanner.next();
+//		
+//		String trimmedName = notebookName;
+		//System.out.println(notebookName);
 		//trimmedName prints accurately
-		Notebook notebook = new Notebook(trimmedName);
+		Notebook notebook = new Notebook(notebookName);
 		
 		String notebookMinusName = "";
-		while (notebookNameScanner.hasNextLine()) {
-			notebookMinusName += notebookNameScanner.nextLine() + "\n";
+		while (notebookScanner.hasNextLine()) {
+			notebookMinusName += notebookScanner.nextLine() + "\n";
 		}
 		//System.out.println(notebookMinusName);
 		//notebookMinusName prints accurately
@@ -88,9 +91,9 @@ public class NotebookReader {
 			notebook.addTaskList(taskList);
 		}
 		
-		notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
+		//notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
 		
-		notebookNameScanner.close();
+		notebookScanner.close();
 		taskListScanner.close();
 		return notebook;
 	}
@@ -141,6 +144,7 @@ public class NotebookReader {
 			Task taskForTaskList = processTask(taskList, taskToken);
 			taskList.addTask(taskForTaskList);
 		}
+		System.out.println(taskList.getTaskListName());
 		
 		lineScanner.close();
 		nameVsCompletionsScanner.close();
@@ -213,7 +217,7 @@ public class NotebookReader {
 		//System.out.println(isRecurring);
 		//System.out.println(isActive);
 		Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
-		System.out.println(newTask);
+		//System.out.println(newTask);
 
 		taskTokenScanner.close();
 		taskNameAndModsScanner.close();
