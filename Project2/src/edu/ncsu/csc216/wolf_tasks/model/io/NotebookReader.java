@@ -64,7 +64,8 @@ public class NotebookReader {
 		while (notebookNameScanner.hasNextLine()) {
 			notebookName = notebookNameScanner.nextLine();
 		}
-		Notebook notebook = new Notebook(notebookName);
+		String trimmedName = notebookName.trim();
+		Notebook notebook = new Notebook(trimmedName);
 		notebookNameScanner.close();
 		
 		String taskListToken = "";
