@@ -42,7 +42,7 @@ public class NotebookReader {
 		} 
 		
 		String entireFile = "";
-		Notebook notebook = new Notebook("Current Notebook");
+		//Notebook notebook = new Notebook("Current Notebook");
 		
 		try {
 			Scanner fileReader = new Scanner(new FileInputStream(file)); 
@@ -57,6 +57,11 @@ public class NotebookReader {
 		if(entireFile.charAt(0) != '!') {
 			throw new IllegalArgumentException("Unable to load file.");
 		}
+		
+		Scanner notebookNameScanner = new Scanner(entireFile);
+		notebookNameScanner.next();
+		String notebookName = notebookNameScanner.next();
+		Notebook notebook = new Notebook(notebookName);
 		
 		String taskListToken = "";
 		Scanner taskListScanner = new Scanner(entireFile).useDelimiter("\\r?\\n?[#]");
