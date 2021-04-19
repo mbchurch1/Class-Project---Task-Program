@@ -61,15 +61,18 @@ public class NotebookReader {
 		Scanner notebookNameScanner = new Scanner(entireFile);
 		notebookNameScanner.next();
 		String notebookName = "";
-		while (notebookNameScanner.hasNextLine()) {
-			notebookName = notebookNameScanner.nextLine();
-		}
+		notebookName = notebookNameScanner.nextLine();
+		
 		String trimmedName = notebookName.trim();
 		Notebook notebook = new Notebook(trimmedName);
-		notebookNameScanner.close();
+		
+		String notebookMinusName = "";
+		while (notebookNameScanner.hasNextLine()) {
+			notebookMinusName += notebookNameScanner.nextLine() + "\n";
+		}
 		
 		String taskListToken = "";
-		Scanner taskListScanner = new Scanner(entireFile).useDelimiter("\\r?\\n?[#]");
+		Scanner taskListScanner = new Scanner(notebookMinusName).useDelimiter("\\r?\\n?[#]");
 		
 		while (taskListScanner.hasNext()) {
 			taskListToken = taskListScanner.next();
@@ -77,6 +80,7 @@ public class NotebookReader {
 			notebook.addTaskList(taskList);
 		}
 		
+		notebookNameScanner.close();
 		taskListScanner.close();
 		return notebook;
 	}
