@@ -60,8 +60,12 @@ public class NotebookReader {
 		
 		Scanner notebookNameScanner = new Scanner(entireFile);
 		notebookNameScanner.next();
-		String notebookName = notebookNameScanner.next();
+		String notebookName = "";
+		while (notebookNameScanner.hasNextLine()) {
+			notebookName = notebookNameScanner.nextLine();
+		}
 		Notebook notebook = new Notebook(notebookName);
+		notebookNameScanner.close();
 		
 		String taskListToken = "";
 		Scanner taskListScanner = new Scanner(entireFile).useDelimiter("\\r?\\n?[#]");
