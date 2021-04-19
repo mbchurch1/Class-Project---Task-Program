@@ -15,16 +15,13 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
  * @author John Firlet
  *
  */
-public class NotebookReader {
-
-
+	public class NotebookReader {
 	/** String representing a recurring task in the notebook file */
 	private static final String RECURRING = "recurring"; 
 	/** String representing an active task in the notebook file */
 	private static final String ACTIVE = "active"; 
 	/** Active Tasks Name */
 	private static final String ACTIVE_TASKS_NAME = "Active Tasks";
-
 //	/**
 //	 * Constructs the Notebookreader object
 //	 */
@@ -59,9 +56,16 @@ public class NotebookReader {
 		if(entireFile.charAt(0) != '!') {
 			throw new IllegalArgumentException("Unable to load file.");
 		}
-		
+
+		Scanner notebookNameScanner = new Scanner(entireFile);
+		notebookNameScanner.next();
+		String notebookName = "";
+		notebookName = notebookNameScanner.nextLine();
+
+		String trimmedName = notebookName.trim();
+		//System.out.println(trimmedName);
 		Scanner notebookScanner = new Scanner(entireFile);
-		String notebookName = notebookScanner.nextLine().substring(2);
+		notebookName = notebookScanner.nextLine().substring(2);
 		//String trimmedName = notebookName.substring(2);
 //		Scanner notebookNameScanner = new Scanner(entireFile);
 //		notebookScanner.next();
@@ -71,14 +75,17 @@ public class NotebookReader {
 //		String trimmedName = notebookName;
 		//System.out.println(notebookName);
 		//trimmedName prints accurately
+//		Notebook notebook = new Notebook(trimmedName);
 		Notebook notebook = new Notebook(notebookName);
-		
+
 		String notebookMinusName = "";
 		while (notebookScanner.hasNextLine()) {
 			notebookMinusName += notebookScanner.nextLine() + "\n";
 		}
 		//System.out.println(notebookMinusName);
 		//notebookMinusName prints accurately
+
+		//notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
 		
 		String taskListToken = "";
 		Scanner taskListScanner = new Scanner(notebookMinusName).useDelimiter("\\r?\\n?[#]");
@@ -90,9 +97,8 @@ public class NotebookReader {
 			TaskList taskList = processTaskList(taskListToken);
 			notebook.addTaskList(taskList);
 		}
-		
-		//notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
-		
+
+		notebookNameScanner.close();
 		notebookScanner.close();
 		taskListScanner.close();
 		return notebook;
@@ -108,7 +114,6 @@ public class NotebookReader {
 		String listName = "";
 		int numCompletedTasks = 0;
 		Scanner lineScanner = new Scanner(list);
-
 		String nameAndCompletions = lineScanner.nextLine();
 		//System.out.println(nameAndCompletions);
 		//Prints out all the taskList title lines with completions (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
@@ -135,9 +140,7 @@ public class NotebookReader {
 		
 		//System.out.println(taskListString);
 		//accurately complete and separated
-
 		TaskList taskList = new TaskList(trimmedName, numCompletedTasks);
-
 		Scanner taskTokenScanner = new Scanner(taskListString).useDelimiter("\\r?\\n?[*]");
 		while (taskTokenScanner.hasNext()) {
 			String taskToken = taskTokenScanner.next();
@@ -145,7 +148,7 @@ public class NotebookReader {
 			taskList.addTask(taskForTaskList);
 		}
 		System.out.println(taskList.getTaskListName());
-		
+
 		lineScanner.close();
 		nameVsCompletionsScanner.close();
 		taskTokenScanner.close();
@@ -166,9 +169,7 @@ public class NotebookReader {
 		String taskDescription = ""; 
 		boolean isRecurring = false; 
 		boolean isActive = false;
-
 		Scanner taskTokenScanner = new Scanner(taskToken);
-
 		String taskNameAndModifiers = taskTokenScanner.nextLine();
 		//System.out.println(taskNameAndModifiers);
 		//Prints accurately BUT still needs to be trimmed
@@ -180,12 +181,9 @@ public class NotebookReader {
 		}
 		//System.out.println(taskDescription);
 		//prints accurately & trimmed with blank line in between each task
-
 		Scanner taskNameAndModsScanner = new Scanner(trimmedTaskNameAndModifiers).useDelimiter(",");
-
 		String recurringOrActive1 = "";
 		String recurringOrActive2 = "";
-
 		if(taskNameAndModsScanner.hasNext()) {
 			taskName = taskNameAndModsScanner.next();
 			//System.out.println(taskName);
@@ -211,17 +209,16 @@ public class NotebookReader {
 			//System.out.println(recurringOrActive2);
 			//accurate
 		}
-
 		//System.out.println(taskName);
 		//System.out.println(taskDescription);
 		//System.out.println(isRecurring);
 		//System.out.println(isActive);
 		Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
+		System.out.println(newTask);
 		//System.out.println(newTask);
 
 		taskTokenScanner.close();
 		taskNameAndModsScanner.close();
-
 		return newTask;
 	}
 }
