@@ -61,8 +61,9 @@ public class NotebookReader {
 		Scanner notebookNameScanner = new Scanner(entireFile);
 		notebookNameScanner.next();
 		String notebookName = "";
-		notebookName = notebookNameScanner.nextLine();
-		
+		while (notebookNameScanner.hasNextLine()) {
+			notebookName = notebookNameScanner.nextLine();
+		}
 		String trimmedName = notebookName.trim();
 		Notebook notebook = new Notebook(trimmedName);
 		
