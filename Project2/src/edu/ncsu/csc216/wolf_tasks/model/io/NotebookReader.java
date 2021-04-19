@@ -57,15 +57,17 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			throw new IllegalArgumentException("Unable to load file.");
 		}
 
-		Scanner notebookNameScanner = new Scanner(entireFile);
-		notebookNameScanner.next();
-		String notebookName = "";
-		notebookName = notebookNameScanner.nextLine();
+//		Scanner notebookNameScanner = new Scanner(entireFile);
+//		notebookNameScanner.next();
+//		String notebookName = "";
+//		notebookName = notebookNameScanner.nextLine();
 
-		String trimmedName = notebookName.trim();
+		//String trimmedName = notebookName.trim();
 		//System.out.println(trimmedName);
-		Scanner notebookScanner = new Scanner(entireFile);
-		notebookName = notebookScanner.nextLine().substring(2);
+		String notebookName = "";
+		Scanner nameOnlyScanner = new Scanner(entireFile);
+		notebookName = nameOnlyScanner.nextLine().substring(2);
+		nameOnlyScanner.close();
 		//String trimmedName = notebookName.substring(2);
 //		Scanner notebookNameScanner = new Scanner(entireFile);
 //		notebookScanner.next();
@@ -77,8 +79,11 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 		//trimmedName prints accurately
 //		Notebook notebook = new Notebook(trimmedName);
 		Notebook notebook = new Notebook(notebookName);
+		
+		Scanner notebookScanner = new Scanner(entireFile);
 
 		String notebookMinusName = "";
+		notebookScanner.nextLine();
 		while (notebookScanner.hasNextLine()) {
 			notebookMinusName += notebookScanner.nextLine() + "\n";
 		}
@@ -87,18 +92,17 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 
 		//notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
 		
-		String taskListToken = "";
+		//String taskListToken = "";
 		Scanner taskListScanner = new Scanner(notebookMinusName).useDelimiter("\\r?\\n?[#]");
 		
 		while (taskListScanner.hasNext()) {
-			taskListToken = taskListScanner.next();
+			//taskListToken = taskListScanner.next();
 			//System.out.println(taskListToken);
 			//Prints out all the taskLists (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
-			TaskList taskList = processTaskList(taskListToken);
+			TaskList taskList = processTaskList(taskListScanner.next());
 			notebook.addTaskList(taskList);
 		}
 
-		notebookNameScanner.close();
 		notebookScanner.close();
 		taskListScanner.close();
 		return notebook;
