@@ -177,19 +177,22 @@ public class Notebook {
 	 * @param taskListName the task list name chosen
 	 */
 	public void setCurrentTaskList(String taskListName) {
-		AbstractTaskList listToBeCurrent = null;
-		for (int i = 0; i < taskLists.size(); i++) {
-			currentTaskList = taskLists.get(i);
-			String currentListName = currentTaskList.getTaskListName();
-			if(currentListName.equals(taskListName)) {
-				listToBeCurrent = currentTaskList;
+		if (taskListName.equals(ACTIVE_TASKS_NAME)) {
+			currentTaskList = this.getActiveTaskList();
+		} else {
+			AbstractTaskList listToBeCurrent = null;
+			for (int i = 0; i < taskLists.size(); i++) {
+				currentTaskList = taskLists.get(i);
+				String currentListName = currentTaskList.getTaskListName();
+				if(currentListName.equals(taskListName)) {
+					listToBeCurrent = currentTaskList;
+				}
 			}
+			if (listToBeCurrent == null) {
+				currentTaskList = activeTaskList;
+			}
+			currentTaskList = listToBeCurrent;
 		}
-		if (listToBeCurrent == null) {
-			currentTaskList = activeTaskList;
-		}
-		currentTaskList = listToBeCurrent;
-
 	}
 
 	/**

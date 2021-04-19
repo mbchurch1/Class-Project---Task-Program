@@ -79,12 +79,13 @@ public class TaskTest {
 		assertEquals("Take Prescription", t5.getTaskName());
 		t5.setTaskDescription("Take allergy meds");
 		assertEquals("Take allergy meds", t5.getTaskDescription());
-		try {
-			t5.setTaskDescription("");
-			fail("This task description should throw an exception.");
-		} catch (IllegalArgumentException e) {
-			assertEquals("Incomplete task information.", e.getMessage());
-		}
+		//No longer need this test since we only need to test if the description is null, not whether it is empty
+//		try {
+//			t5.setTaskDescription("");
+//			fail("This task description should throw an exception.");
+//		} catch (IllegalArgumentException e) {
+//			assertEquals("Incomplete task information.", e.getMessage());
+//		}
 		try {
 			t5.setTaskName(null);
 			fail("This description should throw an exception.");
