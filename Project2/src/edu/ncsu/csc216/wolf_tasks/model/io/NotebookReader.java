@@ -64,19 +64,24 @@ public class NotebookReader {
 		notebookName = notebookNameScanner.nextLine();
 		
 		String trimmedName = notebookName.trim();
+		//System.out.println(trimmedName);
+		//trimmedName prints accurately
 		Notebook notebook = new Notebook(trimmedName);
 		
 		String notebookMinusName = "";
 		while (notebookNameScanner.hasNextLine()) {
 			notebookMinusName += notebookNameScanner.nextLine() + "\n";
 		}
-		
+		//System.out.println(notebookMinusName);
+		//notebookMinusName prints accurately
 		
 		String taskListToken = "";
 		Scanner taskListScanner = new Scanner(notebookMinusName).useDelimiter("\\r?\\n?[#]");
 		
 		while (taskListScanner.hasNext()) {
 			taskListToken = taskListScanner.next();
+			//System.out.println(taskListToken);
+			//Prints out all the taskLists (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
 			TaskList taskList = processTaskList(taskListToken);
 			notebook.addTaskList(taskList);
 		}
@@ -98,12 +103,21 @@ public class NotebookReader {
 		Scanner lineScanner = new Scanner(list);
 
 		String nameAndCompletions = lineScanner.nextLine();
+		//System.out.println(nameAndCompletions);
+		//Prints out all the taskList title lines with completions (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
+		
 		//String trimmedNameAndCompletions = nameAndCompletions.trim();
 		Scanner nameVsCompletionsScanner = new Scanner(nameAndCompletions).useDelimiter(",");
 		listName = nameVsCompletionsScanner.next();
+		//System.out.println(listName);
+		//accurate name with whitespace in front
 		String trimmedName = listName.trim();
-		if(nameVsCompletionsScanner.hasNextInt()) {
+		//System.out.println(trimmedName);
+		//accurate trimmed name
+		if(nameVsCompletionsScanner.hasNext()) {
 			numCompletedTasks = nameVsCompletionsScanner.nextInt();
+			//System.out.println(numCompletedTasks);
+			//accurate number assignment to first 2, then habits stays at 0
 		}
 		
 		String taskListString = "";
@@ -111,6 +125,9 @@ public class NotebookReader {
 		while(lineScanner.hasNextLine()) {
 			taskListString += lineScanner.nextLine() + "\n";
 		}
+		
+		//System.out.println(taskListString);
+		//accurately complete and separated
 
 		TaskList taskList = new TaskList(trimmedName, numCompletedTasks);
 
@@ -145,11 +162,17 @@ public class NotebookReader {
 		Scanner taskTokenScanner = new Scanner(taskToken);
 
 		String taskNameAndModifiers = taskTokenScanner.nextLine();
+		//System.out.println(taskNameAndModifiers);
+		//Prints accurately BUT still needs to be trimmed
+		String trimmedTaskNameAndModifiers = taskNameAndModifiers.trim();
+		//System.out.println(trimmedTaskNameAndModifiers);
+		//accurate and trimmed
 		while(taskTokenScanner.hasNextLine()) {
 			taskDescription += taskTokenScanner.nextLine() + "\n";
 		}
+		System.out.println(taskDescription);
 
-		Scanner taskNameAndModsScanner = new Scanner(taskNameAndModifiers);
+		Scanner taskNameAndModsScanner = new Scanner(trimmedTaskNameAndModifiers);
 
 		String recurringOrActive1 = "";
 		String recurringOrActive2 = "";
