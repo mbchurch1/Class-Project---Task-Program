@@ -73,9 +73,9 @@ public abstract class AbstractTaskList {
 	 * 
 	 * @return completedCount The String of completed tasks
 	 */
-	public String getCompletedCount() {
+	public int getCompletedCount() {
 
-		return Integer.toString(completedCount);
+		return completedCount;
 	}
 
 	/**

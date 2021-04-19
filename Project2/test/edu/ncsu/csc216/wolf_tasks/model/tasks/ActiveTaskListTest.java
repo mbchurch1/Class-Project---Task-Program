@@ -83,7 +83,7 @@ public class ActiveTaskListTest {
 	public void testActiveTaskList() {
 		ActiveTaskList aTL1 = new ActiveTaskList();
 		assertEquals("Active Tasks", aTL1.getTaskListName());
-		assertEquals("0", aTL1.getCompletedCount());
+		assertEquals(0, aTL1.getCompletedCount());
 	}
 
 	/**

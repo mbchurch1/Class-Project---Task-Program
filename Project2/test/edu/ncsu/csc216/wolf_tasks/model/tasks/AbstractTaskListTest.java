@@ -104,9 +104,9 @@ public class AbstractTaskListTest {
 		tL5.addTask(t15);
 		tL5.addTask(t15a);
 		tL5.completeTask(t15);
-		assertEquals("1", tL5.getCompletedCount());
+		assertEquals(1, tL5.getCompletedCount());
 		tL5.completeTask(t15a);
-		assertEquals("2", tL5.getCompletedCount());
+		assertEquals(2, tL5.getCompletedCount());
 		
 	}
 
@@ -163,9 +163,9 @@ public class AbstractTaskListTest {
 		tL9.addTask(t9);
 		tL9.completeTask(t9);
 		tL9.addTask(t9a);
-		assertEquals("1", tL9.getCompletedCount());
+		assertEquals(1, tL9.getCompletedCount());
 		tL9.completeTask(t9a);
-		assertEquals("2", tL9.getCompletedCount());
+		assertEquals(2, tL9.getCompletedCount());
 	}
 
 	/**
