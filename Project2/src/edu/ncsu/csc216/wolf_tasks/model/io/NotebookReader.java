@@ -103,7 +103,10 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			TaskList taskList = processTaskList(nbScanner.next());
 			notebook.addTaskList(taskList);
 		}
-
+		
+//		notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
+//		System.out.println(notebook.getCurrentTaskList().getTaskListName());
+		
 		nbScanner.close();
 		//taskListScanner.close();
 		return notebook;
