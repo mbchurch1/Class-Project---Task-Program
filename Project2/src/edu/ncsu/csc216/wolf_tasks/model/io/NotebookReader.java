@@ -168,7 +168,7 @@ public class NotebookReader {
 		//System.out.println(trimmedTaskNameAndModifiers);
 		//accurate and trimmed
 		while(taskTokenScanner.hasNextLine()) {
-			taskDescription += taskTokenScanner.nextLine() + "\n";
+			taskDescription += taskTokenScanner.nextLine();
 		}
 		//System.out.println(taskDescription);
 		//prints accurately & trimmed with blank line in between each task
@@ -204,7 +204,12 @@ public class NotebookReader {
 			//accurate
 		}
 
+		//System.out.println(taskName);
+		//System.out.println(taskDescription);
+		//System.out.println(isRecurring);
+		//System.out.println(isActive);
 		Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
+		System.out.println(newTask);
 
 		taskTokenScanner.close();
 		taskNameAndModsScanner.close();
