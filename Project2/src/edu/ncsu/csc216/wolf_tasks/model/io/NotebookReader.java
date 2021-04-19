@@ -170,15 +170,18 @@ public class NotebookReader {
 		while(taskTokenScanner.hasNextLine()) {
 			taskDescription += taskTokenScanner.nextLine() + "\n";
 		}
-		System.out.println(taskDescription);
+		//System.out.println(taskDescription);
+		//prints accurately & trimmed with blank line in between each task
 
-		Scanner taskNameAndModsScanner = new Scanner(trimmedTaskNameAndModifiers);
+		Scanner taskNameAndModsScanner = new Scanner(trimmedTaskNameAndModifiers).useDelimiter(",");
 
 		String recurringOrActive1 = "";
 		String recurringOrActive2 = "";
 
 		if(taskNameAndModsScanner.hasNext()) {
-			taskName = taskNameAndModsScanner.next().trim();
+			taskName = taskNameAndModsScanner.next();
+			//System.out.println(taskName);
+			//prints accurately, just printing the full task name for each task
 		}
 		if(taskNameAndModsScanner.hasNext()) {
 			recurringOrActive1 = taskNameAndModsScanner.next();
@@ -187,6 +190,8 @@ public class NotebookReader {
 			} else if (recurringOrActive1.equals(ACTIVE)) {
 				isActive = true;
 			} 
+			//System.out.println(recurringOrActive1);
+			//accurate 
 		}
 		if(taskNameAndModsScanner.hasNext()) {
 			recurringOrActive2 = taskNameAndModsScanner.next();
@@ -195,6 +200,8 @@ public class NotebookReader {
 			} else if (recurringOrActive2.equals(ACTIVE)) {
 				isActive = true;
 			} 
+			//System.out.println(recurringOrActive2);
+			//accurate
 		}
 
 		Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
