@@ -173,7 +173,7 @@ public class Task implements Cloneable {
 	 */
 	public Task clone() throws CloneNotSupportedException {
 		if (tasklists.size() == 0) {
-			throw new CloneNotSupportedException("Cannot Clone.");
+			throw new CloneNotSupportedException("Cannot clone.");
 		}
 		Task copiedTask = (Task) super.clone();
 
@@ -198,7 +198,7 @@ public class Task implements Cloneable {
 			taskToken += ",active";
 		}
 		taskToken += "\n";
-		taskToken += getTaskDescription() + "\n";
+		taskToken += getTaskDescription();
 		return taskToken;
 	}
 }
