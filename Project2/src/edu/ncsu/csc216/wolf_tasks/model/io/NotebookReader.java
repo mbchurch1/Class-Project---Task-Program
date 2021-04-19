@@ -86,6 +86,8 @@ public class NotebookReader {
 			notebook.addTaskList(taskList);
 		}
 		
+		//String activeTaskListName = Notebook.getActiveTaskList().getTaskListName();
+		
 		notebookNameScanner.close();
 		taskListScanner.close();
 		return notebook;
