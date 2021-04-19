@@ -153,7 +153,9 @@ public class Notebook {
 	}
 
 	private ActiveTaskList getActiveTaskList() {
-		activeTaskList.clearTasks();
+		if (activeTaskList != null) {
+			activeTaskList.clearTasks();
+		}
 		// building the ActiveTaskList each time there’s a change can be easier since
 		// you iterate through all the TaskLists and add each active Task
 		for (int i = 0; i < taskLists.size(); i++) {
