@@ -70,9 +70,9 @@ public class ActiveTaskListTest {
 		tL10.addTask(t10a);
 		String[][] a1 = new String[2][2];
 		a1 = tL10.getTasksAsArray();
-		assertEquals("1", a1[0][0]);
+		assertEquals("Active Tasks", a1[0][0]);
 		assertEquals("Take test", a1[0][1]);
-		assertEquals("2", a1[1][0]);
+		assertEquals("Active Tasks", a1[1][0]);
 		assertEquals("Do math homework", a1[1][1]);
 	}
 
