@@ -61,9 +61,8 @@ public class NotebookReader {
 		Scanner notebookNameScanner = new Scanner(entireFile);
 		notebookNameScanner.next();
 		String notebookName = "";
-		while (notebookNameScanner.hasNextLine()) {
-			notebookName = notebookNameScanner.nextLine();
-		}
+		notebookName = notebookNameScanner.nextLine();
+		
 		String trimmedName = notebookName.trim();
 		Notebook notebook = new Notebook(trimmedName);
 		
@@ -71,6 +70,7 @@ public class NotebookReader {
 		while (notebookNameScanner.hasNextLine()) {
 			notebookMinusName += notebookNameScanner.nextLine() + "\n";
 		}
+		
 		
 		String taskListToken = "";
 		Scanner taskListScanner = new Scanner(notebookMinusName).useDelimiter("\\r?\\n?[#]");
