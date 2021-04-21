@@ -195,8 +195,9 @@ public class Notebook {
 			}
 			if (listToBeCurrent == null) {
 				currentTaskList = activeTaskList;
+			} else {
+				currentTaskList = listToBeCurrent;
 			}
-			currentTaskList = listToBeCurrent;
 		}
 	}
 
