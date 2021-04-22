@@ -39,7 +39,7 @@ public class NotebookReaderTest {
 		assertTrue(notebook1.isChanged());
 		//This should be "Active Tasks" so that's what I'm trying to debug below
 		//Notebook should load "Active Tasks" as the currentTaskList even when the file contain
-		assertEquals("Habits", notebook1.getCurrentTaskList().getTaskListName());
+		assertEquals("Active Tasks", notebook1.getCurrentTaskList().getTaskListName());
 	}
 	
 	@Test

@@ -107,7 +107,7 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 		}
 		
 		//!!! I think I need this but I don't know how to set it via the proper mechanisms
-		//notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
+		notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
 		
 		
 //		System.out.println(notebook.getCurrentTaskList().getTaskListName());
