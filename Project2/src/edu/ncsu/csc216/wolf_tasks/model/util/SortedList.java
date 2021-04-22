@@ -82,7 +82,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 *                                   size
 	 */
 	private void checkIndex(int index) {
-		if (index < 0 || index > size + 1) {
+		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
 	}
@@ -178,28 +178,52 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			// list traversal - similar to my (WG) implementation of
 			// ServiceWolfManager.addServiceGroup implementation in P1
 			int prevSize = this.size();
+			int indexForAdding = 0;
 			for (int i = 0; i < prevSize; i++) {
-
+				if (element.compareTo(current.data) == 0) {
+					throw new IllegalArgumentException("Cannot add duplicate element.");
+				} else if (element.compareTo(current.data) < 0) {
+					indexForAdding = i;
+				} 
+//				else if (element.compareTo(current.data) > 0) {
+//					if (i == prevSize - 1) {
+//						indexForAdding = 1 + i;
+//					}
+//				}
+				
 				// Need to ensure that compareTo in TaskList is implemented as
 				// compareToIgnoreCase
-				if (current.data.compareTo(element) == 0) {
-					throw new IllegalArgumentException("Cannot add duplicate element.");
-				} else if ((current.data).compareTo(element) < 0 && i == size - 1) {
-
-					// If reached end of list, i.e. taskListElement is a larger letter
-					// than anything else in SortedList, then add taskListElement to the end of
-					// SortedList
-					// This may need to be executed outside the while loop
-
-					current.next = new ListNode(element, current.next);
-					break;
-				} 
-				else if ((current.next.data).compareTo(element) > 0) {
-					current.next = new ListNode(element, current.next);
-					break;
-				} 
+				//!@! New change after working with Melody
+//				if (current.data.compareTo(element) == 0) {
+//					throw new IllegalArgumentException("Cannot add duplicate element.");
+//				} 
+//				else if (element.compareTo(current.data))
+				//!@! New change after working with Melody
+//				else if ((current.data).compareTo(element) < 0) {
+//
+//					// If reached end of list, i.e. taskListElement is a larger letter
+//					// than anything else in SortedList, then add taskListElement to the end of
+//					// SortedList
+//					// This may need to be executed outside the while loop
+//
+//					current.next = new ListNode(element, current.next);
+//					break;
+//				} 
+				//!@! New change after working with Melody
+//				else if ((current.next.data).compareTo(element) > 0 && i == size - 1) {
+//					current.next = new ListNode(element, current.next);
+//					break;
+//				} 
 				current = current.next;
 			}
+			current = front;
+			
+			for (int i = 0; i <= indexForAdding; i++) {
+				 if (i == indexForAdding) {
+					 current.next = new ListNode(element, current.next); 
+				 }
+				 current = current.next;
+			 }
 		}
 		size++;
 

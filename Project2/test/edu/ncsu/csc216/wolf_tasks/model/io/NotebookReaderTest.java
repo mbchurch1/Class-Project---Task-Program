@@ -68,17 +68,17 @@ public class NotebookReaderTest {
 		assertEquals("Task13", tL5.getTask(1).getTaskName());
 		assertEquals("Another TaskList ForTest", tL5.getTask(1).getTaskListName());
 		nB8.addTaskList(tL4);
-		//nB8.addTaskList(tL5);
-//		assertEquals("Another TaskList ForTest", nB8.getCurrentTaskList().getTaskListName());
-//		nB8.setCurrentTaskList("TaskList1 ForTest");
-//		assertEquals("TaskList1 ForTest", nB8.getCurrentTaskList().getTaskListName());
-//		nB8.setCurrentTaskList("Another TaskList ForTest");
-//		assertEquals("Another TaskList ForTest", nB8.getCurrentTaskList().getTaskListName());
+		nB8.addTaskList(tL5);
+		assertEquals("Another TaskList ForTest", nB8.getCurrentTaskList().getTaskListName());
+		nB8.setCurrentTaskList("TaskList1 ForTest");
+		assertEquals("TaskList1 ForTest", nB8.getCurrentTaskList().getTaskListName());
+		nB8.setCurrentTaskList("Another TaskList ForTest");
+		assertEquals("Another TaskList ForTest", nB8.getCurrentTaskList().getTaskListName());
 		
-//		//Notebook.setCurrentTaskList() is accurately determining that ActiveTaskList is null
-//		nB8.setCurrentTaskList("Not real TaskList");
-//		//When Notebook.getCurrentTaskList is attempting to return "Active Tasks" it determines that currentTaskList is null, so this assert fails
-//		assertEquals("Active Tasks", nB8.getCurrentTaskList().getTaskListName());
+		//Notebook.setCurrentTaskList() is accurately determining that ActiveTaskList is null
+		nB8.setCurrentTaskList("Not real TaskList");
+		//When Notebook.getCurrentTaskList is attempting to return "Active Tasks" it determines that currentTaskList is null, so this assert fails
+		assertEquals("Active Tasks", nB8.getCurrentTaskList().getTaskListName());
 	
 		
 		nB8.setCurrentTaskList("Active Tasks");
