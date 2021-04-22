@@ -2,6 +2,7 @@ package edu.ncsu.csc216.wolf_tasks.model.io;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.AbstractTaskList;
@@ -97,13 +98,19 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 		nbScanner.useDelimiter("\\r?\\n?[#]");
 		
 		while (nbScanner.hasNext()) {
-			//taskListToken = taskListScanner.next();
-			//System.out.println(taskListToken);
-			//Prints out all the taskLists (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
-			
-			//need to wrap this in a try catch so that if an invalid name or count throws an exception, that TaskList is not added to the notebook
-			TaskList taskList = processTaskList(nbScanner.next());
-			notebook.addTaskList(taskList);
+			try {
+				//taskListToken = taskListScanner.next();
+				//System.out.println(taskListToken);
+				//Prints out all the taskLists (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
+				
+				//need to wrap this in a try catch so that if an invalid name or count throws an exception, that TaskList is not added to the notebook
+				TaskList taskList = processTaskList(nbScanner.next());
+				notebook.addTaskList(taskList);
+			} catch (IllegalArgumentException e) {
+				//Skip this TaskList
+			}
+
+			//catch IAE
 		}
 		
 		//!!! I think I need this but I don't know how to set it via the proper mechanisms
@@ -124,57 +131,64 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 	 * @return taskList A TaskList object
 	 */
 	private static TaskList processTaskList(String list) {
-		String listName = "";
-		int numCompletedTasks = 0;
-		Scanner lineScanner = new Scanner(list);
-		String nameAndCompletions = lineScanner.nextLine();
-		//System.out.println(nameAndCompletions);
-		//Prints out all the taskList title lines with completions (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
-		
-		//String trimmedNameAndCompletions = nameAndCompletions.trim();
-		Scanner nameVsCompletionsScanner = new Scanner(nameAndCompletions).useDelimiter(",");
-		listName = nameVsCompletionsScanner.next();
-		//System.out.println(listName);
-		//accurate name with whitespace in front
-		String trimmedName = listName.trim();
-		//System.out.println(trimmedName);
-		//accurate trimmed name
-		if(nameVsCompletionsScanner.hasNext()) {
-			numCompletedTasks = nameVsCompletionsScanner.nextInt();
-			//System.out.println(numCompletedTasks);
-			//accurate number assignment to first 2, then habits stays at 0
-		}
-		
-		String taskListString = "";
-		
-		while(lineScanner.hasNextLine()) {
-			taskListString += lineScanner.nextLine() + "\n";
-		}
-		
-		// need to catch exception if name or count is invalid --> throw it up to the 
-		// readFile method above --> that method will just skip that taskList and not add it
-		TaskList taskList = new TaskList(trimmedName, numCompletedTasks);
-		//System.out.println(taskListString);
-		//accurately complete and separated
-//		TaskList taskList = null;
-//		try {
-//			taskList = new TaskList(trimmedName, numCompletedTasks);
-//		} catch (IllegalArgumentException e) {
-//			//doesn't get added
-//		}
-		Scanner taskTokenScanner = new Scanner(taskListString).useDelimiter("\\r?\\n?[*]");
-		while (taskTokenScanner.hasNext()) {
-			String taskToken = taskTokenScanner.next();
-			Task taskForTaskList = processTask(taskList, taskToken);
-			taskList.addTask(taskForTaskList);
-		}
-		//System.out.println(taskList.getTaskListName());
+		try {
+			String listName = "";
+			int numCompletedTasks = 0;
+			Scanner lineScanner = new Scanner(list);
+			String nameAndCompletions = lineScanner.nextLine();
+			//System.out.println(nameAndCompletions);
+			//Prints out all the taskList title lines with completions (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
+			
+			//String trimmedNameAndCompletions = nameAndCompletions.trim();
+			Scanner nameVsCompletionsScanner = new Scanner(nameAndCompletions).useDelimiter(",");
+			listName = nameVsCompletionsScanner.next();
+			//System.out.println(listName);
+			//accurate name with whitespace in front
+			String trimmedName = listName.trim();
+			//System.out.println(trimmedName);
+			//accurate trimmed name
+			if(nameVsCompletionsScanner.hasNext()) {
+				numCompletedTasks = nameVsCompletionsScanner.nextInt();
+				//System.out.println(numCompletedTasks);
+				//accurate number assignment to first 2, then habits stays at 0
+			}
+			
+			String taskListString = "";
+			
+			while(lineScanner.hasNextLine()) {
+				taskListString += lineScanner.nextLine() + "\n";
+			}
+			
+			// need to catch exception if name or count is invalid --> throw it up to the 
+			// readFile method above --> that method will just skip that taskList and not add it
+			TaskList taskList = new TaskList(trimmedName, numCompletedTasks);
+			//System.out.println(taskListString);
+			//accurately complete and separated
+//			TaskList taskList = null;
+//			try {
+//				taskList = new TaskList(trimmedName, numCompletedTasks);
+//			} catch (IllegalArgumentException e) {
+//				//doesn't get added
+//			}
+			Scanner taskTokenScanner = new Scanner(taskListString).useDelimiter("\\r?\\n?[*]");
+			while (taskTokenScanner.hasNext()) {
+				//try 
+				String taskToken = taskTokenScanner.next();
+				Task taskForTaskList = processTask(taskList, taskToken);
+				taskList.addTask(taskForTaskList);
+				//catch
+			}
+			//System.out.println(taskList.getTaskListName());
 
-		lineScanner.close();
-		nameVsCompletionsScanner.close();
-		taskTokenScanner.close();
-		
-		return taskList;
+			lineScanner.close();
+			nameVsCompletionsScanner.close();
+			taskTokenScanner.close();
+			
+			return taskList;
+		} catch (NoSuchElementException e) {
+			throw new IllegalArgumentException();
+		}
+
 	}
 	/**
 	 * Process a Task read in from Notebook file that is part of a particular
@@ -186,59 +200,63 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 	 * @return newTask A Task object
 	 */
 	private static Task processTask(AbstractTaskList taskList, String taskToken) {
-		String taskName = "";
-		String taskDescription = ""; 
-		boolean isRecurring = false; 
-		boolean isActive = false;
-		Scanner taskTokenScanner = new Scanner(taskToken);
-		String taskNameAndModifiers = taskTokenScanner.nextLine();
-		//System.out.println(taskNameAndModifiers);
-		//Prints accurately BUT still needs to be trimmed
-		String trimmedTaskNameAndModifiers = taskNameAndModifiers.trim();
-		//System.out.println(trimmedTaskNameAndModifiers);
-		//accurate and trimmed
-		while(taskTokenScanner.hasNextLine()) {
-			taskDescription += taskTokenScanner.nextLine() + "\n";
-		}
-		//System.out.println(taskDescription);
-		//prints accurately & trimmed with blank line in between each task
-		Scanner taskNameAndModsScanner = new Scanner(trimmedTaskNameAndModifiers).useDelimiter(",");
-		String recurringOrActive1 = "";
-		String recurringOrActive2 = "";
-		if(taskNameAndModsScanner.hasNext()) {
-			taskName = taskNameAndModsScanner.next();
-			System.out.println(taskName);
-			//prints accurately, just printing the full task name for each task without asterisk characters
-		}
-		if(taskNameAndModsScanner.hasNext()) {
-			recurringOrActive1 = taskNameAndModsScanner.next();
-			if (recurringOrActive1.equals(RECURRING)) {
-				isRecurring = true;
-			} else if (recurringOrActive1.equals(ACTIVE)) {
-				isActive = true;
-			} 
-			//System.out.println(recurringOrActive1);
-			//accurate 
-		}
-		if(taskNameAndModsScanner.hasNext()) {
-			recurringOrActive2 = taskNameAndModsScanner.next();
-			if (recurringOrActive2.equals(RECURRING)) {
-				isRecurring = true;
-			} else if (recurringOrActive2.equals(ACTIVE)) {
-				isActive = true;
-			} 
-			//System.out.println(recurringOrActive2);
-			//accurate
-		}
-		//System.out.println(taskName);
-		//System.out.println(taskDescription);
-		//System.out.println(isRecurring);
-		//System.out.println(isActive);
-		Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
-		//System.out.println(newTask);
+		try {
+			String taskName = "";
+			String taskDescription = ""; 
+			boolean isRecurring = false; 
+			boolean isActive = false;
+			Scanner taskTokenScanner = new Scanner(taskToken);
+			String taskNameAndModifiers = taskTokenScanner.nextLine();
+			//System.out.println(taskNameAndModifiers);
+			//Prints accurately BUT still needs to be trimmed
+			String trimmedTaskNameAndModifiers = taskNameAndModifiers.trim();
+			//System.out.println(trimmedTaskNameAndModifiers);
+			//accurate and trimmed
+			while(taskTokenScanner.hasNextLine()) {
+				taskDescription += taskTokenScanner.nextLine() + "\n";
+			}
+			//System.out.println(taskDescription);
+			//prints accurately & trimmed with blank line in between each task
+			Scanner taskNameAndModsScanner = new Scanner(trimmedTaskNameAndModifiers).useDelimiter(",");
+			String recurringOrActive1 = "";
+			String recurringOrActive2 = "";
+			if(taskNameAndModsScanner.hasNext()) {
+				taskName = taskNameAndModsScanner.next();
+				System.out.println(taskName);
+				//prints accurately, just printing the full task name for each task without asterisk characters
+			}
+			if(taskNameAndModsScanner.hasNext()) {
+				recurringOrActive1 = taskNameAndModsScanner.next();
+				if (recurringOrActive1.equals(RECURRING)) {
+					isRecurring = true;
+				} else if (recurringOrActive1.equals(ACTIVE)) {
+					isActive = true;
+				} 
+				//System.out.println(recurringOrActive1);
+				//accurate 
+			}
+			if(taskNameAndModsScanner.hasNext()) {
+				recurringOrActive2 = taskNameAndModsScanner.next();
+				if (recurringOrActive2.equals(RECURRING)) {
+					isRecurring = true;
+				} else if (recurringOrActive2.equals(ACTIVE)) {
+					isActive = true;
+				} 
+				//System.out.println(recurringOrActive2);
+				//accurate
+			}
+			//System.out.println(taskName);
+			//System.out.println(taskDescription);
+			//System.out.println(isRecurring);
+			//System.out.println(isActive);
+			Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
+			//System.out.println(newTask);
 
-		taskTokenScanner.close();
-		taskNameAndModsScanner.close();
-		return newTask;
+			taskTokenScanner.close();
+			taskNameAndModsScanner.close();
+			return newTask;
+		} catch (NoSuchElementException e) {
+			throw new IllegalArgumentException();
+		}
 	}
 }

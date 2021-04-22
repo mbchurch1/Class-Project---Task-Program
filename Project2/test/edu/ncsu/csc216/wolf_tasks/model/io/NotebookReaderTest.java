@@ -33,7 +33,7 @@ public class NotebookReaderTest {
 		
 		Notebook notebook1 = null;
 		
-		File notebook1File = new File("test-files/notebook1.txt");
+		File notebook1File = new File("test-files/notebook6.txt");
 		
 		notebook1 = reader1.readNodebookFile(notebook1File);
 		assertTrue(notebook1.isChanged());
