@@ -213,7 +213,12 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			//System.out.println(trimmedTaskNameAndModifiers);
 			//accurate and trimmed
 			while(taskTokenScanner.hasNextLine()) {
-				taskDescription += taskTokenScanner.nextLine() + "\n";
+				try {
+					taskDescription += taskTokenScanner.nextLine() + "\n";
+				} catch (NoSuchElementException e) {
+					throw new IllegalArgumentException();
+				}
+				
 			}
 			//System.out.println(taskDescription);
 			//prints accurately & trimmed with blank line in between each task
