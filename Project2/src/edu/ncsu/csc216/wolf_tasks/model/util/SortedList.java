@@ -26,7 +26,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		size = 0;
 	}
 	
-	private class ListNode<E> {
+	private class ListNode {
 		
 		/**Private data field for the current ListNode  */
 		public E data;
@@ -187,11 +187,10 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @throws IllegalArgumentException if element cannot be added 
 	 */
 	@Override
-	public void add(Comparable element) {
-		TaskList taskListObject = (TaskList) element;
+	public void add(E element) {
 		
 		ListNode current = front; 
-		if(taskListObject == null) {
+		if(element == null) {
 			throw new NullPointerException("Cannot add null element.");
 		}
 		
@@ -203,7 +202,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		
 		if(size == 0) {
 			// !!!!! Need to figure out how to always add ActiveTaskList to the front  of SortedList
-			front = new ListNode(taskListObject);
+			front = new ListNode(element);
 		} else {
 			
 			//This implementation of checking for duplicates may work, but the below mimics 
@@ -224,18 +223,18 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 				
 				//Need to ensure that compareTo in TaskList is implemented as 
 				//compareToIgnoreCase
-				if (((TaskList) current.data).compareTo(taskListObject) == 0) {
+				if ((current.data).compareTo(element) == 0) {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
 				}
-				else if (((TaskList) current.data).compareTo(taskListObject) < 0) {
-					current.next = new ListNode(taskListObject, current.next);
-				} else if (((TaskList) current.data).compareTo(taskListObject) > 0 && i == size - 1) {
+				else if ((current.data).compareTo(element) < 0) {
+					current.next = new ListNode(element, current.next);
+				} else if ((current.data).compareTo(element) > 0 && i == size - 1) {
 					
 					//If reached end of list, i.e. taskListElement is a larger letter
 					// than anything else in SortedList, then add taskListElement to the end of SortedList
 					//This may need to be executed outside the while loop 
 					
-						current.next = new ListNode(taskListObject, current.next);
+						current.next = new ListNode(element, current.next);
 					
 				}
 				current = current.next;
@@ -251,7 +250,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @return true or false based on whether the SortedList contains the given object
 	 */
 	@Override
-	public boolean contains(Comparable element) {
+	public boolean contains(E element) {
 		ListNode current = front;
 		for(int i = 0; i < size; i++) {
 			if(current.data.equals(element)) {
