@@ -149,14 +149,15 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			taskListString += lineScanner.nextLine() + "\n";
 		}
 		
+		TaskList taskList = new TaskList(trimmedName, numCompletedTasks);
 		//System.out.println(taskListString);
 		//accurately complete and separated
-		TaskList taskList = null;
-		try {
-			taskList = new TaskList(trimmedName, numCompletedTasks);
-		} catch (IllegalArgumentException e) {
-			//doesn't get added
-		}
+//		TaskList taskList = null;
+//		try {
+//			taskList = new TaskList(trimmedName, numCompletedTasks);
+//		} catch (IllegalArgumentException e) {
+//			//doesn't get added
+//		}
 		Scanner taskTokenScanner = new Scanner(taskListString).useDelimiter("\\r?\\n?[*]");
 		while (taskTokenScanner.hasNext()) {
 			String taskToken = taskTokenScanner.next();
