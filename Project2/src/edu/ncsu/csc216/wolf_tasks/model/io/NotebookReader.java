@@ -20,8 +20,8 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 	private static final String RECURRING = "recurring"; 
 	/** String representing an active task in the notebook file */
 	private static final String ACTIVE = "active"; 
-	/** Active Tasks Name */
-	private static final String ACTIVE_TASKS_NAME = "Active Tasks";
+//	/** Active Tasks Name */
+//	private static final String ACTIVE_TASKS_NAME = "Active Tasks";
 //	/**
 //	 * Constructs the Notebookreader object
 //	 */
