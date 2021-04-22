@@ -37,7 +37,8 @@ public class NotebookReaderTest {
 		
 		notebook1 = reader1.readNodebookFile(notebook1File);
 		assertTrue(notebook1.isChanged());
-		//This should be "Active Tasks" so that's what I'm trying to debug below 
+		//This should be "Active Tasks" so that's what I'm trying to debug below
+		//Notebook should load "Active Tasks" as the currentTaskList even when the file contains no Active Tasks --> need to test this as well
 		assertEquals("Habits", notebook1.getCurrentTaskList().getTaskListName());
 	}
 	

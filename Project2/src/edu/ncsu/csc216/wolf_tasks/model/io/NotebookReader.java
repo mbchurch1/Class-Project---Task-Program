@@ -66,7 +66,7 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 		//System.out.println(trimmedName);
 		Scanner nbScanner = new Scanner(entireFile);
 		String firstLine = nbScanner.nextLine();
-		String nbName = firstLine.substring(3);
+		String nbName = firstLine.substring(2);
 		//System.out.println(nbName);
 		//String trimmedName = notebookName.substring(2);
 //		Scanner notebookNameScanner = new Scanner(entireFile);
