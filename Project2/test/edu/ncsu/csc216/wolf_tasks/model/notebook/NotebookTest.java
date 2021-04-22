@@ -87,14 +87,21 @@ public class NotebookTest {
 			assertEquals("Invalid name.", e.getMessage());
 		}
 		
+		try {
+			nB4.addTaskList(new TaskList("Active Tasks", 0));
+			fail("This tasklist shouldnt have been added");
+		} catch (IllegalArgumentException e) {
+			assertEquals("Invalid name.", e.getMessage());
+		}
+		
 		TaskList tl50 = new TaskList("What", 1);
 		nB4.addTaskList(tl50);
 		assertEquals("What", nB4.getTaskListsNames()[1]);
 		nB4.removeTaskList();
 		assertTrue(nB4.isChanged());
-		
+		Notebook nbNull;
 		try {
-			Notebook nbNull = new Notebook(null);
+			nbNull = new Notebook(null);
 		} catch(IllegalArgumentException e) {
 			assertEquals("Invalid name.", e.getMessage());
 		}
@@ -106,6 +113,7 @@ public class NotebookTest {
 	@Test
 	public void testGetTaskListsNames() {
 		Notebook nB5 = new Notebook("Buisness dealings");
+		assertEquals("Active Tasks", nB5.getTaskListsNames()[0]);
 		nB5.addTaskList(new TaskList("Acme Corp", 0));
 		nB5.addTaskList(new TaskList("Microsoft Corp", 0));
 		assertEquals("Acme Corp", nB5.getTaskListsNames()[0]);
@@ -129,11 +137,25 @@ public class NotebookTest {
 	@Test
 	public void testEditTaskList() {
 		Notebook nB7 = new Notebook("Change the tasklist name");
+		nB7.setCurrentTaskList("Active Tasks");
 		TaskList tL3 = new TaskList("Change this name", 0);
+		nB7.setCurrentTaskList("Change this name");
+		Task t1 = new Task("Study", "Study for test", false, true);
+		tL3.addTask(t1);
+		assertEquals(t1, tL3.getTask(0));
+		nB7.editTask(0, "Study more", "Study for quiz", false, true);
+		//assertEquals("Study", nB7.getCurrentTaskList().getTask(0).getTaskName());
 		nB7.addTaskList(tL3);
 		nB7.setCurrentTaskList("Change this name");
 		nB7.editTaskList("New name!");
 		assertEquals("New name!", nB7.getCurrentTaskList().getTaskListName());
+		//Tests setChanged method
+		nB7.setChanged(true);
+		assertTrue(nB7.isChanged());
+		//nB7.setCurrentTaskList("Active Tasks");
+		
+		
+		
 	}
 
 

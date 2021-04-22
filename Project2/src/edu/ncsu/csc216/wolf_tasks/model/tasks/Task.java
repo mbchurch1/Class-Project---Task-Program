@@ -81,7 +81,7 @@ public class Task implements Cloneable {
 	 * @throws IllegalArgumentException if the description is blank or null
 	 */
 	public void setTaskDescription(String description) {
-		if (description == null /**|| "".equals(description) */) {
+		if (description == null) {  // || "".equals(description)
 			throw new IllegalArgumentException("Incomplete task information.");
 		}
 		this.taskDescription = description;
