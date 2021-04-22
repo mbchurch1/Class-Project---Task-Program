@@ -20,8 +20,8 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 	private static final String RECURRING = "recurring"; 
 	/** String representing an active task in the notebook file */
 	private static final String ACTIVE = "active"; 
-//	/** Active Tasks Name */
-//	private static final String ACTIVE_TASKS_NAME = "Active Tasks";
+	/** Active Tasks Name */
+	private static final String ACTIVE_TASKS_NAME = "Active Tasks";
 //	/**
 //	 * Constructs the Notebookreader object
 //	 */
@@ -66,7 +66,7 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 		//System.out.println(trimmedName);
 		Scanner nbScanner = new Scanner(entireFile);
 		String firstLine = nbScanner.nextLine();
-		String nbName = firstLine.substring(2);
+		String nbName = firstLine.substring(3);
 		//System.out.println(nbName);
 		//String trimmedName = notebookName.substring(2);
 //		Scanner notebookNameScanner = new Scanner(entireFile);
@@ -104,7 +104,10 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			notebook.addTaskList(taskList);
 		}
 		
-		notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
+		//!!! I think I need this but I don't know how to set it via the proper mechanisms
+		//notebook.setCurrentTaskList(ACTIVE_TASKS_NAME);
+		
+		
 //		System.out.println(notebook.getCurrentTaskList().getTaskListName());
 		
 		nbScanner.close();
@@ -194,8 +197,8 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 		String recurringOrActive2 = "";
 		if(taskNameAndModsScanner.hasNext()) {
 			taskName = taskNameAndModsScanner.next();
-			//System.out.println(taskName);
-			//prints accurately, just printing the full task name for each task
+			System.out.println(taskName);
+			//prints accurately, just printing the full task name for each task without asterisk characters
 		}
 		if(taskNameAndModsScanner.hasNext()) {
 			recurringOrActive1 = taskNameAndModsScanner.next();
@@ -222,7 +225,6 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 		//System.out.println(isRecurring);
 		//System.out.println(isActive);
 		Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
-		//System.out.println(newTask);
 		//System.out.println(newTask);
 
 		taskTokenScanner.close();
