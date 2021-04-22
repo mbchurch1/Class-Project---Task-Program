@@ -217,7 +217,7 @@ public class Notebook {
 	 */
 	public void editTaskList(String taskListName) {
 		if (currentTaskList == activeTaskList) {
-			throw new IllegalArgumentException("Cannot edit Active Task List.");
+			throw new IllegalArgumentException("The Active Tasks list may not be edited.");
 		}
 		if (taskListName == ACTIVE_TASKS_NAME) {
 			throw new IllegalArgumentException("Cannot create new Active Task List.");
@@ -295,6 +295,8 @@ public class Notebook {
 	 * @param isActive        true if the task is active
 	 */
 	public void editTask(int idx, String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
+		
+		
 		if(currentTaskList == activeTaskList || currentTaskList == null) {
 			
 		} else {

@@ -137,7 +137,8 @@ public class SwapList<E> implements ISwapList<E> {
 		}
 		
 		list[addIndex] = temp;
-		size++;
+		//Don't need size++ on moveUp
+		//size++;
 	}
 
 	/**
@@ -172,7 +173,8 @@ public class SwapList<E> implements ISwapList<E> {
 		}
 		
 		list[addIndex] = temp;
-		size++;
+		//Don't need size++ on moveToFront
+		//size++;
 	}
 
 	/**
@@ -185,7 +187,8 @@ public class SwapList<E> implements ISwapList<E> {
 		
 		E temp = remove(index);
 		list[size] = temp;
-		size++;
+		//Don't need size++ on moveToBack
+		//size++;
 	}
 
 	/**
