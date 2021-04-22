@@ -100,6 +100,8 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			//taskListToken = taskListScanner.next();
 			//System.out.println(taskListToken);
 			//Prints out all the taskLists (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
+			
+			//need to wrap this in a try catch so that if an invalid name or count throws an exception, that TaskList is not added to the notebook
 			TaskList taskList = processTaskList(nbScanner.next());
 			notebook.addTaskList(taskList);
 		}
@@ -149,6 +151,8 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			taskListString += lineScanner.nextLine() + "\n";
 		}
 		
+		// need to catch exception if name or count is invalid --> throw it up to the 
+		// readFile method above --> that method will just skip that taskList and not add it
 		TaskList taskList = new TaskList(trimmedName, numCompletedTasks);
 		//System.out.println(taskListString);
 		//accurately complete and separated

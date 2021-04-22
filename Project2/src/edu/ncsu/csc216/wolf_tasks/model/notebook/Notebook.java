@@ -53,7 +53,7 @@ public class Notebook {
 		setNotebookName(notebookName);
 		// getActiveTaskList();
 		taskLists = new SortedList<TaskList>();
-		activeTaskList = getActiveTaskList();
+		activeTaskList = new ActiveTaskList();
 		currentTaskList = activeTaskList;
 		isChanged = true;
 	}
