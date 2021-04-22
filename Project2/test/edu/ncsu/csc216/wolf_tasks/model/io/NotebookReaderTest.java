@@ -37,6 +37,8 @@ public class NotebookReaderTest {
 		
 		notebook1 = reader1.readNodebookFile(notebook1File);
 		assertTrue(notebook1.isChanged());
+		//This should be "Active Tasks" so that's what I'm trying to debug below 
+		assertEquals("Habits", notebook1.getCurrentTaskList().getTaskListName());
 	}
 	
 	@Test
