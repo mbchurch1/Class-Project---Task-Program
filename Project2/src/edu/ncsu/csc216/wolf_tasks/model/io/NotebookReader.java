@@ -102,8 +102,20 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			//Prints out all the taskLists (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
 			
 			//need to wrap this in a try catch so that if an invalid name or count throws an exception, that TaskList is not added to the notebook
-			TaskList taskList = processTaskList(nbScanner.next());
-			notebook.addTaskList(taskList);
+			TaskList taskList = null;
+			try {
+				TaskList tempTaskList = processTaskList(nbScanner.next());
+				if (tempTaskList == null) {
+					//skip this taskList
+				} else {
+					taskList = tempTaskList;
+					notebook.addTaskList(taskList);
+				}
+			} catch (IllegalArgumentException e) {
+				//skip this taskList
+			}
+			
+			
 		}
 		
 		//!!! I think I need this but I don't know how to set it via the proper mechanisms
@@ -123,15 +135,19 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 	 * @param list a TaskList read in from file
 	 * @return taskList A TaskList object
 	 */
-	private static TaskList processTaskList(String list) {
+	private static TaskList processTaskList(String list) throws IllegalArgumentException {
 		String listName = "";
 		int numCompletedTasks = 0;
+		String taskListString = "";
+		//TaskList taskList = null;
+		
 		Scanner lineScanner = new Scanner(list);
 		String nameAndCompletions = lineScanner.nextLine();
 		//System.out.println(nameAndCompletions);
 		//Prints out all the taskList title lines with completions (CSC 216, CSC 226, and Habits - seems to be fine - there's a whitespace before each taskListName
 		
 		//String trimmedNameAndCompletions = nameAndCompletions.trim();
+		
 		Scanner nameVsCompletionsScanner = new Scanner(nameAndCompletions).useDelimiter(",");
 		listName = nameVsCompletionsScanner.next();
 		//System.out.println(listName);
@@ -145,23 +161,25 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			//accurate number assignment to first 2, then habits stays at 0
 		}
 		
-		String taskListString = "";
-		
 		while(lineScanner.hasNextLine()) {
 			taskListString += lineScanner.nextLine() + "\n";
 		}
 		
 		// need to catch exception if name or count is invalid --> throw it up to the 
 		// readFile method above --> that method will just skip that taskList and not add it
+		
 		TaskList taskList = new TaskList(trimmedName, numCompletedTasks);
-		//System.out.println(taskListString);
-		//accurately complete and separated
+		
 //		TaskList taskList = null;
 //		try {
 //			taskList = new TaskList(trimmedName, numCompletedTasks);
 //		} catch (IllegalArgumentException e) {
-//			//doesn't get added
+//			throw new IllegalArgumentException("TaskList name or completed count is invalid.");
 //		}
+		
+		//System.out.println(taskListString);
+		//accurately complete and separated
+		
 		Scanner taskTokenScanner = new Scanner(taskListString).useDelimiter("\\r?\\n?[*]");
 		while (taskTokenScanner.hasNext()) {
 			String taskToken = taskTokenScanner.next();
@@ -170,10 +188,16 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 		}
 		//System.out.println(taskList.getTaskListName());
 
+//		TaskList taskList = null;
+//		try {
+//			taskList = new TaskList(trimmedName, numCompletedTasks);
+//		} catch (IllegalArgumentException e) {
+//			//doesn't get added
+//		}
+		
 		lineScanner.close();
 		nameVsCompletionsScanner.close();
 		taskTokenScanner.close();
-		
 		return taskList;
 	}
 	/**
