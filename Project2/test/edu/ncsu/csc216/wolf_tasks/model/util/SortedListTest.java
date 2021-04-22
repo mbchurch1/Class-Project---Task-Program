@@ -98,7 +98,7 @@ public class SortedListTest {
 		assertEquals(3, list.size());
 		assertTrue(list.contains(thirdElement));
 		
-		list.remove(1);
+		list.remove(2);
 		assertEquals(2, list.size());
 		assertTrue(list.contains(firstElement));
 		assertTrue(list.contains(thirdElement));
