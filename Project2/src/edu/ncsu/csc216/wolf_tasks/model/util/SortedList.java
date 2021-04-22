@@ -186,7 +186,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
 				} else if ((current.data).compareTo(element) > 0) {
 					current.next = new ListNode(element, current.next);
-					break;
+					//break;
 				} else if ((current.data).compareTo(element) < 0 && i == size - 1) {
 
 					// If reached end of list, i.e. taskListElement is a larger letter
