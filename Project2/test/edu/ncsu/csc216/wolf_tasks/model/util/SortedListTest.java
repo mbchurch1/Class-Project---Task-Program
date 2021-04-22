@@ -77,18 +77,18 @@ public class SortedListTest {
 		assertTrue(list.contains(lastElement));
 	}
 	
-//		@Test 
-//		public void testAddAgain() {
-//			SortedList<String> fruits = new SortedList<String>();
-//			fruits.add("apple");
-//			fruits.add("avocado");
-//			fruits.add("zebra");
-//			fruits.add("grapes");
-//			fruits.add("orange");
-//			for(int i = 0; i < fruits.size(); i++) {
-//				System.out.println(fruits.get(i));
-//			}
-//		}
+		@Test 
+		public void testAddAgain() {
+			SortedList<String> fruits = new SortedList<String>();
+			fruits.add("apple");
+			fruits.add("avocado");
+			fruits.add("zebra");
+			fruits.add("grapes");
+			fruits.add("orange");
+			for(int i = 0; i < fruits.size(); i++) {
+				System.out.println(fruits.get(i));
+			}
+		}
 
 	/**
 	 * Test method for remove()

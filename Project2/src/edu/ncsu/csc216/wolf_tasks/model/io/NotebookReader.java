@@ -172,11 +172,13 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 //			}
 			Scanner taskTokenScanner = new Scanner(taskListString).useDelimiter("\\r?\\n?[*]");
 			while (taskTokenScanner.hasNext()) {
-				//try 
-				String taskToken = taskTokenScanner.next();
-				Task taskForTaskList = processTask(taskList, taskToken);
-				taskList.addTask(taskForTaskList);
-				//catch
+				try {
+					String taskToken = taskTokenScanner.next();
+					Task taskForTaskList = processTask(taskList, taskToken);
+					taskList.addTask(taskForTaskList);
+				} catch (IllegalArgumentException e) {
+					
+				}
 			}
 			//System.out.println(taskList.getTaskListName());
 
@@ -213,12 +215,7 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			//System.out.println(trimmedTaskNameAndModifiers);
 			//accurate and trimmed
 			while(taskTokenScanner.hasNextLine()) {
-				try {
-					taskDescription += taskTokenScanner.nextLine() + "\n";
-				} catch (NoSuchElementException e) {
-					throw new IllegalArgumentException();
-				}
-				
+				taskDescription += taskTokenScanner.nextLine() + "\n";
 			}
 			//System.out.println(taskDescription);
 			//prints accurately & trimmed with blank line in between each task
