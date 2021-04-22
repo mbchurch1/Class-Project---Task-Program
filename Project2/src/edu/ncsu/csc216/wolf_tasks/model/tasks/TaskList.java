@@ -43,6 +43,6 @@ public class TaskList extends AbstractTaskList implements Comparable<TaskList> {
 	 */
 	@Override
 	public int compareTo(TaskList list) {
-		return this.getTaskListName().compareToIgnoreCase(list.getTaskListName());
+		return list.getTaskListName().compareToIgnoreCase(this.getTaskListName());
 	}
 }

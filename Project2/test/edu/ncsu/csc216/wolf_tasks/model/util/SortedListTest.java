@@ -24,7 +24,7 @@ public class SortedListTest {
 	 */
 	@Test
 	public void testSortedList() {
-		SortedList list = new SortedList();
+		SortedList<TaskList> list = new SortedList<TaskList>();
 		assertEquals(0, list.size());
 	}
 
@@ -33,7 +33,7 @@ public class SortedListTest {
 	 */
 	@Test
 	public void testAdd() {
-		SortedList list = new SortedList();
+		SortedList<TaskList> list = new SortedList<TaskList>();
 		
 		//Test adding a null element
 		try {
@@ -76,26 +76,14 @@ public class SortedListTest {
 		assertEquals(4, list.size());
 		assertTrue(list.contains(lastElement));
 	}
-	
-//		@Test 
-//		public void testAddAgain() {
-//			SortedList<String> fruits = new SortedList<String>();
-//			fruits.add("apple");
-//			fruits.add("avocado");
-//			fruits.add("zebra");
-//			fruits.add("grapes");
-//			fruits.add("orange");
-//			for(int i = 0; i < fruits.size(); i++) {
-//				System.out.println(fruits.get(i));
-//			}
-//		}
+
 
 	/**
 	 * Test method for remove()
 	 */
 	@Test
 	public void testRemove() {
-		SortedList list = new SortedList();
+		SortedList<TaskList> list = new SortedList<TaskList>();
 		
 		//Test adding three elements and removing one
 		TaskList firstElement = new TaskList("First List", 1);
@@ -126,7 +114,7 @@ public class SortedListTest {
 	 */
 	@Test
 	public void testContains() {
-		SortedList list = new SortedList();
+		SortedList<TaskList> list = new SortedList<TaskList>();
 		
 		//Test adding a couple elements and determining if the list contains one of them
 		TaskList firstElement = new TaskList("First List", 1);
@@ -148,7 +136,7 @@ public class SortedListTest {
 	 */
 	@Test
 	public void testGet() {
-		SortedList list = new SortedList();
+		SortedList<TaskList> list = new SortedList<TaskList>();
 		
 		//Test adding a couple elements and determining if this method can get one of them
 		TaskList firstElement = new TaskList("First List", 1);

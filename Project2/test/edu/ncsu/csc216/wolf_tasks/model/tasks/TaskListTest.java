@@ -66,7 +66,7 @@ public class TaskListTest {
 	public void testCompareTo() {
 		TaskList tL11 = new TaskList("Algebra", 0);
 		TaskList tL11a = new TaskList("Zoology", 0);
-		assertEquals(-25, tL11.compareTo(tL11a));
+		assertEquals(25, tL11.compareTo(tL11a));
 	}
 
 }

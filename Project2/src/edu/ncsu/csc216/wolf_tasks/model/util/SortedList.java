@@ -109,7 +109,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @return e An object at the given index in the SortedList
 	 * @throws IndexOutOfBoundsException if the index is out of bounds for the list
 	 */
-	@SuppressWarnings("unchecked")
+	
 	public E get(int index) {
 		checkIndex(index);
 		ListNode current = front;
@@ -182,7 +182,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			for (int i = 0; i < prevSize; i++) {
 				if (element.compareTo(current.data) == 0) {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
-				} else if (element.compareTo(current.data) < 0) {
+				} else if (element.compareTo(current.data) > 0) {
 					indexForAdding = i;
 				} 
 //				else if (element.compareTo(current.data) > 0) {
