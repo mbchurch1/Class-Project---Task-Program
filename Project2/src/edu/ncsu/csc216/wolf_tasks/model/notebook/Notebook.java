@@ -89,12 +89,12 @@ public class Notebook {
 	 * @param name The new name of this notebook
 	 */
 	private void setNotebookName(String name) {
-		this.notebookName = name;
 		if (name == null || "".equals(name) || name.equals(ACTIVE_TASKS_NAME)) {
 			throw new IllegalArgumentException("Invalid name.");
 		} else {
 			notebookName = name;
 		}
+		this.notebookName = name;
 	}
 
 	/**
@@ -251,7 +251,7 @@ public class Notebook {
 	 */
 	public void removeTaskList() {
 		if (currentTaskList == activeTaskList) {
-			throw new IllegalArgumentException("The Active Task list may not be deleted.");
+			throw new IllegalArgumentException("The Active Tasks list may not be deleted.");
 		}
 		
 		String currentTaskListName = currentTaskList.getTaskListName();
@@ -274,15 +274,27 @@ public class Notebook {
 	 * @param task the task to add
 	 */
 	public void addTask(Task task) {
-		if(currentTaskList == activeTaskList || currentTaskList == null) {
-			
-		} else {
+		
+		if(currentTaskList != activeTaskList && currentTaskList != null) {
 			currentTaskList.addTask(task);
 			if (task.isActive()) {
 				this.getActiveTaskList();
 			}
 			isChanged = true;
 		}
+		
+		
+		
+//		if(currentTaskList == activeTaskList || currentTaskList == null) {
+//			
+//		} else {
+//			currentTaskList.addTask(task);
+//			if (task.isActive()) {
+//				this.getActiveTaskList();
+//			}
+//			isChanged = true;
+//		}
+		
 	}
 
 	/**
@@ -295,11 +307,12 @@ public class Notebook {
 	 * @param isActive        true if the task is active
 	 */
 	public void editTask(int idx, String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
+		if(taskName == null || taskDescription == null) {
+			throw new NullPointerException("Cannot edit task.");
+		}
 		
 		
-		if(currentTaskList == activeTaskList || currentTaskList == null) {
-			
-		} else {
+		if(currentTaskList != activeTaskList && currentTaskList != null) {
 			Task taskBeingEdited = currentTaskList.getTask(idx);
 			taskBeingEdited.setTaskName(taskName);
 			taskBeingEdited.setTaskDescription(taskDescription);
@@ -310,6 +323,24 @@ public class Notebook {
 			}
 			isChanged = true;
 		}
+		
+		
+		
+		
+		
+//		if(currentTaskList == activeTaskList || currentTaskList == null) {
+//			
+//		} else {
+//			Task taskBeingEdited = currentTaskList.getTask(idx);
+//			taskBeingEdited.setTaskName(taskName);
+//			taskBeingEdited.setTaskDescription(taskDescription);
+//			taskBeingEdited.setRecurring(isRecurring);
+//			taskBeingEdited.setActive(isActive);
+//			if (taskBeingEdited.isActive()) {
+//				this.getActiveTaskList();
+//			}
+//			isChanged = true;
+//		}
 
 	}
 }
