@@ -99,9 +99,9 @@ public class NotebookTest {
 		assertEquals("What", nB4.getTaskListsNames()[1]);
 		nB4.removeTaskList();
 		assertTrue(nB4.isChanged());
-		
+		Notebook nbNull;
 		try {
-			Notebook nbNull = new Notebook(null);
+			nbNull = new Notebook(null);
 		} catch(IllegalArgumentException e) {
 			assertEquals("Invalid name.", e.getMessage());
 		}
@@ -151,7 +151,7 @@ public class NotebookTest {
 		assertEquals("New name!", nB7.getCurrentTaskList().getTaskListName());
 		//Tests setChanged method
 		nB7.setChanged(true);
-		assertEquals(true, nB7.isChanged());
+		assertTrue(nB7.isChanged());
 		//nB7.setCurrentTaskList("Active Tasks");
 		
 		

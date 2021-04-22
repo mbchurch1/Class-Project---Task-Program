@@ -59,6 +59,13 @@ public class TaskTest {
 		} catch (IllegalArgumentException e) {
 			assertEquals("Incomplete task information.", e.getMessage());
 		}
+		try {
+			t3.setTaskDescription(null);
+			fail("This name should throw an exception.");
+		} catch (IllegalArgumentException e) {
+			assertEquals("Incomplete task information.", e.getMessage());
+		}
+		
 	}
 
 	/**
@@ -185,14 +192,21 @@ public class TaskTest {
 	@Test
 	public void testClone() {
 		Task t15 = new Task("Pick up books", "Get books from store", false, false);
-		TaskList tL3 = new TaskList("Prep", 0);
-		tL3.addTask(t15);
 		Task t15a = null;
 		try {
 			t15a = t15.clone();
 		} catch (CloneNotSupportedException e) {
-			fail("Didn't clone" + e.getMessage());
+			assertEquals("Cannot clone.", e.getMessage());
 		}
+		
+		TaskList tL3 = new TaskList("Prep", 0);
+		tL3.addTask(t15);
+		try {
+			t15a = t15.clone();
+		} catch (CloneNotSupportedException e) {
+			assertEquals("Cannot clone.", e.getMessage());
+		}
+		
 		assertEquals(t15.getTaskName(), t15a.getTaskName());
 		assertEquals(t15.getTaskDescription(), t15a.getTaskDescription());
 		assertEquals(t15.getTaskListName(), t15a.getTaskListName());

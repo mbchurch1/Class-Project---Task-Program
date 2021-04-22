@@ -271,7 +271,7 @@ public class Notebook {
 	/**
 	 * adds a task to the task list
 	 * 
-	 * @param t the task to add
+	 * @param task the task to add
 	 */
 	public void addTask(Task task) {
 		if(currentTaskList == activeTaskList || currentTaskList == null) {
