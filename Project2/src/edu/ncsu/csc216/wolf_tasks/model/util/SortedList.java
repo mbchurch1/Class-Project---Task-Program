@@ -1,5 +1,7 @@
 package edu.ncsu.csc216.wolf_tasks.model.util;
 
+import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
+
 /**
  * SortedList constructor
  * 
@@ -177,12 +179,16 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			// just use a for loop here as long as I'm pushing along 'current' during the
 			// list traversal - similar to my (WG) implementation of
 			// ServiceWolfManager.addServiceGroup implementation in P1
+			TaskList elementTL = (TaskList) element;
+			String taskListName = elementTL.getTaskListName();
 			int prevSize = this.size();
 			int indexForAdding = 0;
 			for (int i = 0; i < prevSize; i++) {
-				if (element.compareTo(current.data) == 0) {
+				TaskList currentTL = (TaskList) current.data;
+				String currentTLString = currentTL.getTaskListName();
+				if (taskListName.compareToIgnoreCase(currentTLString) == 0) {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
-				} else if (element.compareTo(current.data) < 0) {
+				} else if (taskListName.compareToIgnoreCase(currentTLString) < 0) {
 					indexForAdding = i;
 				} 
 //				else if (element.compareTo(current.data) > 0) {
