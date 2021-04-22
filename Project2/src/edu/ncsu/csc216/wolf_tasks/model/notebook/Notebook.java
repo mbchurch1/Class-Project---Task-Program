@@ -275,7 +275,7 @@ public class Notebook {
 	 */
 	public void addTask(Task task) {
 		if(currentTaskList == activeTaskList || currentTaskList == null) {
-			//do nothing
+			
 		} else {
 			currentTaskList.addTask(task);
 			if (task.isActive()) {
@@ -296,7 +296,7 @@ public class Notebook {
 	 */
 	public void editTask(int idx, String taskName, String taskDescription, boolean isRecurring, boolean isActive) {
 		if(currentTaskList == activeTaskList || currentTaskList == null) {
-			//do nothing
+			
 		} else {
 			Task taskBeingEdited = currentTaskList.getTask(idx);
 			taskBeingEdited.setTaskName(taskName);
