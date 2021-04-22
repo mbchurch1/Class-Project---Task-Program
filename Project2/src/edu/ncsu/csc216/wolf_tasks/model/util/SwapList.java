@@ -67,6 +67,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 * 
 	 * @return the capacity of the list
 	 */
+	@SuppressWarnings("unused")
 	private int checkCapacity() {
 		//size - occupied elements of the swapList array
 		int occupiedElements = 0;
