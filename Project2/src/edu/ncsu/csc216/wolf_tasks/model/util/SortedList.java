@@ -223,7 +223,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 				
 				//Need to ensure that compareTo in TaskList is implemented as 
 				//compareToIgnoreCase
-				if ((current.data).compareTo(element) == 0) {
+				if (this.contains(element)) {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
 				}
 				else if ((current.data).compareTo(element) < 0) {
@@ -253,7 +253,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	public boolean contains(E element) {
 		ListNode current = front;
 		for(int i = 0; i < size; i++) {
-			if(current.data.equals(element)) {
+			if((current.data).compareTo(element) == 0) {
 				return true;
 			}
 			current = current.next;
