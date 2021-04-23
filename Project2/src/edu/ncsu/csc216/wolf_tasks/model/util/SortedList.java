@@ -161,11 +161,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			// !!!!! Need to figure out how to always add ActiveTaskList to the front of
 			// SortedList
 			front = new ListNode(element);
-		} else if (element.compareTo(front.data) > 0) {
-			ListNode newTemp = new ListNode(element, front);
-			front = newTemp;
 		} else {
-
 			// This implementation of checking for duplicates may work, but the below mimics
 			// ServiceWolfManager.addServiceGroup implementation in P1 and seems to all be
 			// coherent/cohesive
