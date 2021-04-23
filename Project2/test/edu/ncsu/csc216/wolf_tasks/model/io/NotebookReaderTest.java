@@ -6,7 +6,7 @@ package edu.ncsu.csc216.wolf_tasks.model.io;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
+
 
 import org.junit.Test;
 
@@ -42,6 +42,9 @@ public class NotebookReaderTest {
 		assertEquals("Active Tasks", notebook1.getCurrentTaskList().getTaskListName());
 	}
 	
+	/**
+	 * Testing getActiveTasks
+	 */
 	@Test
 	public void testGetActiveTasks() {
 		Notebook nB8 = new Notebook("New NotebookForTest");
