@@ -175,7 +175,12 @@ public class Task implements Cloneable {
 		if (tasklists.size() == 0) {
 			throw new CloneNotSupportedException("Cannot clone.");
 		}
-		Task copiedTask = (Task) super.clone();
+		Task copiedTask = new Task(this.taskName, this.taskDescription, this.recurring, this.active);
+		ISwapList<AbstractTaskList> copiedTaskLists = new SwapList<AbstractTaskList>();
+		copiedTask.tasklists = copiedTaskLists;
+		for (int i = 0; i < this.tasklists.size(); i++) {
+			copiedTask.tasklists.add(this.tasklists.get(i));
+		}
 
 		return copiedTask;
 
