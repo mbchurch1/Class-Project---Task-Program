@@ -144,11 +144,11 @@ public class Notebook {
 	 * @return aString Array of task list names
 	 */
 	public String[] getTaskListsNames() {
-		if (taskLists.size() == 0) {
-			String[] activeTaskListName = new String[1];
-			activeTaskListName[0] = ACTIVE_TASKS_NAME;
-			return activeTaskListName;
-		}
+//		if (taskLists.size() == 0) {
+//			String[] activeTaskListName = new String[1];
+//			activeTaskListName[0] = ACTIVE_TASKS_NAME;
+//			return activeTaskListName;
+//		}
 		//taskLists.size()+1 now accounts for ActiveTasks
 		String[] taskListNames = new String[taskLists.size() + 1];
 		taskListNames[0] = ACTIVE_TASKS_NAME;
