@@ -23,7 +23,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@SuppressWarnings("unchecked")
 	public SwapList() {
-		//E element = (E) new Object();
+		// E element = (E) new Object();
 		list = (E[]) new Object[INITIAL_CAPACITY];
 		size = 0;
 	}
@@ -35,17 +35,17 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	public void add(E element) {
 		if (element == null) {
-			throw new NullPointerException("Cannot add null element."); 
+			throw new NullPointerException("Cannot add null element.");
 		}
-		//allows duplicate elements --> no check for duplicates
-		
+		// allows duplicate elements --> no check for duplicates
+
 		// Grow the array size if array is full
 		if (size == list.length) {
 			growArray();
 		}
-		
-		//Add element to end of list (per AbstractTaskList implementation and per 
-		//lack of index parameter
+
+		// Add element to end of list (per AbstractTaskList implementation and per
+		// lack of index parameter
 		list[size] = element;
 		size++;
 	}
@@ -59,7 +59,7 @@ public class SwapList<E> implements ISwapList<E> {
 		for (int i = 0; i < size; i++) {
 			list[i] = temp[i];
 		}
-		
+
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@SuppressWarnings("unused")
 	private int checkCapacity() {
-		//size - occupied elements of the swapList array
+		// size - occupied elements of the swapList array
 		int occupiedElements = 0;
 		int capacity = 0;
 		for (int i = 0; i < list.length; i++) {
@@ -77,7 +77,7 @@ public class SwapList<E> implements ISwapList<E> {
 				occupiedElements++;
 			}
 		}
-		
+
 		capacity = size - occupiedElements;
 		return capacity;
 	}
@@ -93,7 +93,7 @@ public class SwapList<E> implements ISwapList<E> {
 		if (size == 0) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
-		
+
 		E rtn = list[index];
 		for (int i = index; i < size - 1; i++) {
 			list[i] = list[i + 1];
@@ -121,22 +121,22 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	public void moveUp(int index) {
 		checkIndex(index);
-		
-		//!!! Probably could've simplified this to be more list moveDown()
-		
+
+		// !!! Probably could've simplified this to be more list moveDown()
+
 		E temp = list[index];
-		
-		//place index element in temp
-		//remove index element from list 
-		//shift list to right starting at (index - 1)
-		//place index element at (index - 1)
-		
+
+		// place index element in temp
+		// remove index element from list
+		// shift list to right starting at (index - 1)
+		// place index element at (index - 1)
+
 		remove(index);
 		int addIndex = index - 1;
 		for (int i = size - 1; i >= addIndex; i--) {
 			list[i + 1] = list[i];
 		}
-		
+
 		list[addIndex] = temp;
 		size++;
 	}
@@ -148,12 +148,15 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	public void moveDown(int index) {
 		checkIndex(index);
-		
+
 		E tempOriginal = list[index];
 		E tempOther = list[index + 1];
-		
-		list[index] = tempOther;
-		list[index + 1] = tempOriginal;
+		if (index == size - 1) {
+			list[index] = tempOriginal;
+		} else {
+			list[index] = tempOther;
+			list[index + 1] = tempOriginal;
+		}
 	}
 
 	/**
@@ -163,15 +166,15 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	public void moveToFront(int index) {
 		checkIndex(index);
-		
+
 		E temp = list[index];
-		
+
 		remove(index);
 		int addIndex = 0;
 		for (int i = size - 1; i >= addIndex; i--) {
 			list[i + 1] = list[i];
 		}
-		
+
 		list[addIndex] = temp;
 		size++;
 	}
@@ -183,7 +186,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	public void moveToBack(int index) {
 		checkIndex(index);
-		
+
 		E temp = remove(index);
 		list[size] = temp;
 		size++;
