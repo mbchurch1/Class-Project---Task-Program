@@ -1,6 +1,6 @@
 package edu.ncsu.csc216.wolf_tasks.model.util;
 
-import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
+
 
 /**
  * SortedList constructor
@@ -111,7 +111,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @return e An object at the given index in the SortedList
 	 * @throws IndexOutOfBoundsException if the index is out of bounds for the list
 	 */
-	
+
 	public E get(int index) {
 		checkIndex(index);
 		ListNode current = front;
@@ -161,6 +161,9 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			// !!!!! Need to figure out how to always add ActiveTaskList to the front of
 			// SortedList
 			front = new ListNode(element);
+		} else if (front.data.compareTo(element) > 0) {
+			ListNode newTemp = new ListNode(element, front);
+			front = newTemp;
 		} else {
 
 			// This implementation of checking for duplicates may work, but the below mimics
@@ -179,8 +182,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			// just use a for loop here as long as I'm pushing along 'current' during the
 			// list traversal - similar to my (WG) implementation of
 			// ServiceWolfManager.addServiceGroup implementation in P1
-			
-			
+
 //			int prevSize = this.size();
 //			int indexForAdding = 0;
 //			for (int i = 0; i < prevSize; i++) {
@@ -191,7 +193,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 //				} else if (elementTL.getTaskListName().compareTo(currentTL.getTaskListName()) > 0) {
 //					indexForAdding = i;
 //				} 
-			
+
 			int prevSize = this.size();
 			int indexForAdding = 0;
 			for (int i = 0; i < prevSize; i++) {
@@ -199,24 +201,22 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
 				} else if (element.compareTo(current.data) > 0) {
 					indexForAdding = i;
-				} 
-			
-			
-			
+				}
+
 //				else if (element.compareTo(current.data) > 0) {
 //					if (i == prevSize - 1) {
 //						indexForAdding = 1 + i;
 //					}
 //				}
-				
+
 				// Need to ensure that compareTo in TaskList is implemented as
 				// compareToIgnoreCase
-				//!@! New change after working with Melody
+				// !@! New change after working with Melody
 //				if (current.data.compareTo(element) == 0) {
 //					throw new IllegalArgumentException("Cannot add duplicate element.");
 //				} 
 //				else if (element.compareTo(current.data))
-				//!@! New change after working with Melody
+				// !@! New change after working with Melody
 //				else if ((current.data).compareTo(element) < 0) {
 //
 //					// If reached end of list, i.e. taskListElement is a larger letter
@@ -227,7 +227,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 //					current.next = new ListNode(element, current.next);
 //					break;
 //				} 
-				//!@! New change after working with Melody
+				// !@! New change after working with Melody
 //				else if ((current.next.data).compareTo(element) > 0 && i == size - 1) {
 //					current.next = new ListNode(element, current.next);
 //					break;
@@ -235,16 +235,15 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 				current = current.next;
 			}
 			current = front;
-			
+
 			for (int i = 0; i < prevSize; i++) {
 				if (indexForAdding == 0) {
-					front.next = new ListNode(element, current.next); 
+					front.next = new ListNode(element, current.next);
+				} else if (i == indexForAdding && i != 0) {
+					current.next = new ListNode(element, current.next);
 				}
-				else if (i == indexForAdding && i != 0) {
-					 current.next = new ListNode(element, current.next); 
-				 }
-				 current = current.next;
-			 }
+				current = current.next;
+			}
 		}
 		size++;
 
