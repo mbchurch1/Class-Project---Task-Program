@@ -116,10 +116,10 @@ public abstract class AbstractTaskList {
 	 * @param task the task to complete
 	 */
 	public void completeTask(Task task) {
-		int idx = 0;
+		int idx = -1;
 		for (int i = 0; i < tasks.size(); i++) {
 			if (tasks.get(i) == task) {
-				tasks.remove(i);
+				idx = i;
 			}
 		}
 		tasks.remove(idx);
