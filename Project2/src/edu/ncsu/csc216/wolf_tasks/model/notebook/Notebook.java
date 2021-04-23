@@ -152,7 +152,7 @@ public class Notebook {
 		//taskLists.size()+1 now accounts for ActiveTasks
 		String[] taskListNames = new String[taskLists.size() + 1];
 		taskListNames[0] = ACTIVE_TASKS_NAME;
-		for (int i = 1; i < taskLists.size(); i++) {
+		for (int i = 1; i < taskLists.size() + 1; i++) {
 			taskListNames[i] = taskLists.get(i - 1).getTaskListName();
 		}
 		return taskListNames;

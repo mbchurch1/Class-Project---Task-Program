@@ -49,7 +49,7 @@ public class NotebookTest {
 		assertEquals("ATaskList", nB1.getTaskListsNames()[1]);
 		assertEquals("MiddleTaskList", nB1.getTaskListsNames()[2]);
 		assertEquals("TaskList1", nB1.getTaskListsNames()[3]);
-		//assertEquals("ZZZTaskList", nB1.getTaskListsNames()[4]);
+		assertEquals("ZZZTaskList", nB1.getTaskListsNames()[4]);
 	}
 
 	/**
