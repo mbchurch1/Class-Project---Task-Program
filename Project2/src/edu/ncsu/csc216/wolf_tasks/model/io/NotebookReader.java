@@ -202,7 +202,6 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 	 * @return newTask A Task object
 	 */
 	private static Task processTask(AbstractTaskList taskList, String taskToken) {
-		try {
 			String taskName = "";
 			String taskDescription = ""; 
 			boolean isRecurring = false; 
@@ -215,8 +214,14 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			//System.out.println(trimmedTaskNameAndModifiers);
 			//accurate and trimmed
 			while(taskTokenScanner.hasNextLine()) {
-				taskDescription += taskTokenScanner.nextLine() + "\n";
+				try {
+					taskDescription += taskTokenScanner.nextLine() + "\n";
+				} catch(NoSuchElementException e) {
+					throw new IllegalArgumentException();
+				}
 			}
+			taskTokenScanner.close();
+			
 			//System.out.println(taskDescription);
 			//prints accurately & trimmed with blank line in between each task
 			Scanner taskNameAndModsScanner = new Scanner(trimmedTaskNameAndModifiers).useDelimiter(",");
@@ -254,11 +259,9 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 			Task newTask = new Task(taskName, taskDescription, isRecurring, isActive);
 			//System.out.println(newTask);
 
-			taskTokenScanner.close();
+			
 			taskNameAndModsScanner.close();
 			return newTask;
-		} catch (NoSuchElementException e) {
-			throw new IllegalArgumentException();
-		}
+
 	}
 }
