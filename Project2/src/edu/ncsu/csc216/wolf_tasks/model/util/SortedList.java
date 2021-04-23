@@ -179,15 +179,31 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			// just use a for loop here as long as I'm pushing along 'current' during the
 			// list traversal - similar to my (WG) implementation of
 			// ServiceWolfManager.addServiceGroup implementation in P1
+			
+			
 			int prevSize = this.size();
 			int indexForAdding = 0;
 			for (int i = 0; i < prevSize; i++) {
-//				TaskList elementTL = (TaskList) element;
-				if (element.compareTo(current.data) == 0) {
+				TaskList elementTL = (TaskList) element;
+				TaskList currentTL = (TaskList) current.data;
+				if (elementTL.getTaskListName().compareTo(currentTL.getTaskListName()) == 0) {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
-				} else if (element.compareTo(current.data) > 0) {
+				} else if (elementTL.getTaskListName().compareTo(currentTL.getTaskListName()) > 0) {
 					indexForAdding = i;
 				} 
+			
+//			int prevSize = this.size();
+//			int indexForAdding = 0;
+//			for (int i = 0; i < prevSize; i++) {
+////				TaskList elementTL = (TaskList) element;
+//				if (element.compareTo(current.data) == 0) {
+//					throw new IllegalArgumentException("Cannot add duplicate element.");
+//				} else if (element.compareTo(current.data) > 0) {
+//					indexForAdding = i;
+//				} 
+			
+			
+			
 //				else if (element.compareTo(current.data) > 0) {
 //					if (i == prevSize - 1) {
 //						indexForAdding = 1 + i;
