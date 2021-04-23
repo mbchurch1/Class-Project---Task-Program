@@ -38,6 +38,18 @@ public class NotebookTest {
 	public void testNotebook() {
 		Notebook nB1 = new Notebook("Class Stuff");
 		assertEquals("Class Stuff", nB1.getNotebookName());
+		TaskList taskList1 = new TaskList("TaskList1", 0);
+		TaskList aTaskList = new TaskList("ATaskList", 0);
+		TaskList middle = new TaskList("MiddleTaskList", 0);
+		TaskList z = new TaskList("ZZZTaskList", 0);
+		nB1.addTaskList(taskList1);
+		nB1.addTaskList(aTaskList);
+		nB1.addTaskList(middle);
+		nB1.addTaskList(z);
+		assertEquals("ATaskList", nB1.getTaskListsNames()[1]);
+		assertEquals("MiddleTaskList", nB1.getTaskListsNames()[2]);
+		assertEquals("TaskList1", nB1.getTaskListsNames()[3]);
+		assertEquals("ZZZTaskList", nB1.getTaskListsNames()[4]);
 	}
 
 	/**
