@@ -132,7 +132,10 @@ public class SwapList<E> implements ISwapList<E> {
 		// place index element at (index - 1)
 
 		remove(index);
-		int addIndex = index - 1;
+		int addIndex = 0;
+		if (index > 0) {
+			addIndex = index - 1;
+		}
 		for (int i = size - 1; i >= addIndex; i--) {
 			list[i + 1] = list[i];
 		}
