@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import edu.ncsu.csc216.wolf_tasks.model.notebook.Notebook;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.AbstractTaskList;
+import edu.ncsu.csc216.wolf_tasks.model.tasks.ActiveTaskList;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.Task;
 import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 /**
@@ -177,7 +178,7 @@ import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
 					Task taskForTaskList = processTask(taskList, taskToken);
 					taskList.addTask(taskForTaskList);
 				} catch (IllegalArgumentException e) {
-					
+					//Skip this task
 				}
 			}
 			//System.out.println(taskList.getTaskListName());
