@@ -188,11 +188,16 @@ public class Notebook {
 		} else {
 			AbstractTaskList listToBeCurrent = null;
 			for (int i = 0; i < taskLists.size(); i++) {
-				currentTaskList = taskLists.get(i);
-				String currentListName = currentTaskList.getTaskListName();
-				if(currentListName.equals(taskListName)) {
-					listToBeCurrent = currentTaskList;
+				AbstractTaskList listAtI = taskLists.get(i);
+				String listAtIName = listAtI.getTaskListName();
+				if (listAtIName.equals(taskListName)) {
+					listToBeCurrent = listAtI;
 				}
+//				currentTaskList = taskLists.get(i);
+//				String currentListName = currentTaskList.getTaskListName();
+//				if(currentListName.equals(taskListName)) {
+//					listToBeCurrent = currentTaskList;
+//				}
 			}
 			if (listToBeCurrent == null) {
 				currentTaskList = activeTaskList;
