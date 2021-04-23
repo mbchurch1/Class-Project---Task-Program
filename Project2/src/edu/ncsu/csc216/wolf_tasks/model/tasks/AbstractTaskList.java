@@ -117,7 +117,10 @@ public abstract class AbstractTaskList {
 	 */
 	public void completeTask(Task task) {
 		int idx = -1;
+		System.out.println("Task to complete: " + task.getTaskName());
 		for (int i = 0; i < tasks.size(); i++) {
+			System.out.println(tasks.get(i));
+			
 			if (tasks.get(i) == task) {
 				idx = i;
 			}
