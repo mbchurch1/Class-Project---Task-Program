@@ -226,13 +226,13 @@ public class Notebook {
 			throw new IllegalArgumentException("The Active Tasks list may not be edited.");
 		}
 		if (taskListName == ACTIVE_TASKS_NAME) {
-			throw new IllegalArgumentException("Cannot create new Active Task List.");
+			throw new IllegalArgumentException("Invalid name.");
 		}
 		for (int i = 0; i < taskLists.size(); i++) {
 			currentTaskList = taskLists.get(i);
 			String currentListName = currentTaskList.getTaskListName();
 			if(currentListName.equalsIgnoreCase(taskListName)) {
-				throw new IllegalArgumentException("Cannot create duplicate Task List name.");
+				throw new IllegalArgumentException("Invalid name.");
 			}
 		}
 		
