@@ -1,5 +1,7 @@
 package edu.ncsu.csc216.wolf_tasks.model.util;
 
+import edu.ncsu.csc216.wolf_tasks.model.tasks.TaskList;
+
 /**
  * SortedList constructor
  * 
@@ -180,6 +182,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			int prevSize = this.size();
 			int indexForAdding = 0;
 			for (int i = 0; i < prevSize; i++) {
+//				TaskList elementTL = (TaskList) element;
 				if (element.compareTo(current.data) == 0) {
 					throw new IllegalArgumentException("Cannot add duplicate element.");
 				} else if (element.compareTo(current.data) > 0) {
