@@ -23,6 +23,7 @@ public class NotebookWriter {
 	 * @param outputFile   name of the file to which the notebook is being written
 	 * @param notebookName Name of the notebook being written to file
 	 * @param sortedList   a sorted list of TaskLists
+	 * @throws IOException if the file cant be written
 	 */
 
 	public static void writeNotebookFile(File outputFile, String notebookName, ISortedList<TaskList> sortedList)
