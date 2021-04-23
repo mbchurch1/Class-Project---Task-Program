@@ -114,6 +114,8 @@ public class NotebookTest {
 		Notebook nbNull;
 		try {
 			nbNull = new Notebook(null);
+			nbNull.addTask(null);
+			fail("Should make a new one");
 		} catch(IllegalArgumentException e) {
 			assertEquals("Invalid name.", e.getMessage());
 		}
