@@ -157,6 +157,28 @@ public class NotebookTest {
 		
 		
 	}
+	
+	/**
+	 * Testing similar to TSNotebookTest.testAddTaskList
+	 */
+	@Test
+	public void testAddTaskListTS() {
+		Notebook nB10 = new Notebook("Change the tasklist name");
+		TaskList tl1 = new TaskList("TaskList1", 0);
+		TaskList tl2 = new TaskList("ATaskList", 0);
+		nB10.addTaskList(tl1);
+		nB10.addTaskList(tl2);
+		
+//		String[] tlarray = nB10.getTaskListsNames();
+//		for (int i = 0; i < tlarray.length; i++) {
+//			if (i == 0) {
+//				assertEquals("ATaskList1", tlarray[i]);
+//			}
+//			if (i ==1) {
+//				assertEquals("TaskList1", tlarray[i]);
+//			}
+//		}
+	}
 
 
 	/**
@@ -189,5 +211,5 @@ public class NotebookTest {
 			fail("Error reading file");
 		}
 	}
-
+	
 }

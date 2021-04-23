@@ -237,7 +237,10 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			current = front;
 			
 			for (int i = 0; i < prevSize; i++) {
-				 if (i == indexForAdding) {
+				if (indexForAdding == 0) {
+					front.next = new ListNode(element, current.next); 
+				}
+				else if (i == indexForAdding && i != 0) {
 					 current.next = new ListNode(element, current.next); 
 				 }
 				 current = current.next;
