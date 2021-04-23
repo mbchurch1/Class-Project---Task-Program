@@ -122,6 +122,9 @@ public abstract class AbstractTaskList {
 				idx = i;
 			}
 		}
+		if (idx == -1) {
+			throw new IllegalArgumentException("task not found");
+		}
 		tasks.remove(idx);
 		completedCount++;
 	}
