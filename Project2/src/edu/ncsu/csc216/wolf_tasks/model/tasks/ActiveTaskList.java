@@ -58,7 +58,7 @@ public class ActiveTaskList extends AbstractTaskList {
 	public String[][] getTasksAsArray() {
 		String[][] tasksArray = new String[this.getTasks().size()][2];
 		for (int i = 0; i < this.getTasks().size(); i++) {
-			tasksArray[i][0] = ACTIVE_TASKS_NAME;
+			tasksArray[i][0] = this.getTasks().get(i).getTaskListName();
 			tasksArray[i][1] = this.getTasks().get(i).getTaskName();
 		}
 		return tasksArray;
