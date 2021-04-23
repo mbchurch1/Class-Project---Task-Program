@@ -117,7 +117,7 @@ public abstract class AbstractTaskList {
 	 */
 	public void completeTask(Task task) {
 		int idx = -1;
-		System.out.println("Task to complete: " + task.getTaskName());
+		System.out.println("Task to complete: " + task.getTaskName() + " in: " + task.getTaskListName());
 		for (int i = 0; i < tasks.size(); i++) {
 			System.out.println(tasks.get(i));
 			
@@ -126,7 +126,9 @@ public abstract class AbstractTaskList {
 			}
 		}
 		if (idx == -1) {
+			System.out.println("heres where it breaks");
 			throw new IllegalArgumentException("task not found");
+			
 		}
 		tasks.remove(idx);
 		completedCount++;
