@@ -121,7 +121,7 @@ public abstract class AbstractTaskList {
 		for (int i = 0; i < tasks.size(); i++) {
 			System.out.println(tasks.get(i));
 			
-			if (tasks.get(i).equals(task)) {
+			if (tasks.get(i).getTaskName().equals(task.getTaskName())) {
 				idx = i;
 			}
 		}
