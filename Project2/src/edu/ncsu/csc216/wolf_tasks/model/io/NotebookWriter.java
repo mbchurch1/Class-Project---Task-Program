@@ -31,7 +31,7 @@ public class NotebookWriter {
 		fileWriter.println("! " + notebookName);
 		for (int i = 0; i < sortedList.size(); i++) {
 			fileWriter
-					.println("# " + sortedList.get(i).getTaskListName() + ", " + sortedList.get(i).getCompletedCount());
+					.println("# " + sortedList.get(i).getTaskListName() + "," + sortedList.get(i).getCompletedCount());
 			for (int j = 0; j < sortedList.get(i).getTasks().size(); j++) {
 				fileWriter.println(sortedList.get(i).getTasks().get(j).toString());
 			}
