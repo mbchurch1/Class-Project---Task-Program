@@ -122,9 +122,6 @@ public abstract class AbstractTaskList {
 				idx = i;
 			}
 		}
-		if (idx == -1) {
-			return;
-		}
 		tasks.remove(idx);
 		completedCount++;
 	}
