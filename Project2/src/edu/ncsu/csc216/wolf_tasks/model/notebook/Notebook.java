@@ -232,7 +232,7 @@ public class Notebook {
 			currentTaskList = taskLists.get(i);
 			String currentListName = currentTaskList.getTaskListName();
 			if(currentListName.equalsIgnoreCase(taskListName)) {
-				throw new IllegalArgumentException("Cannot create duplicate Task List name.");
+				throw new IllegalArgumentException("Invalid name.");
 			}
 		}
 		
