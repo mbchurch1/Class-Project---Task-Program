@@ -33,6 +33,14 @@ public class SortedListTest {
 	 */
 	@Test
 	public void testAdd() {
+		SortedList<String> f = new SortedList<String>();
+		f.add("banana");
+		f.add("apple");
+		f.add("orange");
+		f.add("eggplant");
+		for (int i = 0; i < f.size(); i++) {
+			System.out.println(f.get(i));
+		}
 		SortedList<TaskList> list = new SortedList<TaskList>();
 		
 		//Test adding a null element
